@@ -1,0 +1,46 @@
+「」
+
+自顶向下，越来越不关注细节（宏观）
+
+①应用层[application layer]
+传输介质：报文[message]
+通信对象：给应用程序进程通信定规矩
+
+HTTP、Telnet
+SMTP、POP3、IMAP
+FTP
+DNS
+scoket：标识进程
+
+②运输层[transport layer]
+传输介质：报文段[segment]
+通信对象：应用程序进程
+关键词：TCP
+
+多路复用/分解：将packet交付到scoket
+TCP(RTT)/UDP
+可靠数据传输原理 GBN/SR
+
+③网络层[network layer]
+传输介质：数据报[datagram]
+通信对象：主机[host]
+主要功能：转发[forward]、路由选择[routing]
+关键词：路由、IP
+
+虚电路(连接)/数据报(无连接)网络
+IP地址
+IP数据报分片
+因特网控制报文协议ICMP
+路由选择算法LS/DV
+路由选择协议：开放最短路优先OSPF(LS)/路由信息选择协议RIP(DV)/边界网关协议BGP
+
+④链路层[link layer]
+传输介质：帧[frame]
+通信对象：链路上的相邻[adjacent]结点
+关键词：CRC 、MAC、交换机
+
+CRC循环冗余检测
+MAC地址：每个接口对应一个MAC地址
+地址解析协议ARP：同一子网下，IP地址→MAC
+交换机（即插即用[Plus-and-play]、自学习）
+以太网的多路访问协议：CSMA/CD
