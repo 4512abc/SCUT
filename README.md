@@ -10,7 +10,6 @@ Here's your `read.md` summarizing the uploaded subjects:
 - C++程序设计
 - JAVA
 - UML
-- 个人笔记篇
 - 大学物理
 - 大学物理实验
 - 学术英语
