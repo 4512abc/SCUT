@@ -1,0 +1,11 @@
+1.(P30 1.14-6)data model
+2.(P5 1.3.1)Physical level / Logical level
+3.(P214 6.3.3)total / partial
+4.(P100 3.9)view
+5.(P125 4.2.1)unique / check
+6.(P610)atomicity / consistency / isolation
+7.£¨P483 12.2.1)search-key value / pointers
+8.(P492 12.3.2)©°log©°n/2©´(K)©´
+9.(P599)selection / projections
+10.(P635 16.1.1) Shared / Exclusive
+11.£¨P693 17.4.2) immediate- / active

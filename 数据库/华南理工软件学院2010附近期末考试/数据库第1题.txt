@@ -1,0 +1,24 @@
+1.a)  entity set     |   primary key  
+      apply_form         addly_id        
+      repairer           repairer_id   
+      repairer_record    record_id
+  b) 唔这道题什么意思QwQ是这样吗？
+     Repair_record(Record_id,fee,Repair_date)
+     Apply_Form(apply_id,subject,managers)
+     Repairer(repairer_id,name)
+  c）create table Apply_Form(
+     apply_id    int not null,
+     subject     varchar(20),
+     manager     varchar(20),
+     primary key(apply_id))
+
+     create table Repairer(
+     repairer_id int not null,
+     name        varchar(20),
+     primary key(repairer_id))
+
+     create table Repair_Record(
+     Record_id    int not null,
+     fee          int,
+     Repair_date  date,
+     primary key(Record_id))
