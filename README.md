@@ -2,8 +2,6 @@
 华南理工大学软件学院的一些复习资料和个人笔记上传，来自多方援助。
 Review materials and personal notes from the School of Software Engineering at South China University of Technology, contributed by various sources.
 
-Here's your `read.md` summarizing the uploaded subjects:
-
 
 ## 已上传学科
 
@@ -31,4 +29,4 @@ Here's your `read.md` summarizing the uploaded subjects:
 - 计算机网络
 - 近代史
 - 音乐美学
-```
+- 编译原理
