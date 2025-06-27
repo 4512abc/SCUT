@@ -1,0 +1,10 @@
+{
+  int a; int b; int c;
+    while(true)
+    {
+      if(true)
+      for(a=b;a<b;a=a+1)
+      a=b;
+    }
+}
+
