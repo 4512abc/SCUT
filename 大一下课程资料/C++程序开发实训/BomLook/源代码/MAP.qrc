@@ -1,0 +1,78 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>resource/picture/微信图片_20231107235826.jpg</file>
+        <file>resource/picture/微信图片_20240523164541.jpg</file>
+        <file>resource/picture/v2-30718c06f344034c0800518670382a79_1440w.png</file>
+        <file>resource/picture/v2-34eaa3567c7e44512fedff2eb7d43674_1440w.jpg</file>
+        <file>resource/picture/v2-86e3f89bf67a2cca52498fdf9c23c060_1440w.jpg</file>
+        <file>resource/picture/v2-373fbf6f2d88785d438b55056cfd92ec_1440w.jpg</file>
+        <file>resource/picture/v2-91143fe01178022e167a853fd74acf74_1440w.jpg</file>
+        <file>resource/picture/v2-9750429632c7581cfdc3c45c38314640_1440w.jpg</file>
+        <file>resource/picture/v2-c0bce751a7c3bf892757620e809183b7_1440w.jpg</file>
+        <file>resource/picture/v2-ccd9ab62dfc5ab5f5b3c78494df6a28f_1440w.jpg</file>
+        <file>resource/picture/微信图片_20231107235839.jpg</file>
+        <file>resource/picture/背景.jpg</file>
+        <file>resource/picture/backGround.jpg</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>resource/icons/宝箱pixel.png</file>
+        <file>resource/icons/齿轮pixel_.png</file>
+        <file>resource/icons/灯泡pixel.png</file>
+        <file>resource/icons/房子pixel.png</file>
+        <file>resource/icons/火pixel.png</file>
+        <file>resource/icons/奖杯pixel.png</file>
+        <file>resource/icons/金币pixel.png</file>
+        <file>resource/icons/闪电pixel.png</file>
+        <file>resource/icons/信封pixel.png</file>
+        <file>resource/icons/钥匙pixel.png</file>
+        <file>resource/icons/游戏机pixel.png</file>
+        <file>resource/icons/工具刀pixel.png</file>
+        <file>resource/icons/星星pixel.png</file>
+        <file>resource/icons/锁pixel.png</file>
+        <file>resource/icons/lamb-left.png</file>
+        <file>resource/icons/lamb-right.png</file>
+        <file>resource/icons/放大镜pixel_.png</file>
+        <file>resource/icons/心pixel.png</file>
+        <file>resource/icons/电池pixel.png</file>
+        <file>resource/icons/黑客 (时间轴).png</file>
+        <file>resource/icons/藏剑.png</file>
+        <file>resource/icons/古风物件，中国风，古代兵器，剑，古剑.png</file>
+        <file>resource/icons/黑客攻击.png</file>
+        <file>resource/icons/注册.png</file>
+        <file>resource/icons/登录.png</file>
+        <file>resource/icons/十字剑.png</file>
+        <file>resource/icons/移动端-LOL剑@3-copy.png</file>
+        <file>resource/icons/播放.png</file>
+        <file>resource/icons/单曲循环.png</file>
+        <file>resource/icons/上一曲.png</file>
+        <file>resource/icons/随机播放.png</file>
+        <file>resource/icons/下一曲.png</file>
+        <file>resource/icons/音乐.png</file>
+        <file>resource/icons/添加歌曲.png</file>
+        <file>resource/icons/去除歌曲.png</file>
+        <file>resource/icons/清空歌曲.png</file>
+        <file>resource/icons/音乐-音量调节.png</file>
+        <file>resource/icons/列表循环.png</file>
+        <file>resource/icons/暂停.png</file>
+    </qresource>
+    <qresource prefix="/map">
+        <file>resource/map/level1.bin</file>
+        <file>resource/map/level2.bin</file>
+        <file>resource/map/level3.bin</file>
+        <file>resource/map/level4.bin</file>
+        <file>resource/map/level5.bin</file>
+        <file>resource/map/level6.bin</file>
+        <file>resource/map/level7.bin</file>
+        <file>resource/map/level8.bin</file>
+        <file>resource/map/level9.bin</file>
+        <file>resource/map/level10.bin</file>
+        <file>resource/map/level11.bin</file>
+        <file>resource/map/level12.bin</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>resource/music/I need U.mp3</file>
+        <file>resource/music/孤独的巡礼.mp3</file>
+        <file>resource/music/海阔天空.mp3</file>
+        <file>resource/music/骑士王的荣耀.mp3</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Login</class>
+ <widget class="QWidget" name="Login">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>780</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0);
+background-color: rgb(255, 198, 119);</string>
+  </property>
+  <widget class="QLabel" name="label_image">
+   <property name="geometry">
+    <rect>
+     <x>399</x>
+     <y>0</y>
+     <width>370</width>
+     <height>520</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 193, 87);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>80</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: red; /* Example color */
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 20px;
+    font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>登陆游戏</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="name">
+   <property name="geometry">
+    <rect>
+     <x>89</x>
+     <y>170</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+font: 10pt &quot;Candara&quot;;
+
+background: rgba(255, 255, 255, 180); /* 半透明白色背景 */
+            border: 2px solid white; /* 白色实线边框 */
+            border-radius: 10px; /* 圆角边框 */
+            padding: 2px 4px;</string>
+   </property>
+   <property name="placeholderText">
+    <string>请输入您的用户名</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>230</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+font: 10pt &quot;Candara&quot;;
+
+background: rgba(255, 255, 255, 180); /* 半透明白色背景 */
+            border: 2px solid white; /* 白色实线边框 */
+            border-radius: 10px; /* 圆角边框 */
+            padding: 2px 4px;</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>请输入您的账号密码</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="signIn">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>300</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+font: 9pt &quot;Microsoft YaHei UI&quot;;
+color: rgb(85, 170, 255);
+background: rgba(255, 255, 255, 180); /* 半透明白色背景 */
+            border: 2px solid white; /* 白色实线边框 */
+            border-radius: 10px; /* 圆角边框 */
+            padding: 2px 4px;</string>
+   </property>
+   <property name="text">
+    <string>登录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="signUp">
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>299</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(85, 170, 255);
+font: 9pt &quot;Microsoft YaHei UI&quot;;
+background: rgba(255, 255, 255, 180); /* 半透明白色背景 */
+            border: 2px solid white; /* 白色实线边框 */
+            border-radius: 10px; /* 圆角边框 */
+            padding: 2px 4px;</string>
+   </property>
+   <property name="text">
+    <string>注册</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exitButton">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>360</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+font: 9pt &quot;Microsoft YaHei UI&quot;;
+color: rgb(85, 170, 255);
+background: rgba(255, 255, 255, 180); /* 半透明白色背景 */
+            border: 2px solid white; /* 白色实线边框 */
+            border-radius: 10px; /* 圆角边框 */
+            padding: 2px 4px;</string>
+   </property>
+   <property name="text">
+    <string>退出登录</string>
+   </property>
+  </widget>
+  <zorder>label_image</zorder>
+  <zorder>name</zorder>
+  <zorder>password</zorder>
+  <zorder>signIn</zorder>
+  <zorder>signUp</zorder>
+  <zorder>title</zorder>
+  <zorder>exitButton</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
