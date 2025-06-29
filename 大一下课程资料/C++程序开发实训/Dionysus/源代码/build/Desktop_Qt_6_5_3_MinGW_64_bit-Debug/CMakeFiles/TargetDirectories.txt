@@ -1,0 +1,9 @@
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/ZZz.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/install.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/ZZz_autogen_timestamp_deps.dir
+D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/ZZz_autogen.dir

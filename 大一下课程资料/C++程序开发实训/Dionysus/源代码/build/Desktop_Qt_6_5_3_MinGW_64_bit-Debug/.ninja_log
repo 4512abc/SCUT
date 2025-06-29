@@ -1,0 +1,42 @@
+# ninja log v5
+20	229	7454027962555522	ZZz_autogen/timestamp	a8a72039c31f2099
+448	6317	7418531656198030	CMakeFiles/ZZz.dir/mainscene.cpp.obj	b034493160dcecab
+20	229	7454027962555522	ZZz_autogen/mocs_compilation.cpp	a8a72039c31f2099
+35	250	7401704038496496	VideoPlayer_autogen/mocs_compilation.cpp	6f7fb6dc9bd9f910
+20	229	7454027962555522	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/timestamp	a8a72039c31f2099
+35	250	7401704038496496	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/VideoPlayer_autogen/mocs_compilation.cpp	6f7fb6dc9bd9f910
+2458	6121	7406407718217631	CMakeFiles/ZZz.dir/accountwidget.cpp.obj	fff7662e51fab985
+20	229	7454027962555522	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/mocs_compilation.cpp	a8a72039c31f2099
+2445	8344	7406407740443567	CMakeFiles/ZZz.dir/ZZz_autogen/mocs_compilation.cpp.obj	6cf586d7988ca14f
+2450	7969	7406407736726893	CMakeFiles/ZZz.dir/main.cpp.obj	5ea3471649442520
+2427	3259	7418689136743112	ZZz.exe	546b71032ef41df1
+0	28	0	CMakeFiles/clean.additional	4d69c7511e21b5ba
+28	39	0	clean	d1e5d7ccd34cb68
+7	1463	7413649348643391	ZZz_autogen/EWIEGA46WW/qrc_resource.cpp	54a2534d43c95667
+2462	6076	7406407717786860	CMakeFiles/ZZz.dir/player.cpp.obj	e07aa28a40c0daac
+7	1463	7413649348643391	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/EWIEGA46WW/qrc_resource.cpp	54a2534d43c95667
+6	21899	7413649958863349	CMakeFiles/ZZz.dir/ZZz_autogen/EWIEGA46WW/qrc_resource.cpp.obj	5a2974177297103d
+1642	7238	7367180062314477	CMakeFiles/ZZz.dir/gamewidget.cpp.obj	832d272e19ff1b1f
+3470	5660	7383297732162009	CMakeFiles/ZZz.dir/mypushbutton.cpp.obj	3b8c38033ee226f9
+2253	6841	7396493954977888	CMakeFiles/ZZz.dir/DragAndDrop.cpp.obj	a1ffa592ea7b5b7a
+2228	6804	7396493954565986	CMakeFiles/ZZz.dir/setwidget.cpp.obj	3c8237ebf508ad9f
+5265	11342	7405838897700937	CMakeFiles/ZZz.dir/slice.cpp.obj	cc6fa57040484e63
+2230	6821	7396493954772107	CMakeFiles/ZZz.dir/helpwidget.cpp.obj	7f77d5a53207ea51
+2491	2582	7369436308044605	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/EWIEGA46WW/qrc_accountList.cpp	2b5ae0e154a6cc2b
+2466	6451	7406407721513871	CMakeFiles/ZZz.dir/gamescene.cpp.obj	7fef2a38f91cb288
+2491	2582	7369436308044605	ZZz_autogen/EWIEGA46WW/qrc_accountList.cpp	2b5ae0e154a6cc2b
+2612	2751	7369436309789464	CMakeFiles/ZZz.dir/ZZz_autogen/EWIEGA46WW/qrc_accountList.cpp.obj	951183131cc6bb6a
+3751	6235	7406001070729884	CMakeFiles/ZZz.dir/gamerecord.cpp.obj	a414cf33672c75b4
+186	2427	7418689128511470	CMakeFiles/ZZz.dir/map.cpp.obj	98b0ccd5a27ef580
+2103	4471	7402445449088890	CMakeFiles/ZZz.dir/myController.cpp.obj	c3f6ea94320ec826
+2	598	7402445300737983	build.ninja	1c6816b8d360e988
+35	250	7401704038496496	VideoPlayer_autogen/timestamp	6f7fb6dc9bd9f910
+35	250	7401704038496496	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/VideoPlayer_autogen/timestamp	6f7fb6dc9bd9f910
+286	346	7401703433756866	CMakeFiles/VideoPlayer.dir/VideoPlayer_autogen/mocs_compilation.cpp.obj	15b736d3c7d117a7
+283	6942	7401703499672893	CMakeFiles/VideoPlayer.dir/main.cpp.obj	b60dc934808684e9
+14	189	7454029385385860	ZZz_autogen/timestamp	a8a72039c31f2099
+14	189	7454029385385860	ZZz_autogen/mocs_compilation.cpp	a8a72039c31f2099
+14	189	7454029385385860	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/timestamp	a8a72039c31f2099
+14	189	7454029385385860	D:/QT project/ZZz/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ZZz_autogen/mocs_compilation.cpp	a8a72039c31f2099
+195	3327	7454029416713937	CMakeFiles/ZZz.dir/accountwidget.cpp.obj	fff7662e51fab985
+3327	5022	7454029433534226	ZZz.exe	546b71032ef41df1

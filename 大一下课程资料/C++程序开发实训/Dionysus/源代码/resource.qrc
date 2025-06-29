@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/background.png</file>
+        <file>res/loadFailure.png</file>
+        <file>res/background4.png</file>
+        <file>res/GameName.png</file>
+        <file>res/poem1.png</file>
+        <file>res/poem2.png</file>
+        <file>res/title.png</file>
+        <file>res/competitionBtn.png</file>
+        <file>res/practiceBtn.png</file>
+        <file>res/rank.png</file>
+        <file>res/account.png</file>
+        <file>res/circle.png</file>
+        <file>res/endlessBtn.png</file>
+        <file>res/findPasswordBtn.png</file>
+        <file>res/Login.png</file>
+        <file>res/logoutBtn.png</file>
+        <file>res/mainpageHelp.png</file>
+        <file>res/mainpageStart.png</file>
+        <file>res/passwordLabel.png</file>
+        <file>res/player_defineBtn.png</file>
+        <file>res/register.png</file>
+        <file>res/remindBtn.png</file>
+        <file>res/returnBtn.png</file>
+        <file>res/showPasswordBtn.png</file>
+        <file>res/sliceToPut1.png</file>
+        <file>res/slicetoPut2.png</file>
+        <file>res/sliceToPut3.png</file>
+        <file>res/sliceToPut4.png</file>
+        <file>res/Square (2).png</file>
+        <file>res/startInGame.png</file>
+        <file>res/TimeUsed.png</file>
+        <file>res/triangle (2).png</file>
+        <file>res/VisitorBtn.png</file>
+        <file>res/withdrawBtn.png</file>
+        <file>res/叉.png</file>
+        <file>res/quit.png</file>
+        <file>res/hideSlice.jpg</file>
+        <file>res/09b16d2fb49f68b3a187cdfa468acacc.mp4</file>
+        <file>res/提示框.png</file>
+        <file>res/confirm.png</file>
+    </qresource>
+</RCC>
