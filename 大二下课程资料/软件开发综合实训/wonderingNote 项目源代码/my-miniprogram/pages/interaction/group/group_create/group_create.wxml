@@ -1,0 +1,95 @@
+<view class="container">
+  <van-nav-bar
+    title="创建群组"
+    left-text="返回"
+    left-arrow
+    fixed
+    placeholder
+    bind:click-left="navigateBack"
+  />
+
+  <view class="content">
+    <!-- LOGO上传 -->
+    <view class="logo-section">
+      <view class="logo-upload" bindtap="uploadLogo">
+        <image 
+          wx:if="{{displayUrl}}" 
+          src="{{displayUrl}}" 
+          mode="aspectFill" 
+          class="logo-image"
+        />
+        <van-icon wx:else name="photograph" size="32px" class="upload-icon" />
+        <text wx:if="{{!displayUrl}}" class="upload-text">上传群组LOGO</text>
+      </view>
+    </view>
+
+    <!-- 基本信息 -->
+    <van-cell-group title="基本信息">
+      <van-field
+        value="{{ groupTitle }}"
+        label="群组标题"
+        placeholder="请输入群组标题"
+        required
+        bind:change="onTitleInput"
+      />
+      <!-- 新增最大成员数输入 -->
+      <van-field
+        value="{{ maxMembers }}"
+        label="最大成员数"
+        type="number"
+        placeholder="请输入最大成员数"
+        required
+        bind:change="onMaxMembersInput"
+      />
+      <van-field
+        value="{{ groupDesc }}"
+        label="群组描述"
+        type="textarea"
+        placeholder="请输入群组描述"
+        autosize
+        bind:change="onDescInput"
+      />
+    </van-cell-group>
+
+    <!-- 信息收集 -->
+    <view class="member-section">
+      <van-cell-group title="信息收集">
+        <view class="check-grid">
+          <block wx:for="{{members}}" wx:key="name">
+            <view 
+              class="check-item {{item.checked ? 'checked' : ''}} {{item.required ? 'required' : ''}}"
+              bindtap="toggleCheck"
+              data-index="{{index}}"
+            >
+              <van-icon 
+                name="{{item.checked ? 'success' : 'circle'}}"
+                class="check-icon"
+                color="{{item.checked ? '#1890ff' : '#999'}}"
+              />
+              <text class="check-label">{{item.name}}</text>
+              <text wx:if="{{item.required}}" class="required-tag"></text>
+            </view>
+          </block>
+        </view>
+
+        <van-button 
+          plain 
+          type="info" 
+          size="small" 
+          custom-class="add-btn"
+          bind:click="addMoreInfo"
+        >添加其他信息</van-button>
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <van-button 
+      type="info" 
+      block 
+      custom-class="create-btn"
+      bind:click="createGroup"
+    >立即创建</van-button>
+  </view>
+</view>

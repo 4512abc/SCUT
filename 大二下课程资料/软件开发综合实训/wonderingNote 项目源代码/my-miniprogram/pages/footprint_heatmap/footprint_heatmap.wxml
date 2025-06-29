@@ -1,0 +1,148 @@
+<view class="container">
+  <!-- Vant导航栏 -->
+  <van-nav-bar
+    title="足迹图"
+    fixed
+    placeholder
+    custom-class="nav-bar"
+    title-class="nav-bar-title"
+  />
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <!-- 地图卡片 -->
+    <view class="map-card" style="height: {{mapHeight}}px">
+      <map
+        id="myMap"
+        longitude="{{center.longitude}}"
+        latitude="{{center.latitude}}"
+        scale="12"
+        markers="{{markers}}"
+        circles="{{circles}}"
+        bindmarkertap="onMarkerTap"
+        bindregionchange="onRegionChange"
+        show-location
+      />
+    </view>
+
+    <!-- 数据统计卡片 -->
+    <view class="stats-card">
+      <view class="stats-item" bind:tap="showPlaces">
+        <text class="stats-num">{{totalPlaces}}</text>
+        <text class="stats-label">去过的地方</text>
+      </view>
+      <view class="stats-item" bind:tap="navigateToMyBlog">
+        <text class="stats-num">{{totalBlogs}}</text>
+        <text class="stats-label">发布博文</text>
+      </view>
+      <view class="stats-item" bind:tap="navigateToMyLike">
+        <text class="stats-num">{{totalLikes}}</text>
+        <text class="stats-label">获赞</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 博文列表弹出层 -->
+  <van-popup
+    show="{{showBlogList}}"
+    position="bottom"
+    custom-style="max-height: 80%"
+    bind:close="onPopupClose"
+    round
+  >
+    <view class="popup-header">
+      <view class="location-info">
+        <text class="location-name">{{selectedLocation.title}}</text>
+        <text class="location-count">{{locationBlogs.length}}篇博文</text>
+      </view>
+      <view class="header-right">
+        <view class="toggle-button-group">
+          <view 
+            class="toggle-button {{!is_other ? 'active' : ''}}"
+            bindtap="toggleUserBlogs"
+            data-type="mine"
+          >我的博文</view>
+          <view 
+            class="toggle-button {{is_other ? 'active' : ''}}"
+            bindtap="toggleUserBlogs"
+            data-type="others"
+          >其他游记</view>
+        </view>
+        <van-icon name="cross" bind:tap="onPopupClose" />
+      </view>
+    </view>
+
+    <scroll-view scroll-y class="blog-list">
+    <block wx:for="{{locationBlogs}}" wx:key="id">
+      <view class="blog-item" bindtap="navigateToBlog" data-blog-id="{{item.id}}">
+        <image src="{{item.cover}}" class="blog-cover" mode="aspectFill"/>
+        <view class="blog-content">
+          <view class="blog-title">{{item.title}}</view>
+          <view class="blog-desc">{{item.description}}</view>
+          <view class="tag-list">
+            <view wx:for="{{item.tags}}"
+                  wx:key="*this"
+                  wx:for-item="tag"
+                  class="tag-item">
+              #{{tag}}
+            </view>
+          </view>
+          <view class="blog-footer">
+            <text class="blog-time">{{item.createTime}}</text>
+            <view class="interaction-info">
+              <view class="info-item">
+                <van-icon name="comment-o" size="14px"/>
+                <text>{{item.comment_count}}</text>
+              </view>
+              <view class="info-item">
+                <van-icon name="like-o" size="14px"/>
+                <text>{{item.like_count}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  </van-popup>
+  <!-- 地点列表弹窗 -->
+<van-popup
+  show="{{ showPlacesPopup }}"
+  position="bottom"
+  custom-style="height: 80%;background: transparent;overflow: hidden;"
+  bind:close="closePlacesPopup"
+  safe-area-inset-bottom
+>
+  <!-- 背景层 -->
+  <image 
+    src="/static/images/landmark_bcg.jpg" 
+    class="map-bg" 
+    mode="aspectFill"
+  />
+  
+  <!-- 控制栏 -->
+  <view class="control-bar">
+    <text class="title">去过的地方 ({{totalPlaces}})</text>
+    <van-icon 
+      name="cross" 
+      size="20px" 
+      color="#fff"
+      bind:tap="closePlacesPopup"
+    />
+  </view>
+  
+  <!-- 随机散落的地名（点击后会隐藏） -->
+  <view class="places-scatter" wx:if="{{!showBlogList}}">
+    <block wx:for="{{ placesList }}" wx:key="id">
+      <view 
+        class="place-card {{ activePlaceId === item.id ? 'active' : '' }}"
+        style="top: {{item.randomTop}}%; left: {{item.randomLeft}}%;"
+        bind:tap="onPlaceItemTap"
+        data-id="{{ item.id }}"
+      >
+        <text class="place-name">{{ item.name }}</text>
+      </view>
+    </block>
+  </view>
+</van-popup>
+</view>

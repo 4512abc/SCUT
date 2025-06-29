@@ -1,0 +1,196 @@
+<view class="container">
+  <!-- 导航栏 -->
+  <van-nav-bar
+    title="{{groupName || '群组管理'}}"
+    left-text="返回"
+    left-arrow
+    bind:click-left="navigateBack"
+    fixed
+    placeholder
+    safe-area-inset-top
+  />
+
+  <!-- 操作栏 -->
+  <view class="action-bar">
+    <text class="member-count">成员 {{members.length}} 人</text>
+    <van-button 
+      type="warning" 
+      size="small" 
+      icon="bell" 
+      bind:click="showGroupChallenges"
+      custom-class="remind-btn"
+    >提醒成员提交挑战
+    </van-button>
+    <van-button 
+      type="primary" 
+      size="small" 
+      icon="plus" 
+      bind:click="showInvitePopup"
+    >邀请成员</van-button>
+  </view>
+
+  <!-- 成员列表 -->
+  <scroll-view 
+    class="member-list" 
+    scroll-y
+    bindscrolltolower="loadMoreMembers"
+  >
+    <block wx:for="{{members}}" wx:key="id">
+      <view class="member-item">
+        <image class="avatar" src="{{item.user_avatar || '/images/default-avatar.png'}}" mode="aspectFill"/>
+        <view class="info">
+          <view class="nickname">
+            {{item.user_account}}
+            <text class="admin-tag" wx:if="{{item.is_admin}}">管理员</text>
+          </view>
+          <text class="join-time">加入于 {{item.join_time}}</text>
+        </view>
+        <view class="actions" >
+          <van-button
+            size="small"
+            plain
+            type="primary"
+            bind:click="toggleMenu"
+            data-index="{{index}}"
+          >操作</van-button>
+          <view class="menu" wx:if="{{menuVisibleIndex === index}}">
+            <text bindtap="onView" data-id="{{item.id}}">查看</text>
+            <text bindtap="onDelete" data-id="{{item.id}}">移出群组</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 加载状态 -->
+    <van-loading wx:if="{{loading}}" size="24px">加载中...</van-loading>
+    <view wx:if="{{!loading && !hasMore}}" class="no-more">没有更多了</view>
+  </scroll-view>
+
+  <!-- 邀请弹窗 -->
+  <van-popup
+    show="{{ showInvitePopup }}"
+    round
+    position="bottom"
+    custom-style="min-height: 40%"
+    bind:close="onCloseInvite"
+  >
+    <view class="invite-popup">
+      <view class="invite-title">邀请新成员</view>
+      <view class="invite-options">
+        <van-button 
+          custom-class="invite-btn" 
+          icon="wechat"
+          bind:click="onShareWechat"
+        >微信邀请</van-button>
+        
+        <van-button 
+          custom-class="invite-btn" 
+          icon="search"
+          bind:click="onSearchUser"
+        >搜索用户</van-button>
+        
+        <van-button 
+          custom-class="invite-btn" 
+          icon="link"
+          bind:click="onCopyLink"
+        >复制链接</van-button>
+      </view>
+    </view>
+  </van-popup>
+
+  <!-- 搜索用户弹窗 -->
+  <van-dialog
+    use-slot
+    title="搜索用户"
+    show="{{ showSearchDialog }}"
+    bind:confirm="onSearch"
+    bind:close="onCloseSearch"
+    confirmButtonText="搜索"
+    showCancelButton
+  >
+    <input 
+      class="search-input"
+      placeholder="请输入用户邮箱"
+      value="{{searchValue}}"
+      bindinput="onSearchInput"
+    />
+  </van-dialog>
+  <van-popup
+  show="{{ showSearchResult }}"
+  round
+  position="center"
+  custom-style="width: 80%; padding: 30rpx;"
+>
+  <view class="search-result">
+    <view class="user-info">
+      <image class="avatar" src="{{searchedUser.avatar}}" mode="aspectFill"/>
+      <view class="info">
+        <text class="name">{{searchedUser.account}}</text>
+        <text class="email">{{searchedUser.email}}</text>
+      </view>
+    </view>
+    <view class="action-buttons">
+      <van-button 
+        type="primary" 
+        block 
+        bind:click="inviteUser"
+      >邀请加入</van-button>
+      <van-button 
+        plain 
+        block 
+        bind:click="closeSearchResult"
+      >取消</van-button>
+    </view>
+  </view>
+</van-popup>
+</view>
+
+<!-- 在页面底部添加挑战弹窗 -->
+<van-popup 
+  show="{{showChallengesPopup}}" 
+  position="bottom" 
+  round
+  custom-style="height: 70%;"
+  bind:close="closeChallengesPopup"
+>
+  <view class="popup-header">
+    <text class="popup-title">群组挑战</text>
+    <van-icon name="cross" size="18px" bindtap="closeChallengesPopup" />
+  </view>
+  
+  <scroll-view 
+    scroll-y 
+    class="challenge-list"
+    enable-back-to-top
+    refresher-enabled
+    bindrefresherrefresh="onRefreshChallenges"
+  >
+    <block wx:for="{{groupChallenges}}" wx:key="id">
+      <view class="challenge-item">
+        <image 
+          class="challenge-cover" 
+          src="{{item.cover || '/images/default-challenge.png'}}" 
+          mode="aspectFill" 
+        />
+        <view class="challenge-info">
+          <text class="challenge-name">{{item.title}}</text>
+          <text class="challenge-creator">截止: {{item.end_time}}</text>
+        </view>
+        <van-button 
+          size="mini" 
+          type="primary" 
+          bindtap="remindChallenge" 
+          data-id="{{item.id}}"
+          custom-class="remind-btn"
+        >通知</van-button>
+      </view>
+    </block>
+    
+    <van-loading wx:if="{{challengesLoading}}" size="24px">加载中...</van-loading>
+    <van-empty 
+      wx:if="{{!challengesLoading && groupChallenges.length === 0}}" 
+      description="暂无挑战" 
+      image="/images/empty-challenge.png"
+    />
+  </scroll-view>
+</van-popup>

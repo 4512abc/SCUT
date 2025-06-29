@@ -1,0 +1,21 @@
+{
+  "name": "my-miniprogram",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "echarts-for-weixin": "^1.0.2",
+    "lunar-calendar": "^0.1.4",
+    "tdesign-miniprogram": "^1.8.8"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^4.0.5"
+  }
+}

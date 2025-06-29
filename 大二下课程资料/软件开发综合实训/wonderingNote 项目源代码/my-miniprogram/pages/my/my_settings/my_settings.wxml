@@ -1,0 +1,116 @@
+<van-config-provider theme-vars="{{themeVars}}">
+  <van-nav-bar
+    title="系统设置"
+    left-text="返回"
+    left-arrow
+    fixed
+    placeholder
+    bind:click-left="onBack"
+    custom-style="background-color: var(--nav-bar-background-color)"
+    title-color="var(--nav-bar-title-text-color)"
+    arrow-color="var(--nav-bar-arrow-color)"
+  />
+
+  <!-- 在这里插入加载状态 -->
+  <van-loading 
+    wx:if="{{loading}}" 
+    size="24px" 
+    vertical 
+    custom-class="loading-class"
+  >加载中...</van-loading>
+
+  <!-- 当不在加载状态时显示设置内容 -->
+  <view wx:else class="settings-container" style="background: {{themes[selectedTheme].color}}">
+    <view class="settings-content">
+      <!-- 通用设置 -->
+      <view class="settings-section">
+        <view class="section-title">通用设置</view>
+        <van-cell-group custom-class="setting-group">
+          <van-cell title="消息通知" center>
+            <van-switch
+              checked="{{ notificationEnabled }}"
+              bind:change="onNotificationChange"
+              active-color="#07c160"
+              size="24px"
+            />
+          </van-cell>
+          
+          <van-cell 
+            title="主题颜色" 
+            is-link 
+            bind:click="showThemePicker"
+            custom-class="theme-cell"
+          >
+            <view class="theme-preview">
+              <view 
+                class="color-block"
+                style="background: {{themes[selectedTheme].color}}; border: 1rpx solid {{themes[selectedTheme].textColor}}"
+              ></view>
+              <text style="color: {{themes[selectedTheme].textColor}}">{{themes[selectedTheme].name}}</text>
+            </view>
+          </van-cell>
+        </van-cell-group>
+      </view>
+
+      <!-- 关于信息 -->
+      <view class="settings-section">
+        <view class="section-title">关于</view>
+        <van-cell-group custom-class="setting-group">
+          <van-cell 
+            title="帮助中心" 
+            is-link 
+            bind:click="onHelpCenter"
+            title-style="color: {{themes[selectedTheme].textColor}}"
+          />
+          <van-cell 
+            title="关于我们" 
+            is-link 
+            bind:click="showAbout"
+            title-style="color: {{themes[selectedTheme].textColor}}"
+          />
+          <van-cell 
+            title="当前版本" 
+            value="{{version}}"
+            title-style="color: {{themes[selectedTheme].textColor}}"
+            value-style="color: {{themes[selectedTheme].textColor}}"
+          />
+        </van-cell-group>
+      </view>
+    </view>
+
+    <!-- 主题选择弹窗 -->
+    <van-popup
+      show="{{ showThemePicker }}"
+      position="bottom"
+      round
+      custom-style="background: {{themes[selectedTheme].color}}"
+      bind:close="closeThemePicker"
+    >
+      <view class="theme-picker">
+        <view class="picker-header">
+          <text style="color: {{themes[selectedTheme].textColor}}">选择主题色</text>
+          <van-icon 
+            name="cross" 
+            color="{{themes[selectedTheme].textColor}}" 
+            bind:click="closeThemePicker" 
+          />
+        </view>
+        <view class="theme-grid">
+          <view 
+            wx:for="{{themes}}" 
+            wx:key="index"
+            class="theme-item {{selectedTheme === index ? 'active' : ''}}"
+            bind:tap="onThemeSelect"
+            data-index="{{index}}"
+          >
+            <view 
+              class="theme-color"
+              style="background: {{item.color}}; border: 2rpx solid {{item.textColor}}"
+            ></view>
+            <text class="theme-name" style="color: {{themes[selectedTheme].textColor}}">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </van-popup>
+  </view>
+</van-config-provider>

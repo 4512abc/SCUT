@@ -1,0 +1,183 @@
+/* 基础样式 */
+.container {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f7f8fa;
+  padding-bottom: 80px;
+}
+
+/* 导航栏样式 */
+.nav-bar {
+  background: transparent !important;
+}
+
+.nav-time {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #646566;
+}
+
+/* 内容区样式 */
+.content {
+  padding: 12px;
+}
+
+/* 卡片样式 */
+.creator-card {
+  margin: 12px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.create-time {
+  font-size: 12px;
+  color: #969799;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+/* 面板样式 */
+.rule-panel,
+.setting-panel,
+.time-panel,
+.leaderboard-panel,
+.participant-panel {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.panel-content {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #323233;
+  line-height: 1.6;
+}
+
+/* 排行榜样式 */
+.leaderboard-scroll {
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.leaderboard-list {
+  display: inline-flex;
+  padding: 0 8px;
+}
+
+.rank-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+  padding: 8px;
+  background: #f7f8fa;
+  border-radius: 8px;
+}
+
+.rank-info {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.rank-info .name {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 参与者样式 */
+.participant-scroll {
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.participant-list {
+  display: inline-flex;
+  padding: 0 8px;
+}
+
+.participant-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.participant-name {
+  font-size: 12px;
+  margin-top: 4px;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.more-participants {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  color: #969799;
+  font-size: 12px;
+}
+
+/* 状态标签 */
+.status-tag {
+  color: #07c160;
+}
+
+.status-tag.ended {
+  color: #ee0a24;
+}
+
+/* 底部按钮 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn {
+  height: 44px;
+  font-size: 16px;
+}
+
+/* 响应式调整 */
+@media (min-width: 480px) {
+  .content {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* 新增面板头样式 */
+.van-panel__header {
+  padding: 16px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+/* 面板图标放大 */
+.van-panel__header .van-icon {
+  font-size: 18px !important;
+  margin-right: 8px !important;
+}
+
+/* 时间面板特殊样式 */
+.time-panel .van-panel__header {
+  background-color: #f9f9f9;
+  border-radius: 8px 8px 0 0;
+}

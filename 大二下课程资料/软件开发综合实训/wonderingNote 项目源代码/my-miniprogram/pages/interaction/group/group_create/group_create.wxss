@@ -1,0 +1,117 @@
+/* group_create.wxss */
+.container {
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: 24rpx;
+}
+
+/* LOGO上传 */
+.logo-section {
+  padding: 40rpx 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-upload {
+  width: 160rpx;
+  height: 160rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.logo-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+}
+
+.upload-icon {
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.upload-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 信息收集 */
+.member-section {
+  margin-top: 24rpx;
+}
+
+.check-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16rpx;
+  background: #fff;
+}
+
+.check-item {
+  width: calc(33.33% - 16rpx);
+  height: 120rpx;
+  margin: 8rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.check-item.checked {
+  background: #e6f7ff;
+  border: 2rpx solid #1890ff;
+}
+
+.check-item.required {
+  opacity: 0.8;
+}
+
+.check-icon {
+  margin-bottom: 8rpx;
+}
+
+.check-label {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.required-tag {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  font-size: 20rpx;
+  color: #ff4d4f;
+}
+
+.add-btn {
+  margin: 32rpx auto !important;
+  display: block !important;
+}
+
+/* 底部按钮 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.create-btn {
+  height: 88rpx !important;
+  border-radius: 44rpx !important;
+}

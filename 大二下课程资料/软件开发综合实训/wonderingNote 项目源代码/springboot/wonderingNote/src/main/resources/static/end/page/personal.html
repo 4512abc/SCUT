@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>个人详情页</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/element/index.css" rel="stylesheet" />
+    <link href="../css/personal.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper" v-cloak>
+      <!-- 顶部导航栏 -->
+      <nav
+        class="navbar navbar-default navbar-cls-top"
+        style="margin-bottom: 0"
+      >
+        <div class="navbar-header">
+          <a
+            class="navbar-brand"
+            href="javascript: void(0)"
+            @click="goToPage('main')"
+            >后台管理系统</a
+          >
+        </div>
+
+        <div class="header-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-info"
+            @click="logout"
+            title="退出登录"
+          >
+            <i class="fa fa-sign-out" style="font-size: 32px"></i>
+          </a>
+        </div>
+        <div class="header-right" style="padding-top: 25px">
+          欢迎您，{{currentUser.userInfo.account}}
+        </div>
+        <div class="header-left">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('main')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >信息概述</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('userManagement')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >数据管理</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('personal')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >个人中心</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="page-wrapper" style="margin-left: 0">
+        <div class="profile-container">
+          <!-- 左侧个人信息 -->
+          <div class="profile-sidebar">
+            <div class="profile-header">
+              <div class="profile-avatar">
+                <img
+                  :src="userData.avatar ? 'https://scutdionysus.cn/api/files/' + extractAvatarId(userData.avatar) + '/download' : '../images/default-avatar.png'"
+                  alt="用户头像"
+                />
+              </div>
+              <h2 class="profile-name">
+                {{userData.nickname || userData.account}}
+              </h2>
+            </div>
+
+            <!-- 添加数据统计部分 -->
+            <div class="profile-stats">
+              <div class="stat-item">
+                <div class="stat-value">{{userData.like_count}}</div>
+                <div class="stat-label">获赞数</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">{{userData.comment_count}}</div>
+                <div class="stat-label">被评论数</div>
+              </div>
+            </div>
+
+            <div class="profile-info-list">
+              <div class="profile-info-item" v-if="userData.gender">
+                <i class="fa fa-user profile-info-icon"></i>
+                {{userData.gender}}
+              </div>
+              <div class="profile-info-item" v-if="userData.location">
+                <i class="fa fa-map-marker profile-info-icon"></i>
+                {{userData.location}}
+              </div>
+              <div class="profile-info-item" v-if="userData.email">
+                <i class="fa fa-envelope profile-info-icon"></i>
+                {{userData.email}}
+              </div>
+              <div class="profile-info-item">
+                <i class="fa fa-clock-o profile-info-icon"></i>
+                加入于 {{formatDate(userData.createTime)}}
+              </div>
+            </div>
+
+            <div class="profile-bio">
+              <div class="profile-bio-title">个人简介</div>
+              <div>{{userData.bio || '这个人很懒，还没有填写个人简介...'}}</div>
+            </div>
+          </div>
+
+          <!-- 右侧内容区域 -->
+          <div class="profile-main">
+            <div class="post-cards" @scroll="handleScroll">
+              <!-- 修改滚动监听位置 -->
+              <div
+                v-for="post in blogs"
+                :key="post.id"
+                class="post-card"
+                @click="viewPostDetail(post.id)"
+              >
+                <div class="post-header">
+                  <h3 class="post-title">{{post.title}}</h3>
+                  <span class="post-time"
+                    >{{formatDate(post.create_time)}}</span
+                  >
+                </div>
+
+                <div class="post-meta">
+                  <div class="post-meta-item">
+                    <i class="fa fa-eye"></i>
+                    <span>{{post.view_count}} 浏览</span>
+                  </div>
+                  <div class="post-meta-item">
+                    <i class="fa fa-heart"></i>
+                    <span>{{post.like_count}} 点赞</span>
+                  </div>
+                  <div class="post-meta-item">
+                    <i class="fa fa-comment"></i>
+                    <span>{{post.comment_count}} 评论</span>
+                  </div>
+                </div>
+
+                <div class="post-location">
+                  <i class="fa fa-map-marker"></i>
+                  <span>{{post.landmark_name}}</span>
+                  <span v-if="post.location">
+                    ({{post.location.lng}}, {{post.location.lat}})
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 加载状态和无更多数据提示 -->
+            <div v-if="postsLoading" class="loading-more">加载中...</div>
+            <div v-if="!hasMorePosts && blogs.length > 0" class="no-more">
+              没有更多博文了
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/my.js"></script>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/element/index.js"></script>
+
+    <script src="../js/personal.js"></script>
+  </body>
+</html>

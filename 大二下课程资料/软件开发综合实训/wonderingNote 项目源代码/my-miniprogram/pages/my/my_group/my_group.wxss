@@ -1,0 +1,249 @@
+/* group_list.wxss */
+.container {
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+/* 导航栏样式 - 使用vant组件无需额外样式 */
+
+/* Tab栏样式优化 */
+.van-tabs__wrap {
+  position: sticky;
+  top: var(--van-nav-bar-height, 44px);
+  z-index: 99;
+  background: #fff;
+}
+
+.van-tabs__nav {
+  padding: 0 30rpx;
+}
+
+/* 群组列表容器 */
+.group-list {
+  height: calc(100vh - var(--van-nav-bar-height, 44px) - var(--van-tabs-height, 44px) - env(safe-area-inset-bottom));
+  padding: 20rpx 30rpx;
+}
+
+/* 群组卡片样式 */
+.group-item {
+  display: flex;
+  margin-bottom: 32rpx; /* 放大卡片之间间距 */
+  padding: 36rpx; /* 加大内边距 */
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.group-logo {
+  width: 140rpx; /* 原来是 120rpx */
+  height: 140rpx;
+  border-radius: 16rpx;
+  margin-right: 32rpx;
+  background-color: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.group-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.name {
+  font-size: 36rpx; /* 原来是 32rpx */
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+  margin-right: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12rpx;
+}
+
+.member-count {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.update-time {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 管理按钮样式 */
+.manage-btn {
+  height: 64rpx !important;
+  line-height: 64rpx !important;
+  min-width: 140rpx !important;
+  border-color: #1890ff !important;
+  color: #1890ff !important;
+  font-size: 28rpx !important;
+  border-radius: 32rpx !important;
+  flex-shrink: 0;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.no-more {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+}
+
+/* 底部创建按钮 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.create-btn {
+  height: 80rpx !important;
+  line-height: 80rpx !important;
+  border-radius: 40rpx !important;
+  background: linear-gradient(135deg, #1890ff, #096dd9) !important;
+  color: #fff !important;
+  font-size: 32rpx !important;
+  box-shadow: 0 4rpx 12rpx rgba(24, 144, 255, 0.3) !important;
+}
+
+/* 安全区域适配 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .footer {
+    padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  }
+}
+
+/* 挑战查看按钮样式 */
+.challenge-btn {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #1989fa;
+  margin-left: 8px;
+}
+
+.challenge-btn text {
+  margin-left: 4px;
+}
+
+/* 弹窗样式 */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.challenge-list {
+  height: calc(100% - 50px);
+  padding: 0 16px;
+}
+
+.challenge-item {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.challenge-cover {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.challenge-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.challenge-name {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.challenge-time {
+  font-size: 12px;
+  color: #969799;
+}
+
+.challenge-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.challenge-cover {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.challenge-info {
+  flex: 1;
+}
+
+.view-detail-btn {
+  margin-left: 8px;
+  white-space: nowrap;
+}

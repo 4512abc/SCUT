@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>注册页面</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+  </head>
+  <body style="background-color: #c7ddef">
+    <div id="app" class="container">
+      <div class="row text-center" style="padding-top: 100px">
+        <div class="col-md-12">
+          <h2>欢迎登录后台管理系统</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1"
+        >
+          <div class="panel-body">
+            <form role="form">
+              <hr />
+              <br />
+              <div class="form-group input-group">
+                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="user.email"
+                  placeholder="邮箱"
+                />
+                <span class="input-group-btn">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    @click="getCode"
+                    :disabled="isCounting"
+                  >
+                    {{ isCounting ? countdown + 's后重发' : '获取验证码' }}
+                  </button>
+                </span>
+              </div>
+              <div class="form-group input-group">
+                <span class="input-group-addon"
+                  ><i class="fa fa-lock"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="user.code"
+                  placeholder="验证码"
+                />
+              </div>
+              <div class="form-group input-group">
+                <span class="input-group-addon"
+                  ><i class="fa fa-lock"></i>
+                </span>
+                <input
+                  type="password"
+                  class="form-control"
+                  v-model="user.password"
+                  placeholder="密码"
+                />
+              </div>
+              <div class="form-group">
+                <label class="checkbox-inline"></label>
+                <span class="pull-right"
+                  ><a href="javascript:void(0)" @click="goToLogin"
+                    >返回登录</a
+                  ></span
+                >
+              </div>
+              <br />
+              <div style="text-align: center">
+                <a
+                  href="javascript:void(0)"
+                  @click="Register"
+                  class="btn btn-primary"
+                  >注册</a
+                >
+              </div>
+              <br />
+              <hr />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

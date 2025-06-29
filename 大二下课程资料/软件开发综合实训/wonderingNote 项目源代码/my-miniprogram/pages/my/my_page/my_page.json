@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
+  },
+  "navigationBarTitleText": "我的",
+  "navigationStyle": "custom"
+}

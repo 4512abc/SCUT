@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>后台管理系统</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/element/index.css" rel="stylesheet" />
+    <link href="../css/challenge.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper" v-cloak>
+      <!--  上方导航栏  -->
+      <nav
+        class="navbar navbar-default navbar-cls-top"
+        style="margin-bottom: 0"
+      >
+        <div class="navbar-header">
+          <a
+            class="navbar-brand"
+            href="javascript:void(0)"
+            @click="goToPage('main')"
+            >后台管理系统</a
+          >
+        </div>
+
+        <div class="header-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-info"
+            @click="logout"
+            title="退出登录"
+          >
+            <i class="fa fa-sign-out" style="font-size: 32px"></i>
+          </a>
+        </div>
+        <div class="header-right" style="padding-top: 25px">
+          欢迎您，{{currentUser.userInfo.account}}
+        </div>
+        <div class="header-left">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('main')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >信息概述</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('userManagement')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >数据管理</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('personal')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >个人中心</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 左侧导航栏 -->
+      <nav class="navbar-default navbar-side">
+        <div class="sidebar-collapse">
+          <ul class="nav" id="main-menu">
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('userManagement')"
+                ><i class="fa fa-table"> 用户管理</i></a
+              >
+            </li>
+            <li>
+              <a
+                class="active-menu"
+                href="javascript: void(0)"
+                @click="goToPage('challenge')"
+                ><i class="fa fa-table"> 挑战</i></a
+              >
+            </li>
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('blog')">
+                <i class="fa fa-table"> 博文</i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-area-chart"> 公告</i>
+                <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level collapse">
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    @click="goToPage('announcementManagement')"
+                  >
+                    <i class="fa fa-table"> 公告管理</i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="javascript: void(0)"
+                    @click="goToPage('announcementIssue')"
+                  >
+                    <i class="fa fa-table"> 发布公告</i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('groupManagement')"
+              >
+                <i class="fa fa-table"> 团队管理</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 修改右侧主要内容区域 -->
+      <div id="page-wrapper">
+        <div id="page-inner">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- 挑战列表视图 -->
+              <div v-if="!showDetail" class="panel panel-default">
+                <div class="panel-heading">挑战信息列表</div>
+                <div class="panel-body">
+                  <div class="table-responsive">
+                    <div class="nx-table-header">
+                      <div class="search-area">
+                        <!-- 左侧日期选择 -->
+                        <div class="date-range">
+                          <input type="date" v-model="info4Search.startTime" />
+                          <label style="margin: 0 8px">至</label>
+                          <input type="date" v-model="info4Search.endTime" />
+                        </div>
+                        <!-- 右侧搜索框 -->
+                        <div class="search-box">
+                          <input
+                            type="text"
+                            placeholder="请输入挑战标题"
+                            v-model="info4Search.title"
+                            @keyup.enter="searchChallenges"
+                          />
+                          <i
+                            class="glyphicon glyphicon-search"
+                            @click="searchChallenges"
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                    <table
+                      class="table table-striped table-bordered table-hover"
+                    >
+                      <thead>
+                        <tr>
+                          <th>挑战ID</th>
+                          <th>封面</th>
+                          <th>创建者ID</th>
+                          <th>创建时间</th>
+                          <th>参与人数</th>
+                          <th>挑战标题</th>
+                          <th>操作</th>
+                          <th>详情</th>
+                        </tr>
+                      </thead>
+                      <tbody v-for="obj in objs" :key="obj.challengeId">
+                        <tr>
+                          <td>{{obj.challengeId}}</td>
+                          <td>
+                            <el-button
+                              type="primary"
+                              size="small"
+                              @click="previewImage(obj)"
+                            >
+                              预览封面
+                            </el-button>
+                          </td>
+                          <td>{{obj.createId}}</td>
+                          <td>{{obj.createTime}}</td>
+                          <td>{{obj.count}}</td>
+                          <!--这里是查询后多出来的别名变量-->
+                          <td>{{obj.title}}</td>
+                          <td>
+                            <button
+                              class="btn btn-danger btn-xs"
+                              @click="del(obj.challengeId)"
+                            >
+                              删除
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-primary btn-xs"
+                              @click="viewModal(obj)"
+                            >
+                              详情
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- 添加图片预览对话框 -->
+                    <el-dialog
+                      :visible.sync="dialogVisible"
+                      title="封面预览"
+                      custom-class="preview-dialog"
+                    >
+                      <img
+                        :src="previewImageUrl"
+                        style="width: 100%"
+                        alt="Preview"
+                      />
+                    </el-dialog>
+                    <ul class="pagination">
+                      <li class="page-item" v-bind:class="{disabled:preActive}">
+                        <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          v-on:click="loadTable(pageInfo.pageNum - 1)"
+                          >上一页</a
+                        >
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          v-if="pageInfo.pageNum > 1"
+                          href="javascript:void(0)"
+                          v-on:click="loadTable(pageInfo.pageNum - 1)"
+                        >
+                          {{pageInfo.pageNum - 1}}
+                        </a>
+                      </li>
+
+                      <li class="page-item disabled">
+                        <a class="page-link" href="javascript:void(0)"
+                          >{{pageInfo.pageNum}}</a
+                        >
+                      </li>
+
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          v-if="pageInfo.hasNextPage"
+                          href="javascript:void(0)"
+                          v-on:click="loadTable(pageInfo.pageNum + 1)"
+                          >{{pageInfo.pageNum + 1}}</a
+                        >
+                      </li>
+                      <li
+                        class="page-item"
+                        v-bind:class="{disabled:nextActive}"
+                      >
+                        <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          v-on:click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)"
+                          >下一页</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 挑战详情视图 -->
+              <div v-if="showDetail" class="panel panel-default">
+                <div class="panel-heading">
+                  <span>挑战详情</span>
+                  <button
+                    class="btn btn-default pull-right"
+                    @click="backToList"
+                  >
+                    返回列表
+                  </button>
+                </div>
+                <div class="challenge-detail-container">
+                  <!-- 标题和基本信息 -->
+                  <div class="challenge-header">
+                    <div class="challenge-title-section">
+                      <h1 class="challenge-title">
+                        {{selectedChallenge.title}}
+                      </h1>
+                      <p class="challenge-description">
+                        {{selectedChallenge.description}}
+                      </p>
+                    </div>
+
+                    <div class="challenge-info">
+                      <div class="challenge-info-item">
+                        <i class="fa fa-user"></i>
+                        <span>创建者ID {{selectedChallenge.creator_id}}</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-calendar"></i>
+                        <span>开始时间 {{selectedChallenge.start_time}}</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-calendar"></i>
+                        <span>结束时间 {{selectedChallenge.end_time}}</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-hand-paper-o"></i>
+                        <span>手势要求 {{selectedChallenge.gesture_type}}</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-hand-paper-o"></i>
+                        <span
+                          >人脸识别要求 {{selectedChallenge.need_face_verify ?
+                          "True" : "false"}}</span
+                        >
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-hand-paper-o"></i>
+                        <span>目标要求 {{selectedChallenge.object_type}}</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-circle-o"></i>
+                        <span>有效范围 {{selectedChallenge.radius}}米</span>
+                      </div>
+                      <div class="challenge-info-item">
+                        <i class="fa fa-circle-o"></i>
+                        <span>地标 {{selectedChallenge.landmark_name}}</span>
+                      </div>
+                      <div
+                        class="challenge-info-item"
+                        v-if="selectedChallenge.location"
+                      >
+                        <i class="fa fa-map-marker"></i>
+                        <span
+                          >经纬度 ({{selectedChallenge.location.lng}},
+                          {{selectedChallenge.location.lat}})</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 图片和地图布局 -->
+                  <div class="content-layout">
+                    <!-- 只保留封面图片部分 -->
+                    <div class="media-section">
+                      <img
+                        v-if="selectedChallenge.images"
+                        :src="getChallengeImageUrl(selectedChallenge.images)"
+                        :alt="selectedChallenge.title"
+                        class="challenge-cover"
+                      />
+                      <div v-else class="no-image">暂无封面图片</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/my.js"></script>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/element/index.js"></script>
+
+    <script src="../js/challenge.js"></script>
+  </body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+          http-equiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>后台管理系统</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/font-awesome.css" rel="stylesheet" />
+  <link href="../css/basic.css" rel="stylesheet" />
+  <link href="../css/custom.css" rel="stylesheet" />
+  <link href="../css/my.css" rel="stylesheet" />
+  <link href="../css/element/index.css" rel="stylesheet" />
+  <link href="../css/userManagement.css" rel="stylesheet" />
+</head>
+<body>
+<div id="wrapper" v-cloak>
+  <nav
+          class="navbar navbar-default navbar-cls-top"
+          style="margin-bottom: 0"
+  >
+    <div class="navbar-header">
+      <a
+              class="navbar-brand"
+              href="javascript:void(0)"
+              @click="goToPage('main')"
+      >后台管理系统</a
+      >
+    </div>
+
+    <div class="header-right">
+      <a
+              href="javascript:void(0)"
+              class="btn btn-info"
+              @click="logout"
+              title="退出登录"
+      >
+        <i class="fa fa-sign-out" style="font-size: 32px"></i>
+      </a>
+    </div>
+    <div class="header-right" style="padding-top: 25px">
+      欢迎您，{{ currentUser.userInfo.account }}
+    </div>
+    <div class="header-left">
+      <ul class="nav navbar-nav">
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('main')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >信息概述</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('userManagement')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >数据管理</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('personal')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >个人中心</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 左侧导航栏 -->
+  <nav class="navbar-default navbar-side">
+    <div class="sidebar-collapse">
+      <ul class="nav" id="main-menu">
+        <li>
+          <a
+                  class="active-menu"
+                  href="javascript: void(0)"
+                  @click="goToPage('userManagement')"
+          ><i class="fa fa-table"> 用户管理</i></a
+          >
+        </li>
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('challenge')"
+          ><i class="fa fa-table"> 挑战</i></a
+          >
+        </li>
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('blog')">
+            <i class="fa fa-table"> 博文</i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-area-chart"> 公告</i>
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level collapse">
+            <li>
+              <a
+                      href="javascript:void(0)"
+                      @click="goToPage('announcementManagement')"
+              >
+                <i class="fa fa-table"> 公告管理</i>
+              </a>
+            </li>
+            <li>
+              <a
+                      href="javascript: void(0)"
+                      @click="goToPage('announcementIssue')"
+              >
+                <i class="fa fa-table"> 发布公告</i>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('groupManagement')"
+          >
+            <i class="fa fa-table"> 团队管理</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="page-wrapper">
+    <div id="page-inner">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- 右侧的展示框 -->
+          <div v-if="!showUserDetail" class="panel panel-default">
+            <!-- 用户列表视图 -->
+            <div class="panel-heading">用户信息列表</div>
+            <!-- 展示框部分 -->
+            <div class="panel-body">
+              <div class="table-responsive">
+                <div class="nx-table-header">
+                  <div class="search-area">
+                    <!-- 左侧过滤器组 -->
+                    <div class="filter-group">
+                      <!-- 权限选择 -->
+                      <div class="radio-group">
+                        <span class="filter-label">权限：</span>
+                        <label>
+                          <input
+                                  type="radio"
+                                  v-model="info4Search.accessLevel"
+                                  value="user"
+                                  @change="loadTable(1)"
+                          />
+                          <span>用户</span>
+                        </label>
+                        <label>
+                          <input
+                                  type="radio"
+                                  v-model="info4Search.accessLevel"
+                                  value="admin"
+                                  @change="loadTable(1)"
+                                  :disabled="!isSuperAdmin"
+                          />
+                          <span>管理员</span>
+                        </label>
+                      </div>
+
+                      <!-- 状态选择 -->
+                      <div class="radio-group">
+                        <span class="filter-label">状态：</span>
+                        <label>
+                          <input
+                                  type="radio"
+                                  v-model="info4Search.status"
+                                  value="ACTIVE"
+                                  @change="loadTable(1)"
+                          />
+                          <span>正常</span>
+                        </label>
+                        <label>
+                          <input
+                                  type="radio"
+                                  v-model="info4Search.status"
+                                  value="FORZEN"
+                                  @change="loadTable(1)"
+                          />
+                          <span>冻结</span>
+                        </label>
+                      </div>
+
+                      <!-- 时间选择 -->
+                      <div class="date-range">
+                            <span
+                                    class="filter-label"
+                                    style="white-space: nowrap"
+                            >注册时间：</span
+                            >
+                        <input
+                                type="date"
+                                v-model="info4Search.startTime"
+                                class="form-control input-sm"
+                        />
+                        <label style="white-space: nowrap">至</label>
+                        <input
+                                type="date"
+                                v-model="info4Search.endTime"
+                                class="form-control input-sm"
+                        />
+                      </div>
+                    </div>
+                    <!-- 右侧搜索框 -->
+                    <div class="search-box">
+                      <input
+                              type="text"
+                              placeholder="输入账号或邮箱搜索"
+                              v-model="searchKeyword"
+                              @keyup.enter="searchUsers"
+                      />
+                      <i
+                              class="glyphicon glyphicon-search"
+                              @click="searchUsers"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+                <table
+                        class="table table-striped table-bordered table-hover"
+                >
+                  <thead>
+                  <tr>
+                    <th>头像</th>
+                    <th>创建时间</th>
+                    <th>邮箱号</th>
+                    <th>用户名称</th>
+                    <th>用户ID</th>
+                    <th>账号状态</th>
+                    <th>操作</th>
+                    <th>详情</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="obj in objs" :key="obj.userId">
+                    <td>
+                      <el-button
+                              type="primary"
+                              size="small"
+                              @click="previewImage(obj)"
+                      >
+                        预览头像
+                      </el-button>
+                    </td>
+                    <td>{{ obj.createTime }}</td>
+                    <td>{{ obj.email }}</td>
+                    <td>{{ obj.userAccount }}</td>
+                    <td>{{ obj.userId }}</td>
+                    <td>
+                      {{ obj.userState === "ACTIVE" ? '正常' : '冻结' }}
+                    </td>
+                    <td>
+                      <button
+                              v-if="obj.userState === 'ACTIVE'"
+                              class="btn btn-danger"
+                              @click="setUserState(obj.userId, 'FORZEN')"
+                      >
+                        冻结
+                      </button>
+                      <button
+                              v-else-if="obj.userState === 'FORZEN'"
+                              class="btn btn-success"
+                              @click="setUserState(obj.userId, 'ACTIVE')"
+                      >
+                        解冻
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                              class="btn btn-primary"
+                              @click="viewUserDetail(obj.userId)"
+                      >
+                        查看详情
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+
+                <!-- 添加图片预览对话框 -->
+                <el-dialog
+                        :visible.sync="dialogVisible"
+                        title="头像预览"
+                        custom-class="preview-dialog"
+                >
+                  <img
+                          :src="previewImageUrl"
+                          style="width: 100%"
+                          alt="Preview"
+                  />
+                </el-dialog>
+
+                <ul class="pagination">
+                  <li class="page-item" v-bind:class="{disabled:preActive}">
+                    <a
+                            class="page-link"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum - 1)"
+                    >上一页</a
+                    >
+                  </li>
+                  <li class="page-item">
+                    <a
+                            class="page-link"
+                            v-if="pageInfo.pageNum > 1"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum - 1)"
+                    >
+                      {{pageInfo.pageNum - 1}}
+                    </a>
+                  </li>
+
+                  <li class="page-item disabled">
+                    <a class="page-link" href="javascript:void(0)"
+                    >{{pageInfo.pageNum}}</a
+                    >
+                  </li>
+
+                  <li class="page-item">
+                    <a
+                            class="page-link"
+                            v-if="pageInfo.hasNextPage"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum + 1)"
+                    >{{pageInfo.pageNum + 1}}</a
+                    >
+                  </li>
+                  <li
+                          class="page-item"
+                          v-bind:class="{disabled:nextActive}"
+                  >
+                    <a
+                            class="page-link"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)"
+                    >下一页</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 用户详情视图 -->
+          <div v-if="showUserDetail" class="panel panel-default">
+            <div class="panel-heading">
+              <span>用户详情</span>
+              <button
+                      class="btn btn-default pull-right"
+                      @click="backToList"
+              >
+                返回列表
+              </button>
+            </div>
+            <div class="user-detail-container">
+              <!-- 左侧个人信息 -->
+              <div class="user-info-section">
+                <div class="profile-header">
+                  <div class="profile-avatar">
+                    <img
+                            :src="getUserAvatarUrl(selectedUser.avatar)"
+                            alt="用户头像"
+                    />
+                  </div>
+                  <h2 class="profile-name">
+                    {{selectedUser.account || '未设置昵称'}}
+                  </h2>
+                  <div class="profile-account">{{selectedUser.email}}</div>
+                  <div
+                          class="profile-status"
+                          :class="selectedUser.status === 'ACTIVE' ? 'active' : 'frozen'"
+                  >
+                    {{selectedUser.status === 'ACTIVE' ? '正常' : '冻结'}}
+                  </div>
+                </div>
+
+                <!-- 添加数据统计部分 -->
+                <div class="profile-stats">
+                  <div class="stat-item">
+                    <div class="stat-value">
+                      {{userData.like_count || 0}}
+                    </div>
+                    <div class="stat-label">获赞数</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">
+                      {{userData.comment_count || 0}}
+                    </div>
+                    <div class="stat-label">被评论数</div>
+                  </div>
+                </div>
+
+                <div class="profile-info-list">
+                  <div class="profile-info-item" v-if="selectedUser.gender">
+                    <i class="fa fa-user profile-info-icon"></i>
+                    {{selectedUser.gender}}
+                  </div>
+                  <div
+                          class="profile-info-item"
+                          v-if="selectedUser.address"
+                  >
+                    <i class="fa fa-map-marker profile-info-icon"></i>
+                    {{selectedUser.address}}
+                  </div>
+                  <div class="profile-info-item">
+                    <i class="fa fa-clock-o profile-info-icon"></i>
+                    注册于 {{formatDateTime(selectedUser.create_time) ||
+                  '-'}}
+                  </div>
+                </div>
+
+                <div class="profile-bio">
+                  <div class="profile-bio-title">个人简介</div>
+                  <div>
+                    {{selectedUser.bio ||
+                  '这个人很懒，还没有填写个人简介...'}}
+                  </div>
+                </div>
+              </div>
+
+              <!-- 右侧内容区域 -->
+              <div class="content-section">
+                <div class="stats-grid">
+                  <div
+                          class="stat-card"
+                          :class="{ active: currentTab === 'posts' }"
+                          @click="switchTab('posts')"
+                  >
+                    <div class="number">
+                      {{selectedUser.postCount || 0}}
+                    </div>
+                    <div class="label">博文</div>
+                  </div>
+                  <div
+                          class="stat-card"
+                          :class="{ active: currentTab === 'comments' }"
+                          @click="switchTab('comments')"
+                  >
+                    <div class="number">
+                      {{selectedUser.CommentCount || 0}}
+                    </div>
+                    <div class="label">评论</div>
+                  </div>
+                  <div
+                          class="stat-card"
+                          :class="{ active: currentTab === 'challenges' }"
+                          @click="switchTab('challenges')"
+                  >
+                    <div class="number">
+                      {{selectedUser.ChallengeCount || 0}}
+                    </div>
+                    <div class="label">发布挑战</div>
+                  </div>
+                </div>
+
+                <div class="list-content" @scroll="handleScroll">
+                  <!-- 博文列表 -->
+                  <div v-if="currentTab === 'posts'" class="post-cards">
+                    <div
+                            v-for="post in userPosts"
+                            :key="post.id"
+                            class="post-card"
+                    >
+                      <div class="post-card-header">
+                        <h3 class="post-title">{{post.title}}</h3>
+                        <span class="post-time"
+                        >{{formatDateTime(post.create_time)}}</span
+                        >
+                      </div>
+
+                      <div class="post-meta">
+                        <div class="post-meta-item">
+                          <i class="fa fa-heart"></i>
+                          <span>{{post.like_count}} 点赞</span>
+                        </div>
+                        <div class="post-meta-item">
+                          <i class="fa fa-comment"></i>
+                          <span>{{post.comment_count}} 评论</span>
+                        </div>
+                        <div class="post-meta-item">
+                          <i class="fa fa-hashtag"></i>
+                          <span>{{post.id}}</span>
+                        </div>
+                      </div>
+
+                      <div class="post-location">
+                        <i class="fa fa-map-marker"></i>
+                        <span>{{post.landmark_name || '未知地点'}}</span>
+                        <span v-if="post.location"
+                        >({{post.location.lng}},
+                              {{post.location.lat}})</span
+                        >
+                      </div>
+
+                      <div class="post-actions">
+                        <button
+                                class="post-button"
+                                @click="viewPostDetail(post.id)"
+                        >
+                          <i class="fa fa-eye"></i>
+                          查看详情
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 评论列表 -->
+                  <div
+                          v-if="currentTab === 'comments'"
+                          class="comment-cards"
+                  >
+                    <div
+                            v-for="comment in userComments"
+                            :key="comment.id"
+                            class="comment-card"
+                    >
+                      <!-- 评论内容 -->
+                      <div class="comment-content">{{comment.content}}</div>
+
+                      <!-- 父评论，如果存在则显示 -->
+                      <div
+                              v-if="comment.parent_content"
+                              class="parent-comment"
+                      >
+                        <div class="parent-reference">
+                          @{{comment.parent_useraccount}}
+                        </div>
+                        <div class="parent-text">
+                          {{comment.parent_content}}
+                        </div>
+                      </div>
+
+                      <!-- 底部信息 -->
+                      <div class="comment-footer">
+                        <a
+                                class="comment-post-link"
+                                @click.prevent="viewPostDetail(comment.post_id)"
+                        >
+                          <i class="fa fa-file-text-o"></i>
+                          {{comment.title}}
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- 加载状态和无更多数据提示 -->
+                    <div v-if="commentsLoading" class="loading-more">
+                      加载中...
+                    </div>
+                    <div
+                            v-if="!hasMoreComments && userComments.length > 0"
+                            class="no-more"
+                    >
+                      没有更多评论了
+                    </div>
+                  </div>
+
+                  <!-- 挑战列表 -->
+                  <div
+                          v-if="currentTab === 'challenges'"
+                          class="challenge-cards"
+                  >
+                    <div
+                            v-for="challenge in userChallenges"
+                            :key="challenge.id"
+                            class="challenge-card"
+                    >
+                      <h3 class="challenge-title">{{challenge.title}}</h3>
+
+                      <div class="challenge-info">
+                        <div class="challenge-info-item">
+                          <i class="fa fa-calendar"></i>
+                          <span
+                          >结束时间：{{formatDateTime(challenge.end_time)}}</span
+                          >
+                        </div>
+                        <div class="challenge-info-item">
+                          <i class="fa fa-flag"></i>
+                          <span>手势类型：{{challenge.gesture_type}}</span>
+                        </div>
+                      </div>
+
+                      <div class="challenge-destination">
+                        <i class="fa fa-map-marker"></i>
+                        <span>目的地：{{challenge.landmark_name}}</span>
+                      </div>
+
+                      <div class="challenge-actions">
+                        <button
+                                class="challenge-button"
+                                @click="viewChallengeDetail(challenge.id)"
+                        >
+                          <i class="fa fa-eye"></i>
+                          查看详情
+                        </button>
+                      </div>
+                    </div>
+
+                    <div v-if="challengesLoading" class="text-center">
+                      <p>加载中...</p>
+                    </div>
+                    <div
+                            v-if="!hasMoreChallenges && userChallenges.length > 0"
+                            class="text-center"
+                    >
+                      <p>已经到底了</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.metisMenu.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/element/index.js"></script>
+
+<script src="../js/userManagement.js"></script>
+</body>
+</html>

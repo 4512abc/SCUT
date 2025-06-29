@@ -1,0 +1,5 @@
+dataset/
+
+trained_models/
+
+vggface2.pt

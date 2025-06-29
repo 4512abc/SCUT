@@ -1,0 +1,86 @@
+
+<view class="page">
+  <van-nav-bar
+    title="个人中心"
+    fixed
+    border="{{false}}"
+    placeholder
+    custom-class="nav-bar"
+  />
+
+  <view class="container">
+    <!-- 用户信息卡片 -->
+    <van-cell-group inset custom-class="user-card">
+      <van-cell
+        center
+        title-class="nickname"
+        custom-class="user-info"
+      >
+        <view slot="title" class="user-title">
+          <van-image
+            round
+            width="60px"
+            height="60px"
+            src="{{userInfo.avatar}}"
+          />
+          <view class="user-detail">
+            <text class="nickname">{{userInfo.nickname}}</text>
+            <view class="location">
+              <van-icon name="location-o" size="14px" color="#07c160" />
+              <text>{{userInfo.location}}</text>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+
+    <!-- 功能列表 -->
+    <van-cell-group inset title="我的功能" custom-class="function-group">
+      <van-cell
+        title="我发表的博文"
+        is-link
+        icon="edit"
+        url="/pages/my/my_blog/my_blog"
+      />
+      <van-cell
+        title="查看/管理我的挑战"
+        is-link
+        icon="flag-o"
+        url="/pages/my/my_challenge/my_challenge"
+      />
+      <van-cell
+        title="通知中心"
+        is-link
+        icon="chat-o"
+        url="/pages/my/message_center/message_center"
+      />
+      <van-cell
+        title="我点赞的游记"
+        is-link
+        icon="like-o"
+        url="/pages/my/my_like/my_like"
+      />
+      <van-cell
+        title="我的群组"
+        is-link
+        icon="friends-o"
+        url="/pages/my/my_group/my_group"
+      />
+    </van-cell-group>
+
+    <van-cell-group inset title="设置" custom-class="setting-group">
+      <van-cell 
+        title="编辑资料" 
+        is-link 
+        icon="edit"
+        url="/pages/my/edit_profile/edit_profile"
+      />
+      <van-cell 
+        title="更多设置" 
+        is-link 
+        icon="setting-o"
+        url="/pages/my/my_settings/my_settings"
+      />
+    </van-cell-group>
+  </view>
+</view>

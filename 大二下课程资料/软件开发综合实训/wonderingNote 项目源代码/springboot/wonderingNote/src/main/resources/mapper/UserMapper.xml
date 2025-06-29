@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="org.example.model.entity.User">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="account" property="account" jdbcType="VARCHAR"/>
+    <result column="password" property="password" jdbcType="VARCHAR"/>
+    <result column="phone" property="phone" jdbcType="VARCHAR"/>
+    <result column="email" property="email" jdbcType="VARCHAR"/>
+    <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+    <result column="status" property="status" jdbcType="CHAR"/>
+    <!-- 明确指定字段映射 -->
+    <result column="wx_openid" property="wxOpenid" jdbcType="VARCHAR"/>
+    <result column="wx_unionid" property="wxUnionid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    <result column="access_level" property="accessLevel" jdbcType="CHAR"/>
+  </resultMap>
+
+
+  <!-- 基础CRUD操作 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    SELECT * FROM user WHERE id = #{id}
+  </select>
+
+  <delete id="deleteByPrimaryKey">
+    DELETE FROM user WHERE id = #{id}
+  </delete>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO user (account, password, phone, email, avatar, status, wx_openid, wx_unionid, create_time, update_time, access_level)
+    VALUES (#{account}, #{password}, #{phone}, #{email}, #{avatar}, #{status}, #{wxOpenid}, #{wxUnionid}, #{createTime}, #{updateTime}, #{accessLevel})
+  </insert>
+
+  <!-- 其他方法保持不变 -->
+  <!-- 修改后的insertSelective -->
+  <insert id="insertSelective" parameterType="org.example.model.entity.User"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="account != null">account,</if>
+      <if test="password != null">password,</if>
+      <if test="phone != null">phone,</if>
+      <if test="email != null">email,</if>
+      <if test="avatar != null">avatar,</if>
+      <if test="status != null">status,</if>
+      <if test="wxOpenid != null">wx_openid,</if>
+      <if test="wxUnionid != null">wx_unionid,</if>
+      <if test="createTime != null">create_time,</if>
+      <if test="updateTime != null">update_time,</if>
+      <if test="accessLevel != null">access_level,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="account != null">#{account},</if>
+      <if test="password != null">#{password},</if>
+      <if test="phone != null">#{phone},</if>
+      <if test="email != null">#{email},</if>
+      <if test="avatar != null">#{avatar},</if>
+      <if test="status != null">#{status},</if>
+      <if test="wxOpenid != null">#{wxOpenid},</if>
+      <if test="wxUnionid != null">#{wxUnionid},</if>
+      <if test="createTime != null">#{createTime},</if>
+      <if test="updateTime != null">#{updateTime},</if>
+      <if test="accessLevel != null">#{accessLevel},</if>
+    </trim>
+  </insert>
+
+  <select id="selectByAccount" resultMap="BaseResultMap">
+    SELECT * FROM user WHERE account = #{account}
+  </select>
+
+  <select id="selectByEmail" resultType="org.example.model.entity.User">
+    SELECT * FROM user WHERE email = #{email}
+  </select>
+
+  <select id="selectAccountById" resultType="java.lang.String">
+    SELECT account FROM user WHERE id = #{id}
+  </select>
+
+  <select id="selectByWxOpenid" resultMap="BaseResultMap">
+    SELECT * FROM user WHERE wx_openid = #{openid}
+  </select>
+
+  <!--由TOTORO编辑-->
+  <!--
+        查询用户ID和账号信息
+        ids: 用户ID集合参数
+        返回Map结构: {id: 用户ID, account: 用户账号}
+    -->
+  <select id="selectAccountsByIds" resultType="map">
+    SELECT id, account FROM user WHERE id IN
+    <foreach collection="ids" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </select>
+  <!--  -->
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.model.entity.User">
+    update user
+    <set>
+      <if test="account != null">
+        account = #{account},
+      </if>
+      <if test="password != null">
+        password = #{password},
+      </if>
+      <if test="email != null">
+        email = #{email},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <!--  TOTORO-->
+  <select id="selectByIds" resultType="org.example.model.entity.User">
+    SELECT * FROM user WHERE id IN
+    <foreach collection="ids" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </select>
+  <!--  -->
+
+  <select id="selectUserTotal" resultType="int">
+    SELECT COUNT(*) FROM user
+  </select>
+
+  <select id="selectUserAddToday" resultType="int">
+    SELECT COUNT(*) FROM user WHERE DATE(create_time) = CURDATE()
+  </select>
+
+  <update id="updateUserState">
+    UPDATE user SET status = #{status} WHERE id = #{id}
+  </update>
+
+  <!-- 新增查询方法 -->
+  <select id="selectAdmins" resultMap="BaseResultMap">
+    SELECT * FROM user WHERE access_level IN ('admin', 'super_admin')
+  </select>
+
+  <select id="selectAllUsers" resultMap="BaseResultMap">
+    SELECT * FROM user
+  </select>
+  <!-- 新增：按条件检索用户 -->
+  <select id="selectByConditions" resultMap="BaseResultMap">
+    SELECT id, account, email, create_time, status,avatar
+    FROM user
+    <where>
+      <if test="accessLevel != null">
+        AND access_level = #{accessLevel}
+      </if>
+      <if test="account != null and account != ''">
+        AND account LIKE CONCAT('%', #{account}, '%')
+      </if>
+      <if test="status != null">
+        AND status = #{status}
+      </if>
+      <if test="email != null and email != ''">
+        AND email LIKE CONCAT('%', #{email}, '%')
+      </if>
+      <if test="startTime != null and endTime != null">
+        AND create_time BETWEEN #{startTime} AND #{endTime}
+      </if>
+    </where>
+    ORDER BY create_time DESC
+  </select>
+
+  <update id="updateByPrimaryKey" parameterType="org.example.model.entity.User">
+    UPDATE user
+    SET
+      account = #{account},
+      password = #{password},
+      phone = #{phone},
+      email = #{email},
+      avatar = #{avatar},
+      status = #{status},
+      wx_openid = #{wxOpenid},
+      wx_unionid = #{wxUnionid},
+      update_time = #{updateTime},
+      access_level = #{accessLevel}
+    WHERE id = #{id}
+  </update>
+
+</mapper>

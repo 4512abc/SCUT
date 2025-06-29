@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>后台管理系统</title>
+  <meta
+          http-equiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/font-awesome.css" rel="stylesheet" />
+  <link href="../css/basic.css" rel="stylesheet" />
+  <link href="../css/custom.css" rel="stylesheet" />
+  <link href="../css/my.css" rel="stylesheet" />
+  <link href="../css/element/index.css" rel="stylesheet" />
+  <link href="../css/blog.css" rel="stylesheet" />
+</head>
+<body>
+<div id="wrapper" v-cloak>
+  <nav
+          class="navbar navbar-default navbar-cls-top"
+          style="margin-bottom: 0"
+  >
+    <div class="navbar-header">
+      <a
+              class="navbar-brand"
+              href="javascript:void(0)"
+              @click="goToPage('main')"
+      >后台管理系统</a
+      >
+    </div>
+
+    <div class="header-right">
+      <a
+              href="javascript:void(0)"
+              class="btn btn-info"
+              @click="logout"
+              title="退出登录"
+      >
+        <i class="fa fa-sign-out" style="font-size: 32px"></i>
+      </a>
+    </div>
+    <div class="header-right" style="padding-top: 25px">
+      欢迎您，{{currentUser.userInfo.account}}
+    </div>
+    <div class="header-left">
+      <ul class="nav navbar-nav">
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('main')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >信息概述</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('userManagement')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >数据管理</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('personal')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >个人中心</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 左侧导航栏 -->
+  <nav class="navbar-default navbar-side">
+    <div class="sidebar-collapse">
+      <ul class="nav" id="main-menu">
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('userManagement')"
+          ><i class="fa fa-table"> 用户管理</i></a
+          >
+        </li>
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('challenge')"
+          ><i class="fa fa-table"> 挑战</i></a
+          >
+        </li>
+        <li>
+          <a
+                  class="active-menu"
+                  href="javascript: void(0)"
+                  @click="goToPage('blog')"
+          >
+            <i class="fa fa-table"> 博文</i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-area-chart"> 公告</i>
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level collapse">
+            <li>
+              <a
+                      href="javascript:void(0)"
+                      @click="goToPage('announcementManagement')"
+              >
+                <i class="fa fa-table"> 公告管理</i>
+              </a>
+            </li>
+            <li>
+              <a
+                      href="javascript: void(0)"
+                      @click="goToPage('announcementIssue')"
+              >
+                <i class="fa fa-table"> 发布公告</i>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('groupManagement')"
+          >
+            <i class="fa fa-table"> 团队管理</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="page-wrapper">
+    <div id="page-inner">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- 博文列表视图 -->
+          <div v-if="!showPostDetail" class="panel panel-default">
+            <div class="panel-heading">博文信息列表</div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <div class="nx-table-header">
+                  <div class="search-area">
+                    <!-- 左侧日期选择 -->
+                    <div class="date-range">
+                          <span class="filter-label" style="white-space: nowrap"
+                          >创建时间：</span
+                          >
+                      <input
+                              type="date"
+                              v-model="startDate"
+                              class="form-control input-sm"
+                      />
+                      <label style="white-space: nowrap">至</label>
+                      <input
+                              type="date"
+                              v-model="endDate"
+                              class="form-control input-sm"
+                      />
+                    </div>
+                    <!-- 右侧搜索框 -->
+                    <div class="search-box">
+                      <input
+                              type="text"
+                              placeholder="请输入博文标题"
+                              v-model="searchTitle"
+                              @keyup.enter="searchPosts"
+                      />
+                      <i
+                              class="glyphicon glyphicon-search"
+                              @click="searchPosts"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+                <table
+                        class="table table-striped table-bordered table-hover"
+                >
+                  <thead>
+                  <tr>
+                    <th>博文ID</th>
+                    <th>博文标题</th>
+                    <th>发布者id</th>
+                    <th>发布者账号</th>
+                    <th>创建时间</th>
+                    <th>评论数量</th>
+                    <th>点赞数量</th>
+                    <th>操作</th>
+                    <th>详情</th>
+                  </tr>
+                  </thead>
+                  <tbody v-for="obj in objs">
+                  <tr>
+                    <td>{{obj.postId}}</td>
+                    <td>{{obj.title}}</td>
+                    <td>{{obj.publishedId}}</td>
+                    <td>{{obj.publishedAccount}}</td>
+                    <!--这里是查询后多出来的别名变量-->
+                    <td>{{obj.createdTime}}</td>
+                    <td>{{obj.commentCount}}</td>
+                    <td>{{obj.likeCount}}</td>
+                    <td>
+                      <button
+                              class="btn btn-danger btn-xs"
+                              @click="del(obj.postId)"
+                      >
+                        删除
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                              class="btn btn-primary btn-xs"
+                              @click="viewDetail(obj.postId)"
+                      >
+                        查看详情
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <ul class="pagination">
+                  <li class="page-item" v-bind:class="{disabled:preActive}">
+                    <a
+                            class="page-link"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum - 1)"
+                    >上一页</a
+                    >
+                  </li>
+                  <li class="page-item">
+                    <a
+                            class="page-link"
+                            v-if="pageInfo.pageNum > 1"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum - 1)"
+                    >
+                      {{pageInfo.pageNum - 1}}
+                    </a>
+                  </li>
+                  <li class="page-item disabled">
+                    <a class="page-link" href="javascript:void(0)"
+                    >{{pageInfo.pageNum}}</a
+                    >
+                  </li>
+                  <li class="page-item">
+                    <a
+                            class="page-link"
+                            v-if="pageInfo.hasNextPage"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.pageNum + 1)"
+                    >{{pageInfo.pageNum + 1}}</a
+                    >
+                  </li>
+                  <li
+                          class="page-item"
+                          v-bind:class="{disabled:nextActive}"
+                  >
+                    <a
+                            class="page-link"
+                            href="javascript:void(0)"
+                            v-on:click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)"
+                    >下一页</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 博文详情视图 -->
+          <div v-if="showPostDetail" class="panel panel-default">
+            <div class="panel-heading">
+              <span>博文详情</span>
+              <button
+                      class="btn btn-default pull-right"
+                      @click="backToList"
+              >
+                返回列表
+              </button>
+            </div>
+            <div class="blog-detail-container">
+              <!-- 左侧作者信息 -->
+              <div class="blog-left-section">
+                <div class="profile-header">
+                  <div class="profile-avatar">
+                    <img
+                            :src="getAuthorAvatarUrl(selectedPost.initial_info.user_avatar)"
+                            alt="作者头像"
+                    />
+                  </div>
+                  <h2 class="author-name">
+                    {{selectedPost.initial_info.id}}
+                  </h2>
+                  <p class="author-id">
+                    ID: {{selectedPost.initial_info.user_account}}
+                  </p>
+
+                  <div class="stats-grid">
+                    <div class="stat-item">
+                      <div class="stat-value">
+                        {{selectedPost.post_list.like_count || 0}}
+                      </div>
+                      <div class="stat-label">点赞</div>
+                    </div>
+                    <div class="stat-item">
+                      <div class="stat-value">
+                        {{selectedPost.post_list.comment_count || 0}}
+                      </div>
+                      <div class="stat-label">评论</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 右侧内容区域 -->
+              <div class="blog-content-section">
+                <div class="content-header">
+                  <h1 class="blog-title">
+                    {{selectedPost.post_list.title}}
+                  </h1>
+                  <!-- 添加封面图片 -->
+                  <img
+                          v-if="selectedPost.post_list.cover"
+                          :src="getPostImageUrl(selectedPost.post_list.cover)"
+                          class="blog-cover"
+                          alt="博文封面"
+                          @click="previewImage(selectedPost.post_list.cover)"
+                  />
+                  <div class="blog-meta">
+                    <div class="blog-meta-item">
+                      <i class="fa fa-clock-o"></i>
+                      <span
+                      >创建时间：{{formatDateTime(selectedPost.post_list.create_time)}}</span
+                      >
+                    </div>
+                    <div
+                            class="blog-meta-item"
+                            v-if="selectedPost.post_list.location"
+                    >
+                      <i class="fa fa-map-marker"></i>
+                      <span
+                      >{{selectedPost.post_list.landmark_name ||
+                      '未知地点'}}
+                            ({{selectedPost.post_list.location.lng}},
+                            {{selectedPost.post_list.location.lat}})</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="content-body">
+                  <p>{{selectedPost.details.content}}</p>
+                  <!-- 修改图片显示部分 -->
+                  <div
+                          class="blog-images"
+                          v-if="selectedPost.details.images && selectedPost.details.images.length"
+                  >
+                    <img
+                            v-for="image in JSON.parse(selectedPost.details.images)"
+                            :key="image.id"
+                            :src="getPostImageUrl(JSON.stringify(image))"
+                            class="blog-image"
+                            :alt="selectedPost.post_list.title"
+                            @click="previewImage(JSON.stringify(image))"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 添加预览对话框 -->
+          <el-dialog
+                  :visible.sync="previewDialogVisible"
+                  custom-class="preview-dialog"
+          >
+            <img :src="previewImageUrl" style="width: 100%" alt="Preview" />
+          </el-dialog>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.metisMenu.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/element/index.js"></script>
+<script src="../js/blog.js"></script>
+</body>
+</html>

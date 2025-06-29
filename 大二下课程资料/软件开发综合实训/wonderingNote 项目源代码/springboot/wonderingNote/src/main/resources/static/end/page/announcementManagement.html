@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>公告</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/element/index.css" rel="stylesheet" />
+    <link href="../css/quill.snow.css" rel="stylesheet" />
+    <link href="../css/announcementManagement.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper" v-cloak>
+      <nav
+        class="navbar navbar-default navbar-cls-top"
+        style="margin-bottom: 0"
+      >
+        <div class="navbar-header">
+          <a
+            class="navbar-brand"
+            href="javascript:void(0)"
+            @click="goToPage('main')"
+            >后台管理系统</a
+          >
+        </div>
+
+        <div class="header-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-info"
+            @click="logout"
+            title="退出登录"
+          >
+            <i class="fa fa-sign-out" style="font-size: 32px"></i>
+          </a>
+        </div>
+        <div class="header-right" style="padding-top: 25px">
+          欢迎您，{{ currentUser.userInfo.account}}
+        </div>
+        <div class="header-left">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('main')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >信息概述</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('userManagement')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >数据管理</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('personal')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >个人中心</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 左侧导航栏 -->
+      <nav class="navbar-default navbar-side">
+        <div class="sidebar-collapse">
+          <ul class="nav" id="main-menu">
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('userManagement')"
+                ><i class="fa fa-table"> 用户管理</i></a
+              >
+            </li>
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('challenge')"
+                ><i class="fa fa-table"> 挑战</i></a
+              >
+            </li>
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('blog')">
+                <i class="fa fa-table"> 博文</i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-area-chart"> 公告</i>
+                <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level collapse">
+                <li>
+                  <a
+                    class="active-menu"
+                    href="javascript:void(0)"
+                    @click="goToPage('announcementManagement')"
+                  >
+                    <i class="fa fa-table"> 公告管理</i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="javascript: void(0)"
+                    @click="goToPage('announcementIssue')"
+                  >
+                    <i class="fa fa-table"> 发布公告</i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('groupManagement')"
+              >
+                <i class="fa fa-table"> 团队管理</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="page-wrapper">
+        <div id="page-inner">
+          <div class="page-content">
+            <!-- 左侧主要内容 -->
+            <div class="main-content">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- 公告列表视图 -->
+                  <div
+                    v-if="!showDetail && !showEdit"
+                    class="panel panel-default"
+                  >
+                    <div class="panel-heading">公告信息列表</div>
+                    <div class="panel-body">
+                      <div class="table-responsive">
+                        <div class="search-container">
+                          <div class="time-filters">
+                            <label>创建时间：</label>
+                            <input
+                              type="date"
+                              v-model="info4Search.startTime"
+                            />
+                            <label>至</label>
+                            <input type="date" v-model="info4Search.endTime" />
+                          </div>
+                          <div class="type-filter">
+                            <label>
+                              <input
+                                type="radio"
+                                name="announcement-type"
+                                v-model="info4Search.type"
+                                :value="1"
+                                @change="loadTable(1)"
+                              />
+                              后台公告
+                            </label>
+                            <label>
+                              <input
+                                type="radio"
+                                name="announcement-type"
+                                v-model="info4Search.type"
+                                :value="2"
+                                @change="loadTable(1)"
+                              />
+                              用户端公告
+                            </label>
+                          </div>
+                          <div class="search-box">
+                            <input
+                              type="text"
+                              v-model="info4Search.title"
+                              placeholder="请输入公告标题"
+                              @keyup.enter="loadTable(1)"
+                            />
+                            <i
+                              class="glyphicon glyphicon-search"
+                              @click="loadTable(1)"
+                            ></i>
+                          </div>
+                        </div>
+                        <table
+                          class="table table-striped table-bordered table-hover"
+                        >
+                          <thead>
+                            <tr>
+                              <th>公告ID</th>
+                              <th>公告标题</th>
+                              <th>更新时间</th>
+                              <th>类型</th>
+                              <th>操作</th>
+                              <td>详情</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="obj in objs">
+                              <td>{{obj.id}}</td>
+                              <td>{{obj.title}}</td>
+                              <td>{{formatTime(obj.updateTime)}}</td>
+                              <td>{{obj.type === 1 ? '后台' : '用户端'}}</td>
+                              <td>
+                                <button
+                                  class="btn btn-primary btn-xs"
+                                  @click="edit(obj)"
+                                >
+                                  编辑
+                                </button>
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-info btn-xs"
+                                  @click="viewDetail(obj)"
+                                >
+                                  查看详情
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <ul class="pagination">
+                          <li
+                            class="page-item"
+                            v-bind:class="{disabled:preActive}"
+                          >
+                            <a
+                              class="page-link"
+                              href="javascript:void(0)"
+                              v-on:click="loadTable(pageInfo.pageNum - 1)"
+                              >上一页</a
+                            >
+                          </li>
+                          <li class="page-item">
+                            <a
+                              class="page-link"
+                              v-if="pageInfo.pageNum > 1"
+                              href="javascript:void(0)"
+                              v-on:click="loadTable(pageInfo.pageNum - 1)"
+                            >
+                              {{pageInfo.pageNum - 1}}
+                            </a>
+                          </li>
+
+                          <li class="page-item disabled">
+                            <a class="page-link" href="javascript:void(0)"
+                              >{{pageInfo.pageNum}}</a
+                            >
+                          </li>
+
+                          <li class="page-item">
+                            <a
+                              class="page-link"
+                              v-if="pageInfo.hasNextPage"
+                              href="javascript:void(0)"
+                              v-on:click="loadTable(pageInfo.pageNum + 1)"
+                              >{{pageInfo.pageNum + 1}}</a
+                            >
+                          </li>
+                          <li
+                            class="page-item"
+                            v-bind:class="{disabled:nextActive}"
+                          >
+                            <a
+                              class="page-link"
+                              href="javascript:void(0)"
+                              v-on:click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)"
+                              >下一页</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 编辑公告视图 -->
+                  <div v-if="showEdit" class="panel panel-default">
+                    <div class="panel-heading">
+                      <span>编辑公告</span>
+                      <button
+                        class="btn btn-default pull-right"
+                        @click="backToList"
+                      >
+                        返回列表
+                      </button>
+                    </div>
+                    <div class="edit-panel">
+                      <div class="edit-form">
+                        <div class="form-group">
+                          <label for="editTitle">标题</label>
+                          <input
+                            type="text"
+                            id="editTitle"
+                            v-model="editingAnnouncement.title"
+                            class="form-control"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>正文</label>
+                          <div id="editEditor"></div>
+                        </div>
+                        <div class="edit-actions">
+                          <button class="btn btn-default" @click="backToList">
+                            取消
+                          </button>
+                          <button class="btn btn-primary" @click="saveEdit">
+                            保存
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 公告详情视图 -->
+                  <div v-if="showDetail" class="panel panel-default">
+                    <div class="panel-heading">
+                      <span>公告详情</span>
+                      <button
+                        class="btn btn-default pull-right"
+                        @click="backToList"
+                      >
+                        返回列表
+                      </button>
+                    </div>
+                    <div class="announcement-detail-container">
+                      <!-- 标题和基本信息 -->
+                      <div class="announcement-header">
+                        <h1 class="announcement-title">
+                          {{selectedAnnouncement.title}}
+                        </h1>
+                        <div class="announcement-meta">
+                          <!-- 添加发布者信息 -->
+                          <div class="announcement-meta-item">
+                            <i class="fa fa-user"></i>
+                            <span
+                              >发布者:
+                              {{selectedAnnouncement.user_account}}</span
+                            >
+                          </div>
+                          <div class="announcement-meta-item">
+                            <i class="fa fa-id-card"></i>
+                            <span
+                              >发布者ID:
+                              {{selectedAnnouncement.published_id}}</span
+                            >
+                          </div>
+                          <!-- 原有的时间和类型信息 -->
+                          <div class="announcement-meta-item">
+                            <i class="fa fa-clock-o"></i>
+                            <span
+                              >创建时间:
+                              {{formatTime(selectedAnnouncement.create_time)}}</span
+                            >
+                          </div>
+                          <div class="announcement-meta-item">
+                            <i class="fa fa-refresh"></i>
+                            <span
+                              >更新时间:
+                              {{formatTime(selectedAnnouncement.update_time)}}</span
+                            >
+                          </div>
+                          <div class="announcement-meta-item">
+                            <i class="fa fa-tag"></i>
+                            <span
+                              >类型: {{selectedAnnouncement.type === 1 ?
+                              '后台公告' : '用户端公告'}}</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 公告内容 -->
+                      <div class="announcement-content">
+                        <div v-html="selectedAnnouncement.content"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--模态框，类似于弹出页面-->
+    <div class="modal" id="mod">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title">请填写信息</span>
+            <button type="button" class="close" data-dismiss="modal">?</button>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <!--竖着来，一行一个-->
+              <input type="hidden" id="modal-id" name="modal-id" />
+              <div class="form-group">
+                <div class="col-sm-3 control-label">公告标题</div>
+                <div class="col-sm-7">
+                  <input
+                    id="modal-name"
+                    name="modal-name"
+                    type="text"
+                    class="form-control"
+                    placeholder="请输入公告标题"
+                  />
+                </div>
+                <div id="editor" style="min-height: 300px"></div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              关闭
+            </button>
+            <button id="saveBtn" type="button" class="btn btn-primary">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/my.js"></script>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/element/index.js"></script>
+    <script src="../js/quill.js"></script>
+    <script src="../js/announcementManagement.js"></script>
+  </body>
+</html>

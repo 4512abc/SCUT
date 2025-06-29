@@ -1,0 +1,12 @@
+{
+    int a;int b; int c; int min;
+    if(a<b)
+    {
+        min=a;
+    }
+    while(min+a<c)
+    {
+        a=a+1;
+    }
+}
+

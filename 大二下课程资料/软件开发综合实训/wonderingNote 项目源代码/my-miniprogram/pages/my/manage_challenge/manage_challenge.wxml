@@ -1,0 +1,153 @@
+<!-- 导航栏保持不变 -->
+<van-nav-bar
+  title="挑战审核"
+  left-text="返回"
+  left-arrow
+  fixed
+  placeholder
+  safe-area-inset-top
+  bind:click-left="onClickLeft"
+/>
+<!-- 内容区域 - 主要优化点 -->
+<view class="container">
+  <!-- 挑战卡片 -->
+  <van-card
+    desc="{{challengeData.description}}"
+    title="{{challengeData.title}}"
+    thumb="{{challengeData.image}}"
+    custom-class="challenge-card"
+  >
+    <view slot="footer" class="card-footer">
+      <van-row>
+        <van-col span="6">
+          <view class="stat-item">
+            <view class="stat-value">{{stats.total}}</view>
+            <view class="stat-label">总参与</view>
+          </view>
+        </van-col>
+        <van-col span="6">
+          <view class="stat-item">
+            <view class="stat-value">{{stats.pending}}</view>
+            <view class="stat-label">待审核</view>
+          </view>
+        </van-col>
+        <van-col span="6">
+          <view class="stat-item">
+            <view class="stat-value">{{stats.approved}}</view>
+            <view class="stat-label">已通过</view>
+          </view>
+        </van-col>
+        <van-col span="6">
+          <view class="stat-item">
+            <view class="stat-value">{{stats.rejected}}</view>
+            <view class="stat-label">已拒绝</view>
+          </view>
+        </van-col>
+      </van-row>
+    </view>
+  </van-card>
+
+  <!-- 标签页 -->
+  <van-tabs active="{{filterIndex}}" bind:change="onTabChange" sticky>
+    <van-tab title="全部"></van-tab>
+    <van-tab title="待审核"></van-tab>
+    <van-tab title="已通过"></van-tab>
+    <van-tab title="已拒绝"></van-tab>
+  </van-tabs>
+
+  <!-- 参与者列表 - 关键优化 -->
+  <view class="participant-container">
+    <!-- 下拉刷新提示 -->
+    <view class="refresh-tip" wx:if="{{isRefreshing}}">
+      <van-loading size="20px" color="#1989fa" />
+      <text>正在刷新...</text>
+    </view>
+    <view class="participant-list" style="opacity: {{isFiltering ? 0.5 : 1}};">
+      <block wx:for="{{filteredParticipants}}" wx:key="recordId">
+        <view class="participant-item {{isSwiping ? 'participant-swiping' : ''}}">
+          <van-cell-group>
+            <van-cell
+              title="{{item.user_account}}"
+              label="提交时间: {{item.complete_time}}"
+              center
+              border="{{false}}"
+            >
+              <van-tag type="{{getStatusTagType(item.complete_state)}}">
+                {{getStatusText(item.complete_state)}}
+              </van-tag>
+            </van-cell>
+            
+            <view class="submission-content">
+              <swiper 
+                class="evidence-swiper"
+                current="{{item.currentImageIndex || 0}}"
+                duration="300"
+                easing-function="ease-out"
+                bindchange="onSwiperChange"
+                data-record-id="{{item.recordId}}"
+              >
+                <block wx:for="{{item.evidenceList}}" wx:key="*this">
+                  <swiper-item>
+                    <image 
+                      src="{{item}}" 
+                      mode="aspectFill"
+                      class="evidence-image"
+                      binderror="onImageError"
+                      data-src="{{item}}"
+                    />
+                  </swiper-item>
+                </block>
+              </swiper>
+
+              <view class="action-buttons">
+                <!-- 待审核状态下显示通过和拒绝按钮 -->
+                <block wx:if="{{filterIndex === 1}}"> <!-- 待审核tab -->
+                  <van-button 
+                    type="primary" 
+                    size="small" 
+                    bind:click="handleApprove" 
+                    data-id="{{item.recordId}}"
+                    custom-class="action-btn"
+                  >通过</van-button>
+                  <van-button 
+                    type="danger" 
+                    size="small" 
+                    bind:click="handleReject" 
+                    data-id="{{item.recordId}}"
+                    custom-class="action-btn"
+                  >拒绝</van-button>
+                </block>
+                
+                <!-- 已通过状态下显示拒绝按钮 -->
+                <block wx:elif="{{filterIndex === 2}}"> <!-- 已通过tab -->
+                  <van-button 
+                    type="danger" 
+                    size="small" 
+                    bind:click="handleReject" 
+                    data-id="{{item.recordId}}"
+                    custom-class="action-btn"
+                  >拒绝</van-button>
+                </block>
+                
+                <!-- 已拒绝状态下显示通过按钮 -->
+                <block wx:elif="{{filterIndex === 3}}"> <!-- 已拒绝tab -->
+                  <van-button 
+                    type="primary" 
+                    size="small" 
+                    bind:click="handleApprove" 
+                    data-id="{{item.recordId}}"
+                    custom-class="action-btn"
+                  >通过</van-button>
+                </block>
+              </view>
+            </view>
+          </van-cell-group>
+        </view>
+      </block>
+      
+      <view wx:if="{{filteredParticipants.length === 0}}" class="empty-tip">
+        <van-empty description="暂无相关数据" />
+      </view>
+    </view>
+  </view>
+</view>

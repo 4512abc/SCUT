@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  flask:
+    image: flask-face:latest
+    container_name: flask
+    restart: always
+    ports:
+      - "5000:5000"
+
+  springboot:
+    image: wonderingnote-springboot:latest
+    container_name: springboot
+    restart: always
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./uploads:/app/src/main/resources/static/file   # Spring Boot 上传目录挂载
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro           # 挂载完整 /etc/letsencrypt，保证软链接正常
+    depends_on:
+      - flask
+      - springboot

@@ -1,0 +1,97 @@
+<!-- calendar.wxml -->
+<view class="container">
+  <van-nav-bar
+    title="漫游笔记"
+    fixed
+    placeholder
+    border="{{false}}"
+    custom-class="nav-bar"
+    title-class="nav-title"
+  />
+
+  <view class="intro-section">
+    <view class="intro-title">漫游笔记，记录灵动的世界</view>
+    <view class="intro-subtitle">你的每一段旅程，都值得被写成诗</view>
+  </view>
+
+  <view class="calendar-section">
+
+    <swiper
+      class="month-swiper"
+      current="{{currentMonthIndex}}"
+      bindchange="onMonthChange"
+    >
+      <swiper-item wx:for="{{monthList}}" wx:key="index">
+        <view class="month-card">
+          <van-calendar
+            class="calendar-content"
+            type="single"
+            show-title="{{false}}"
+            show-confirm="{{false}}"
+            min-date="{{item.startDate}}"
+            max-date="{{item.endDate}}"
+            default-date="{{item.defaultDate}}"
+            formatter="{{formatter}}"
+            poppable="{{false}}"
+            color="#07c160"
+            readonly
+          />
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="notes-header">
+    <text class="notes-title">本月游记</text>
+    <text class="notes-count">共{{notes.length}}篇</text>
+  </view>
+
+  <view class="notes-section">
+    <scroll-view scroll-y class="notes-list">
+      <van-card
+        wx:for="{{notes}}"
+        wx:key="id"
+        desc="{{item.description}}"
+        title="{{item.title}}"
+        thumb="{{item.cover.url}}"  
+        custom-class="note-card"
+        thumb-class="note-thumb"
+        title-class="note-title"
+        desc-class="note-desc"
+        bind:tap="navigateToDetail" 
+        data-id="{{item.id}}"
+        hover-class="card-hover"
+      >
+        <view slot="bottom" class="card-bottom">
+          <!-- 格式化后的日期 -->
+          <text class="card-date">{{item.formattedDate}}</text>
+          <view class="card-stats">
+            <!-- 点赞数 -->
+            <van-icon name="like-o" size="12px" color="#999"/>
+            <text>{{item.like_count}}</text>
+            <!-- 评论数 -->
+            <van-icon name="comment-o" size="12px" color="#999"/>
+            <text>{{item.comment_count}}</text>
+          </view>
+        </view>
+      </van-card>
+    </scroll-view>
+  </view>
+
+  <!-- <view class="action-buttons">
+    <van-button
+      custom-class="action-btn write-btn"
+      type="primary"
+      size="small"
+      icon="edit"
+      bind:click="navigateToWrite"
+    >写游记</van-button>
+    <van-button
+      custom-class="action-btn challenge-btn"
+      type="danger"
+      size="small"
+      icon="plus"
+      bind:click="navigateToChallenge"
+    >发起挑战</van-button>
+  </view> -->
+</view>

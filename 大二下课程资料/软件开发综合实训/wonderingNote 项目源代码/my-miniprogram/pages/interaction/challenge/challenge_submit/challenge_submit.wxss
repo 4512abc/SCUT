@@ -1,0 +1,489 @@
+/* 页面容器 */
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+}
+
+/* 轮播图样式 */
+.header-swiper {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 指示点样式 */
+.wx-swiper-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+}
+
+.wx-swiper-dot-active {
+  width: 20px;
+  border-radius: 5px;
+}
+
+/* 主要内容区域 - 移除margin-top */
+.content {
+  flex: 1;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
+  /* 移除或修改这行 */
+  margin-top: 0; 
+  background-color: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 头部信息 */
+.header {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+.status {
+  display: flex;
+  align-items: center;
+}
+.remain-time {
+  font-size: 14px;
+  color: #666;
+  margin-left: 4px;
+}
+
+/* 规则区域 */
+.rule-section {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+.rule-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 表单区域 */
+.form-section {
+  margin-bottom: 80px;
+}
+.form-item {
+  margin-bottom: 20px;
+}
+.label {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 上传区域 */
+.upload-box {
+  height: 120px;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+.hint {
+  font-size: 13px;
+  color: #999;
+  margin-top: 8px;
+}
+.preview-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* 位置验证区域 */
+.location-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+.location-info {
+  display: flex;
+  align-items: center;
+}
+.distance {
+  font-size: 14px;
+  color: #666;
+  margin-left: 4px;
+}
+
+/* 地图样式 */
+.verify-map {
+  width: 100%;
+  height: 200px;
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+/* 人脸验证区域 */
+.face-verify-section {
+  display: flex;
+  align-items: center;
+}
+.verified-text {
+  font-size: 14px;
+  color: #07c160;
+  margin-left: 4px;
+}
+
+/* 手势数字验证区域 */
+.gesture-verify-box {
+  margin-top: 16px;
+}
+.gesture-hint {
+  font-size: 14px;
+  color: #1890ff;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 人脸验证弹窗 */
+.face-verify-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.modal-header {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.face-camera {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+.scan-guide {
+  position: relative;
+  padding: 16px;
+  text-align: center;
+}
+.scan-box {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #1890ff;
+  margin: 0 auto 16px;
+  position: relative;
+}
+.guide-text {
+  font-size: 14px;
+  color: #666;
+}
+.detecting-text {
+  font-size: 14px;
+  color: #1890ff;
+  margin-top: 8px;
+  display: block;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  border-radius: 8px;
+}
+
+/* 预览容器样式 */
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.image-preview {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.image-preview image {
+  width: 100%;
+  height: 100%;
+}
+
+.loading-text, .error-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px;
+}
+
+.error-text {
+  background: rgba(255,0,0,0.5);
+}
+
+/* 手势验证弹窗 */
+.gesture-verify-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 手势指令 - 修改为白色文字 */
+.gesture-instruction {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff; /* 改为白色 */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* 添加文字阴影增强可读性 */
+  background-color: rgba(0,0,0,0.3); /* 半透明背景 */
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.gesture-camera {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+/* 手势扫描框 - 改为白色边框 */
+.gesture-scan-box {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #fff; /* 改为白色 */
+  margin-bottom: 16px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3); /* 添加发光效果 */
+}
+
+/* 验证状态样式 */
+.verify-status {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-item text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* 特殊打卡要求样式 */
+.requirement-desc {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.highlight {
+  color: #1890ff;
+  font-weight: bold;
+}
+
+.verify-result {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  color: #07c160;
+  font-size: 14px;
+}
+
+.verify-result text {
+  margin-left: 5px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 300rpx; /* 或者你想要的任何高度 */
+  display: block;
+  background-color: #f5f5f5; /* 添加背景色以便看到元素存在 */
+}
+
+/* 摄像头容器样式 - 保持与弹窗一致 */
+.camera-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 摄像头内容区域 - 保持与弹窗一致 */
+.camera-content {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 摄像头头部 - 保持与弹窗一致 */
+.camera-header {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+/* 摄像头主体 - 保持与弹窗一致 */
+.camera-body {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+/* 扫描引导区域 - 保持与弹窗一致 */
+.scan-guide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* 扫描框样式 - 保持与弹窗一致 */
+.scan-box {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #1890ff;
+  margin-bottom: 16px;
+}
+
+/* 手势扫描框 - 改为白色边框 */
+.gesture-scan-box {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #fff; /* 改为白色 */
+  margin-bottom: 16px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3); /* 添加发光效果 */
+}
+
+/* 引导文字 - 改为白色 */
+.guide-text {
+  font-size: 14px;
+  color: #fff; /* 改为白色 */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 检测中文字 - 改为白色 */
+.detecting-text {
+  font-size: 14px;
+  color: #fff; /* 改为白色 */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  margin-top: 8px;
+}
+
+/* 手势指令 - 保持与弹窗一致 */
+.gesture-instruction {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+/* 操作按钮区域 - 保持与弹窗一致 */
+.camera-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+}
+
+/* 操作按钮 - 保持与弹窗一致 */
+.action-btn {
+  background: transparent;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+/* 主要操作按钮 - 保持与弹窗一致 */
+.action-btn.primary {
+  background: #1890ff;
+  color: white;
+}
+
+/* 适配小屏幕 */
+@media (max-width: 480px) {
+  .camera-content {
+    width: 90%;
+  }
+  
+  .scan-box,
+  .gesture-scan-box {
+    width: 180px;
+    height: 180px;
+  }
+}

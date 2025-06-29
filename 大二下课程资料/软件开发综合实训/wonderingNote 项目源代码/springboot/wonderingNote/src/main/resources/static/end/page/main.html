@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>后台管理系统</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/element/index.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper" v-cloak>
+      <!-- 顶部导航栏 -->
+      <nav
+        class="navbar navbar-default navbar-cls-top"
+        style="margin-bottom: 0"
+      >
+        <div class="navbar-header">
+          <a class="navbar-brand" href="goToPage(main)">后台管理系统</a>
+        </div>
+
+        <div class="header-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-info"
+            @click="logout"
+            title="退出登录"
+          >
+            <i class="fa fa-sign-out" style="font-size: 32px"></i>
+          </a>
+        </div>
+        <div class="header-right" style="padding-top: 25px">
+          欢迎您，{{ currentUser.userInfo.account }}
+        </div>
+        <div class="header-left">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToMain"
+                class="nav-button"
+                style="margin-right: 20px"
+                >信息概述</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToUserManagement"
+                class="nav-button"
+                style="margin-right: 20px"
+                >数据管理</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPersonal"
+                class="nav-button"
+                style="margin-right: 20px"
+                >个人中心</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!--  侧边栏  -->
+      <nav class="navbar-default navbar-side">
+        <div class="sidebar-collapse">
+          <ul class="nav" id="main-menu">
+            <li>
+              <a class="active-menu" href="javascript:void(0)">
+                <!-- 下面这一行对应的是图标，可以在中间插入文字 -->
+                <i class="fa fa-dashboard">首页</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="page-wrapper">
+        <div id="page-inner">
+          <div class="row">
+            <!-- 表格一，对应的是接口：获取首页数据信息 -->
+            <div class="col-md-6">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>信息项</th>
+                      <th>统计数量</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-if="sysData">
+                      <td>用户总数</td>
+                      <td>{{ sysData.user_total }}</td>
+                    </tr>
+                    <tr v-if="sysData">
+                      <td>新增用户</td>
+                      <td>{{ sysData.user_add }}</td>
+                    </tr>
+                    <tr v-if="sysData">
+                      <td>帖子总数</td>
+                      <td>{{ sysData.post_total }}</td>
+                    </tr>
+                    <tr v-if="sysData">
+                      <td>新增帖子</td>
+                      <td>{{ sysData.post_add }}</td>
+                    </tr>
+                    <tr v-if="sysData">
+                      <td>挑战总数</td>
+                      <td>{{ sysData.challenge_total }}</td>
+                    </tr>
+                    <tr v-if="sysData">
+                      <td>新增挑战</td>
+                      <td>{{ sysData.challenge_add }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 表格二，对应的是接口：获取首页挑战排行榜 -->
+            <div class="col-md-6">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>用户账号</th>
+                      <th>头像</th>
+                      <th>完成挑战数量</th>
+                      <th>用户 ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in challengeData" :key="item.user_id">
+                      <td>{{ item.user_account }}</td>
+                      <td>
+                        <el-button
+                          type="primary"
+                          size="small"
+                          @click="previewImage(getAvatarUrl(item.avatar))"
+                        >
+                          预览头像
+                        </el-button>
+                      </td>
+                      <td>{{ item.number }}</td>
+                      <td>{{ item.user_id }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 修改预览对话框 -->
+          <el-dialog
+            :visible.sync="dialogVisible"
+            title="图片预览"
+            custom-class="preview-dialog"
+          >
+            <img :src="previewImageUrl" style="width: 100%" alt="Preview" />
+          </el-dialog>
+
+          <!-- 这里使用了换行，导致显示出来的效果是，两个表格在上，各自占据左右位置，下面一个表格占据横向全部位置 -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>公告 ID</th>
+                      <th>标题</th>
+                      <th>创建时间</th>
+                      <th>更新时间</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- // 修改公告表格的时间绑定 -->
+                    <tr
+                      v-for="item in announcementData"
+                      :key="item.announcement_id"
+                    >
+                      <td>{{ item.announcement_id }}</td>
+                      <td>{{ item.title }}</td>
+                      <td>{{ formatTime(item.create_time) }}</td>
+                      <td>{{ formatTime(item.update_time) }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="lineChart" style="height: 400px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/my.js"></script>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/element/index.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

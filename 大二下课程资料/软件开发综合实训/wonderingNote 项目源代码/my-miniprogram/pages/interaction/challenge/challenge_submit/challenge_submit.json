@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-switch": "@vant/weapp/switch/index"
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "需要您的摄像头权限进行人脸验证"
+    }
+  }
+}

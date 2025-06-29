@@ -1,0 +1,75 @@
+<view class="login-container">
+  <!-- 主表单区域 -->
+  <view class="form-main">
+    <view class="form-section">
+      <van-field
+        label="{{ isEmailLogin ? '邮箱' : '用户名' }}"
+        placeholder="{{ isEmailLogin ? '请输入邮箱' : '请输入用户名' }}"
+        type="text"
+        value="{{ account }}"
+        border="{{ false }}"
+        custom-class="custom-field"
+        bind:change="onAccountChange"
+      />
+      <van-field
+        label="密码"
+        type="password"
+        placeholder="请输入密码"
+        value="{{ password }}"
+        border="{{ false }}"
+        custom-class="custom-field"
+        bind:change="onPasswordChange"
+      />
+      
+      <!-- 辅助功能 -->
+      <view class="action-links">
+        <text class="link-text" bindtap="navigateToForgotPwd">忘记密码</text>
+        <text class="link-text" bindtap="navigateToRegister">注册账号</text>
+      </view>
+
+      <!-- 登录按钮 -->
+      <van-button 
+        type="primary" 
+        block
+        custom-class="login-btn"
+        bind:click="handleLogin"
+      >
+        登录
+      </van-button>
+      
+      <!-- 切换登录方式 -->
+      <view class="switch-login-type" bindtap="switchLoginType">
+        {{ isEmailLogin ? '使用用户名登录' : '使用邮箱登录' }}
+      </view>
+
+      <!-- 协议提示 -->
+      <view class="agreement">
+        登录即表示同意
+        <text class="protocol-link" bindtap="navigateToAgreement">《用户服务与隐私协议》</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他登录方式 -->
+  <view class="login-footer">
+    <view class="other-login">
+      <view class="divider-line">
+        <text class="divider-text">其他登录方式</text>
+      </view>
+      
+      <view class="login-methods">
+        <!-- 第一排 -->
+        <view class="button-row">
+          <van-button 
+            plain 
+            hairline 
+            custom-class="method-btn"
+            bind:click="handleWechatLogin"
+          >
+            微信一键登录
+          </van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

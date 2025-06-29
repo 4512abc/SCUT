@@ -1,0 +1,62 @@
+<view class="register-container">
+  <view class="form-section">
+    <van-field
+      label="邮箱"
+      placeholder="请输入邮箱地址"
+      type="text"
+      value="{{ email }}"
+      border="{{ false }}"
+      custom-class="custom-field"
+      bind:change="onEmailChange"
+    />
+    <view wx:if="{{ emailError }}" class="error-tips">邮箱格式不正确</view>
+
+    <view class="captcha-group">
+      <van-field
+        label="验证码"
+        placeholder="6位验证码"
+        type="number"
+        value="{{ captcha }}"
+        border="{{ false }}"
+        custom-class="custom-field captcha-input"
+        bind:change="onCaptchaChange"
+      />
+      <van-button 
+        type="{{ isCaptchaSending ? 'default' : 'primary' }}" 
+        size="small"
+        class="captcha-btn"
+        bind:click="sendCaptcha"
+        disabled="{{ isCaptchaSending || emailError }}"
+      >
+        {{ captchaText }}
+      </van-button>
+    </view>
+
+    <van-field
+      label="密码"
+      type="password"
+      placeholder="密码至少6位"
+      value="{{ password }}"
+      border="{{ false }}"
+      custom-class="custom-field"
+      bind:change="onPasswordChange"
+    />
+    <view wx:if="{{ passwordError }}" class="error-tips">密码至少6位</view>
+    
+
+    <van-button 
+      type="primary" 
+      block
+      custom-class="register-btn"
+      bind:click="handleRegister"
+      loading="{{ isLoading }}"
+    >
+      立即注册
+    </van-button>
+  </view>
+
+  <view class="agreement">
+    注册即表示同意
+    <text class="protocol-link" bindtap="navigateToAgreement">《用户协议》</text>
+  </view>
+</view>

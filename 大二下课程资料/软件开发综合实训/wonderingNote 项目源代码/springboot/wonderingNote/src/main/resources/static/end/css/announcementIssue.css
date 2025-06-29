@@ -1,0 +1,17 @@
+[v-cloak] {
+  display: none;
+}
+#editor {
+  height: 500px; /* 修改编辑器高度 */
+  margin-bottom: 20px;
+}
+/* 添加导航按钮样式 */
+.nav-button {
+  color: #ffffff !important;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.nav-button:hover {
+  color: #e6e6e6 !important;
+  text-decoration: none;
+}

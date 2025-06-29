@@ -1,0 +1,266 @@
+/* message_center.wxss */
+
+/* 使用Vant导航栏样式 */
+.van-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* 容器样式 */
+.container {
+  background: #f8f8f8;
+}
+
+/* 标签栏样式 */
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: sticky;
+  top: calc(var(--van-nav-bar-height, 46px) + var(--status-bar-height, 20px));
+  z-index: 99;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 25%;
+}
+
+.tab-icon-wrapper {
+  position: relative;
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-text {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.tab-item.active .tab-text {
+  color: var(--van-primary-color, #1989fa);
+  font-weight: 500;
+}
+
+.tab-item.active .van-icon {
+  color: var(--van-primary-color, #1989fa) !important;
+}
+
+/* 未读计数样式 */
+.unread-count {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fff;
+  background: var(--van-danger-color, #ee0a24);
+  border-radius: 16rpx;
+  transform: scale(0.9);
+}
+
+/* 消息列表样式 */
+.message-list {
+  height: calc(100vh - var(--van-nav-bar-height, 46px) - var(--status-bar-height, 20px) - 100rpx);
+  padding: 20rpx;
+}
+
+.message-item {
+  position: relative;
+  padding: 28rpx;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.03);
+}
+
+/* 未读红点样式 */
+.unread-dot {
+  position: absolute;
+  right: 28rpx;
+  top: 28rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background: var(--van-danger-color, #ee0a24);
+  border-radius: 50%;
+}
+
+.content {
+  flex: 1;
+  margin-left: 24rpx;
+  overflow: hidden;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.username, .title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #999;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.action {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+.comment-box {
+  margin-top: 8rpx;
+  padding: 20rpx;
+  background: #f7f8fa;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* 公告消息特殊样式 */
+.announce-item {
+  background: #f0f9ff;
+}
+
+.announce-item .van-icon {
+  margin-top: 6rpx;
+}
+
+.announce-item .content-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* 挑战消息特殊样式 */
+.challenge-item {
+  background: #f8f8f8;
+  border-left: 6rpx solid var(--van-primary-color, #1989fa);
+}
+
+.challenge-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.challenge-id {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+/* 空状态和加载状态 */
+.empty, .loading {
+  text-align: center;
+  padding: 60rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.loading .van-loading {
+  display: inline-block;
+  margin-top: 20rpx;
+}
+
+/* 适配Vant主题色 */
+page {
+  --van-primary-color: #1989fa;
+  --van-danger-color: #ee0a24;
+  --van-nav-bar-height: 46px;
+}
+
+/* 公告弹窗样式 */
+.announce-popup {
+  width: 80%;
+  max-height: 70vh;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.user-info {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.post-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.popup-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.popup-body .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.popup-body .content {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #333;
+}

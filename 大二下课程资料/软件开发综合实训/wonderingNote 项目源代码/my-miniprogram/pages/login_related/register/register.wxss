@@ -1,0 +1,61 @@
+/* register.wxss */
+.register-container {
+  padding: 40rpx;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+.form-section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.custom-field {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.captcha-group {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.captcha-input {
+  flex: 1;
+}
+
+.captcha-btn {
+  width: 240rpx !important;
+  flex-shrink: 0;
+  border-radius: 50rpx !important;
+}
+
+.register-btn {
+  margin-top: 60rpx;
+  border-radius: 50rpx !important;
+  background: linear-gradient(90deg, #07c160, #20c997) !important;
+  border: none !important;
+}
+
+.error-tips {
+  color: #ee0a24;
+  font-size: 24rpx;
+  padding-left: 30rpx;
+  margin: 10rpx 0;
+}
+
+.agreement {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 40rpx;
+}
+
+.protocol-link {
+  color: #07c160;
+  text-decoration: underline;
+}

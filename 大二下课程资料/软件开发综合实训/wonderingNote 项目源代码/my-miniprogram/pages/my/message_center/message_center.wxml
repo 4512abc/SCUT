@@ -1,0 +1,141 @@
+<!-- 使用Vant导航栏 -->
+<van-nav-bar
+  title="消息中心"
+  left-text="返回"
+  left-arrow
+  custom-class="nav-bar"
+  bind:click-left="navigateBack"
+/>
+
+<view class="container">
+  <!-- 四个标签栏 -->
+  <view class="tab-bar">
+    <!-- 评论 -->
+    <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <view class="tab-icon-wrapper">
+        <van-icon name="chat-o" size="24px" />
+        <view class="unread-count" wx:if="{{commentCount > 0}}">{{commentCount}}</view>
+      </view>
+      <text class="tab-text">评论</text>
+    </view>
+    
+    <!-- 公告 -->
+    <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <view class="tab-icon-wrapper">
+        <van-icon name="bullhorn-o" size="24px" />
+        <view class="unread-count" wx:if="{{announceCount > 0}}">{{announceCount}}</view>
+      </view>
+      <text class="tab-text">公告</text>
+    </view>
+    
+    <!-- 点赞 -->
+    <view class="tab-item {{activeTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+      <view class="tab-icon-wrapper">
+        <van-icon name="good-job-o" size="24px" />
+        <view class="unread-count" wx:if="{{likeCount > 0}}">{{likeCount}}</view>
+      </view>
+      <text class="tab-text">点赞</text>
+    </view>
+    
+    <!-- 挑战 -->
+    <view class="tab-item {{activeTab === 3 ? 'active' : ''}}" bindtap="switchTab" data-index="3">
+      <view class="tab-icon-wrapper">
+        <van-icon name="flag-o" size="24px" />
+        <view class="unread-count" wx:if="{{challengeCount > 0}}">{{challengeCount}}</view>
+      </view>
+      <text class="tab-text">挑战</text>
+    </view>
+  </view>
+
+  <!-- 消息列表容器 -->
+  <scroll-view class="message-list" scroll-y bindscrolltolower="loadMore">
+    <!-- 1. 评论消息列表 -->
+    <block wx:if="{{activeTab === 0}}">
+      <view wx:for="{{commentList}}" wx:key="id" class="message-item" 
+      bindtap="navigateToBlogDetail" data-postid="{{item.post_id}}" data-type="0" data-index="{{index}}" data-id="{{item.id}}">
+        <van-image round width="80rpx" height="80rpx" src="{{item.avatar || '/images/default-avatar.png'}}" />
+        <view class="content">
+          <view class="title-row">
+            <text class="username">{{item.username}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+          <view class="message-box">
+            <text class="action">评论了你的游记《{{item.title}}》</text>
+            <view class="comment-box">{{item.content}}</view>
+          </view>
+        </view>
+        <view class="unread-dot" wx:if="{{!item.read}}"></view>
+      </view>
+      <view wx:if="{{commentList.length === 0 && !loading}}" class="empty">暂无评论消息</view>
+    </block>
+
+    <!-- 2. 公告消息列表 -->
+    <block wx:if="{{activeTab === 1}}">
+      <view wx:for="{{announceList}}" wx:key="id" class="message-item announce-item"
+      bindtap="showAnnounceDetail" data-id="{{item.id}}" data-type="1" data-index="{{index}}" >
+        <van-icon name="info-o" size="40px" color="#1980ff" />
+        <view class="content">
+          <view class="title-row">
+            <text class="title">{{item.title}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+          <text class="content-text">{{item.content}}</text>
+        </view>
+        <view class="unread-dot" wx:if="{{!item.read}}"></view>
+      </view>
+      <view wx:if="{{announceList.length === 0 && !loading}}" class="empty">暂无公告消息</view>
+    </block>
+
+    <!-- 3. 点赞消息列表 -->
+    <block wx:if="{{activeTab === 2}}">
+      <view wx:for="{{likeList}}" wx:key="id" class="message-item"
+      bindtap="navigateToBlogDetail" data-postid="{{item.post_id}}" data-type="2" data-index="{{index}}" data-id="{{item.id}}">
+        <van-image round width="80rpx" height="80rpx" src="{{item.avatar || '/images/default-avatar.png'}}" />
+        <view class="content">
+          <view class="title-row">
+            <text class="username">{{item.username}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+          <text class="action">点赞了你的游记《{{item.title}}》</text>
+        </view>
+        <view class="unread-dot" wx:if="{{!item.read}}"></view>
+      </view>
+      <view wx:if="{{likeList.length === 0 && !loading}}" class="empty">暂无点赞消息</view>
+    </block>
+
+    <!-- 4. 挑战消息列表 -->
+    <block wx:if="{{activeTab === 3}}">
+      <view wx:for="{{challengeList}}" wx:key="id" class="message-item challenge-item" data-id="{{item.id}}">
+        <van-icon name="info-o" size="40px" color="#1980ff" />
+        <view class="content">
+          <view class="title-row">
+            <text class="title">{{item.content}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+        </view>
+        <view class="unread-dot" wx:if="{{!item.read}}"></view>
+      </view>
+      <view wx:if="{{challengeList.length === 0 && !loading}}" class="empty">暂无挑战消息</view>
+    </block>
+
+    <!-- 加载状态提示 -->
+    <view wx:if="{{loading}}" class="loading">
+      <van-loading size="24px" vertical>加载中...</van-loading>
+    </view>
+  </scroll-view>
+  <van-popup show="{{showAnnounceModal}}" position="center" round custom-class="announce-popup" bind:close="hideAnnounceModal">
+    <view class="popup-content">
+      <view class="popup-header">
+        <van-image width="80rpx" height="80rpx" round src="{{currentAnnounce.user_avatar}}" />
+        <view class="user-info">
+          <text class="username">{{currentAnnounce.user_account}}</text>
+          <text class="post-time">{{currentAnnounce.create_time}}</text>
+        </view>
+      </view>
+      <view class="popup-body">
+        <view class="title">{{currentAnnounce.title}}</view>
+        <view class="content">{{currentAnnounce.content}}</view>
+      </view>
+    </view>
+  </van-popup>
+</view>

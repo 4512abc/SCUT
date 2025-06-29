@@ -1,0 +1,348 @@
+<!-- blog_detail.wxml -->
+<van-loading wx:if="{{loading}}" custom-class="loading" vertical>加载中...</van-loading>
+
+<view class="container">
+<!-- 自定义导航栏 -->
+  <van-nav-bar
+    title="游记详情"
+    left-text="返回"
+    left-arrow
+    fixed
+    placeholder
+    bind:click-left="onBackClick"
+    custom-class="nav-bar"
+    title-class="nav-title"
+  />
+  <!-- 日期栏 -->
+  <view class="date-bar" wx:if="{{postInfo && postInfo.createTime}}">
+    <text class="full-date">{{displayedDate}}</text>
+  </view>
+
+  <scroll-view class="content-wrapper" scroll-y>
+    <!-- 标题区 -->
+    <view class="title-section">
+    <text class="title">{{postInfo.title}}</text>
+    <view class="info-section">
+      <view 
+        class="info-item" 
+        wx:if="{{postInfo.landmark && postInfo.lat && postInfo.lng}}"
+        bindtap="handleLocationClick"
+      >
+        <van-icon name="location-o" />
+        <text>{{postInfo.landmark}}</text>
+      </view>
+      <!-- 以下字段API文档未提供，如需保留需确认来源 -->
+      <view class="info-item">
+        <van-icon name="smile-o" />
+        <text>{{mood}}</text>
+      </view>
+      <view class="info-item">
+        <van-icon name="sunny" />
+        <text>{{weather}}</text>
+      </view>
+    </view>
+  </view>
+
+    <!-- 标签区 - API文档未提供，如需保留需确认来源 -->
+    <view class="tags-section" wx:if="{{tags.length > 0}}">
+      <view class="tag-list">
+        <text class="tag-item" wx:for="{{tags}}" wx:key="*this">#{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 正文内容 -->
+    <view class="content-section">
+      <text class="paragraph">{{postDetail.content}}</text>
+    </view>
+    <!-- 多媒体展示区 -->
+    <view class="media-section" wx:if="{{postDetail.images.length > 0 || postDetail.videos.length > 0}}">
+
+      <!-- 图片轮播区域 -->
+      <block wx:if="{{postDetail.images.length > 0 && !(postDetail.videos && postDetail.videos.length > 0 && postDetail.videos[0] && postDetail.videos !== '[]')}}">
+        <view class="swiper-container">
+          
+          <swiper 
+            class="image-swiper" 
+            indicator-dots="{{false}}" 
+            indicator-color="rgba(255,255,255,0.5)" 
+            indicator-active-color="#ffffff"
+            autoplay="{{false}}"
+            current="{{currentSwiperIndex}}"
+            interval="5000"
+            duration="500"
+            circular="{{true}}"
+            vertical="{{false}}"
+            bindchange="onSwiperChange"
+          >
+            <block wx:for="{{parsedImages}}" wx:key="id">
+              <swiper-item>
+                <image 
+                  src="{{imageCache[item.id]}}" 
+                  data-index="{{index}}"
+                  binderror="onImageError"
+                  bindload="onImageLoad"
+                  mode="aspectFit"
+                  class="swiper-image"
+                />
+              </swiper-item>
+            </block>
+          </swiper>
+          
+          <!-- 分页指示器（自定义样式） -->
+          <view class="custom-indicator">
+            {{currentSwiperIndex + 1}} / {{postDetail.images.length}}
+          </view>
+        </view>
+      </block>
+
+      <!-- 视频展示 -->
+      <block wx:if="{{postDetail.videos && postDetail.videos.length > 0 && postDetail.videos[0] && postDetail.videos !== '[]'}}">
+        <video
+          class="content-video"
+          src="{{postDetail.videos[0]}}"
+          show-center-play-btn
+          object-fit="cover"
+          controls
+        />
+      </block>
+    </view>
+
+    <!-- 评论区 -->
+    <view class="comments-section">
+    <view class="section-title">评论 ({{postInfo.commentCount}})</view>
+
+    <!-- 评论列表 -->
+    <view class="comment-list">
+      <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+        <!-- 根评论 -->
+        <view class="root-comment" >
+          <image class="avatar" src="{{item.userAvatar || '/images/default-avatar.png'}}" bind:tap="navigateToUserDetail" data-userId="{{item.userId}}" mode="aspectFill" />
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="username" bind:tap="navigateToUserDetail" data-userId="{{item.userId}}">{{item.userName}}</text>
+              <text class="time">{{item.createTime}}</text>
+            </view>
+            <text class="comment-text">{{item.content}}</text>
+            
+            <!-- 回复按钮（始终显示） -->
+            <view class="comment-actions">
+              <view 
+                class="reply-btn" 
+                bindtap="onTapReply" 
+                data-comment-id="{{item.id}}"
+                data-user-name="{{item.userName}}"
+              >
+                <van-icon name="comment-o" size="16px" color="#666" />
+                <text>回复</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 第一条子评论（如果有） -->
+        <view class="sub-comment first" wx:if="{{item.firstSubComment}}">
+          <image class="avatar" src="{{item.firstSubComment.userAvatar || '/images/default-avatar.png'}}" bind:tap="navigateToUserDetail" data-userId="{{item.firstSubComment.userId}}" mode="aspectFill" />
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="username" bind:tap="navigateToUserDetail" data-userId="{{item.firstSubComment.userId}}">{{item.firstSubComment.userName}}</text>
+              <text class="time">{{item.firstSubComment.createTime}}</text>
+            </view>
+            <text class="comment-text">{{item.firstSubComment.content}}</text>
+          </view>
+        </view>
+
+        <!-- 查看更多回复按钮（当有子评论时显示） -->
+        <view 
+          class="view-more" 
+          wx:if="{{(item.hasMore || (subCommentsMap[item.id] && subCommentsMap[item.id].length > 0)) && (item.firstSubComment || subCommentsMap[item.id])}}"
+          bindtap="showSubCommentsPopup" 
+          data-comment-id="{{item.id}}"
+        >
+          <text>
+            查看更多回复
+          </text>
+          <van-icon name="arrow-down" size="12px" color="#999" />
+        </view>
+      </view>
+
+        <!-- 加载状态 -->
+        <view class="loading-more-comments" wx:if="{{loadingComments && comments.length > 0}}">
+          <van-loading size="24px" color="#1989fa" />
+          <text>加载中...</text>
+        </view>
+        
+        <!-- 没有更多 -->
+        <view class="no-more" wx:if="{{!hasMore && comments.length > 0}}">
+          <text>- 没有更多评论了 -</text>
+        </view>
+        
+        <!-- 暂无评论 -->
+        <view class="no-comment" wx:if="{{comments.length === 0 && !loadingComments}}">
+          <image src="/images/empty-comment.png" mode="aspectFit" />
+          <text>暂无评论，快来抢沙发吧~</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 修改底部操作栏 -->
+    <view class="footer-bar">
+      <!-- 点赞按钮 -->
+      <view class="action-button" bindtap="toggleLike">
+        <van-icon 
+          name="{{isLiked === '1' ? 'like' : 'like-o'}}" 
+          size="24px" 
+          color="{{isLiked === '1' ? '#ee0a24' : '#666'}}" 
+          wx:if="{{!likeLoading}}"
+        />
+        <van-loading wx:else size="20px" color="#1989fa" />
+        <text class="action-text">{{isLiked === '1' ? '已点赞' : '点赞'}}</text>
+        <text class="action-count" wx:if="{{postInfo.likeCount > 0}}">{{postInfo.likeCount}}</text>
+      </view>
+      <view class="action-button" bindtap="showCommentInput">
+        <van-icon name="comment-o" size="24px" color="#666" />
+        <text class="action-text">写评论</text>
+      </view>
+      <button class="share-button" open-type="share">
+        <van-icon name="share-o" size="24px" color="#666" />
+        <text class="action-text">分享</text>
+      </button>
+    </view>
+
+    <!-- 遮罩层 -->
+    <view class="mask {{showCommentInput ? 'show' : ''}}" bindtap="hideCommentInput"></view>
+
+    <!-- 评论输入区域 -->
+    <view class="comment-input-section {{showCommentInput ? 'show' : ''}}">
+      <!-- 提醒栏 -->
+      <view class="comment-header">
+        <text class="comment-title">发表评论</text>
+        <van-icon 
+          name="cross" 
+          size="24rpx" 
+          color="#999" 
+          bindtap="hideCommentInput" 
+          class="close-icon"
+        />
+      </view>
+      <view class="input-wrapper">
+        <view class="input-container">
+          <textarea
+            class="comment-input"
+            value="{{commentContent}}"
+            placeholder="写下你的评论..."
+            bindinput="onCommentInput"
+            maxlength="{{maxCommentLength}}"
+            show-confirm-bar="{{false}}"
+            adjust-position="{{false}}"
+            focus="{{showCommentInput}}"
+            fixed
+          />
+          <text class="word-count">{{commentContent.length}}/{{maxCommentLength}}</text>
+        </view>
+        <button 
+          class="submit-btn" 
+          disabled="{{!commentContent || commentContent.trim().length === 0}}" 
+          bindtap="submitComment"
+        >发送</button>
+      </view>
+    </view>
+  
+
+  <!-- 在页面最外层添加子评论弹窗 -->
+  <view class="sub-comments-modal {{(showSubCommentsPopup && !showReplyInput ) ? 'show' : ''}}">
+    <!-- 遮罩层 -->
+    <view class="modal-mask" bindtap="hideSubCommentsPopup"></view>
+    
+    <!-- 弹窗内容 -->
+    <view class="modal-content">
+      <!-- 标题栏 -->
+      <view class="modal-header">
+        <text class="modal-title">全部回复</text>
+        <van-icon 
+          name="cross" 
+          size="24rpx" 
+          color="#999" 
+          bindtap="hideSubCommentsPopup"
+          class="close-icon"
+        />
+      </view>
+      
+      <!-- 内容区域 -->
+      <scroll-view scroll-y class="modal-body">
+        <!-- 当前评论 -->
+        <view class="current-comment">
+          <image class="avatar" src="{{currentComment.userAvatar || '/images/default-avatar.png'}}" mode="aspectFill" bind:tap="navigateToUserDetail" data-userId="{{currentComment.userId}}"/>
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="username" bind:tap="navigateToUserDetail" data-userId="{{currentComment.userId}}">{{currentComment.userName}}</text>
+              <text class="time">{{currentComment.createTime}}</text>
+            </view>
+            <text class="comment-text">{{currentComment.content}}</text>
+          </view>
+        </view>
+        
+        <!-- 回复列表 -->
+        <view class="reply-list">
+          <view class="reply-count">共{{currentSubComments.length}}条回复</view>
+          
+          <view class="sub-comment-item" wx:for="{{currentSubComments}}" wx:key="id">
+            <image class="avatar" src="{{item.userAvatar || '/images/default-avatar.png'}}" mode="aspectFill" bind:tap="navigateToUserDetail" data-userId="{{item.userId}}"/>
+            <view class="comment-content">
+              <view class="comment-header">
+                <text class="username" bind:tap="navigateToUserDetail" data-userId="{{item.userId}}">{{item.userName}}</text>
+                <text class="time">{{item.createTime}}</text>
+              </view>
+              <text class="comment-text">
+                <text wx:if="{{item.parentUserName}}" class="reply-hint">回复 @{{item.parentUserName}}</text>
+                {{item.content}}
+              </text>
+              <view class="comment-actions">
+                <view class="reply-btn" bindtap="onTapReply"
+                  data-comment-id="{{item.id}}"
+                  data-user-name="{{item.userName}}"
+                  data-parent-id="{{item.parentId}}"
+                  data-parent-user-name="{{item.userName}}">
+                  <van-icon name="comment-o" size="16px" color="#666" />
+                  <text>回复</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  </view>
+
+  <!-- 遮罩层（点击关闭） -->
+  <view class="mask {{showReplyInput ? 'show' : ''}}" bindtap="hideReplyInput"></view>
+
+  <!-- 回复输入框（阻止事件冒泡） -->
+  <view class="reply-input-section {{showReplyInput ? 'show' : ''}}" catchtap="noop">
+    <view class="comment-header">
+      <text class="comment-title">回复 @{{replyingTo}}</text>
+    </view>
+    <view class="input-wrapper">
+      <textarea
+        class="reply-input"
+        value="{{replyContent}}"
+        placeholder="写下你的回复..."
+        bindinput="onReplyInput"
+        bindfocus="onInputFocus"  
+        bindblur="onInputBlur"    
+        maxlength="{{maxCommentLength}}"
+        focus="{{showReplyInput}}"
+        auto-height
+        style="border: 1px" 
+      />
+      <view class="input-footer">
+        <text class="word-count">{{replyContent.length}}/{{maxCommentLength}}</text>
+        <button 
+          class="submit-btn" 
+          disabled="{{!replyContent || replyContent.trim().length === 0}}" 
+          bindtap="submitReply"
+        >发送</button>
+      </view>
+    </view>
+  </view>

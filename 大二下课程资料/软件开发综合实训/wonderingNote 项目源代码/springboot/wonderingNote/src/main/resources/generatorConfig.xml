@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 该文件用于Mybatis数据库-Java类映射的自动生成，在下面的代码里注释掉了表，实际开发过程中每次启动测试都是根据此配置文件重新生成Mapper与entity类 -->
+<!-- 请自己注意，初始化用完后请注释掉table相关部分，以免复写你自己的代码 --> 
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- context元素用于指定生成一组对象的环境。targetRuntime:此属性用于指定生成的代码的运行时环境。MyBatis3:*这是默认值*-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false" />
+            <!-- 阻止注释中包含时间戳 true：是 ： false:否 -->
+            <property name="suppressDate" value="true" />
+            <!--  注释是否包含数据库表的注释信息  true：是 ： false:否 -->
+            <property name="addRemarkComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://8.138.201.121:3306/wonderingNote?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2b8"
+                userId="zxc"
+                password="zxc?666">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+        <!-- 如使用oracle请参考如下 -->
+        <!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+        userId="test"
+        password="test">
+        </jdbcConnection> -->
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+        NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+        <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="org.example.model.entity"
+                            targetProject=".\src\main\java">
+        <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <property name="enableSubPackages" value="false"/>
+        <!-- 从数据库返回的值被清理前后的空格 -->
+        <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                        targetProject=".\src\main\resources">
+        <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                            targetPackage="org.example.mapper"
+                            targetProject=".\src\main\java">
+        <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+<!-- 每个table标签都是用来完成Mybatis映射的，没有啥要讲的，所有的都不用改，直接换成你数据库的表名就OK了 -->
+
+<!--        &lt;!&ndash; 指定数据库表 &ndash;&gt;-->
+<!--        <table tableName="challenge" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--            enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="audit_log" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="challenge" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="challenge_tag" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="comment" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="face_encoding" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="face_features" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="follow" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="forward" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="landmark" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="like" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="notification" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="operation_log" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="participation" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="post" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="post_tag" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="report" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="sms_code" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="tag" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="team" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="team_member" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="user" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="user_profile" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="user_tag" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+<!--        <table tableName="file_info" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+        <!-- 有些表的字段需要指定java类型
+        <table schema="" tableName="">
+        <columnOverride column="" javaType="" />
+        </table> -->
+    </context>
+</generatorConfiguration>
+

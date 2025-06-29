@@ -1,0 +1,451 @@
+<view class="container">
+  <!-- 导航栏 -->
+  <van-nav-bar
+    title="创建挑战"
+    fixed
+    placeholder
+    border="{{false}}"
+    safe-area-inset-top
+    custom-class="nav-bar"
+    title-class="nav-title"
+    left-text="返回"
+    left-arrow
+    bind:click-left="navigateBack"
+  />
+
+  <!-- 地图区域 -->
+  <view class="map-container">
+   <!-- 修改地图提示层，添加catchtap阻止事件冒泡 -->
+    <view class="map-hint" wx:if="{{!locationSelected}}" catchtap="hideHint">
+      <view class="hint-content">
+        <van-icon name="location" size="24px" color="#07C160" />
+        <text class="hint-text">请点击地图选择打卡地点</text>
+      </view>
+    </view>
+    
+    <map
+      id="map"
+      longitude="{{formData.location.lng}}"
+      latitude="{{formData.location.lat}}"
+      scale="14"
+      show-location
+      class="map"
+      bindtap="onMapTap"
+      markers="{{markers}}"
+    >
+      <!-- 添加自定义控件 -->
+      <cover-view class="map-controls">
+        <cover-view class="recenter-btn" bindtap="recenterMap">
+          <cover-image src="/images/location.png" class="recenter-icon" />
+        </cover-view>
+      </cover-view>
+    </map>
+    
+    <!-- 显示已选坐标 -->
+    <view class="coordinates-display" wx:if="{{locationSelected}}">
+      <text class="landmark-name" wx:if="{{formData.landmark_name}}">地标名称: {{formData.landmark_name}}</text>
+    </view>
+  </view>
+
+  <!-- 表单区域 -->
+  
+  <scroll-view class="form-container" scroll-y>
+    <!-- 在表单区域顶部添加错误提示 -->
+    <view wx:if="{{validationErrorText}}" class="error-message">
+      <van-icon name="warning" color="#ee0a24" />
+      <text>{{validationErrorText}}</text>
+    </view>
+    <!-- 标题 -->
+    <view class="form-item required">
+      <text class="form-label">挑战标题：</text>
+      <input
+        class="input"
+        placeholder="请输入标题（最多30字）"
+        maxlength="30"
+        value="{{formData.title}}"
+        bindinput="onTitleInput"
+      />
+    </view>
+    
+    <!-- 挑战文案 -->
+    <view class="form-item required">
+      <text class="form-label">挑战描述：</text>
+      <textarea
+        class="textarea"
+        placeholder="请输入挑战描述（最多200字）"
+        maxlength="200"
+        value="{{formData.description}}"
+        bindinput="onDescriptionInput"
+      />
+      <text class="word-count">{{descriptionLength}}/200</text>
+    </view>
+
+    <!-- 图片上传区域 -->
+    <view class="form-item">
+      <text class="form-label">挑战相关图片：</text>
+      <view class="image-uploader">
+        <!-- 已上传图片预览 -->
+        <view 
+          wx:for="{{tempImages}}" 
+          wx:key="*this" 
+          class="image-preview"
+        >
+          <image 
+            src="{{item}}" 
+            mode="aspectFill" 
+            bindtap="previewImage"
+            data-index="{{index}}"
+          />
+          <view class="delete-wrapper" catchtap="deleteImage" data-index="{{index}}">
+            <van-icon name="clear" class="delete-icon" />
+          </view>
+        </view>
+        
+        <!-- 上传按钮 -->
+        <view 
+          wx:if="{{tempImages.length < 9}}" 
+          class="upload-btn" 
+          bindtap="chooseImages"
+        >
+          <van-icon name="plus" size="36rpx" />
+          <text>添加图片({{tempImages.length}}/9)</text>
+        </view>
+        
+        <!-- 上传状态 -->
+        <view wx:if="{{uploading}}" class="uploading-text">
+          <van-loading size="24px" color="#1989fa" />
+          <text>上传中...</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 有效范围 -->
+    <view class="form-item required">
+      <text class="form-label">有效范围：</text>
+      <picker
+        mode="selector"
+        range="{{rangeOptions}}"
+        range-key="label"
+        value="{{selectedRangeIndex}}"
+        bindchange="onRangeChange"
+      >
+        <view class="picker">
+          {{rangeDisplayText}}  
+          <van-icon name="arrow" size="14px" color="#999" />
+        </view>
+      </picker>
+    </view>
+
+    <!-- 手势打卡选择 -->
+    <view class="form-item">
+      <text class="form-label">添加手势语义打卡</text>
+      <view class="gesture-picker" bindtap="showGesturePicker">
+        <text>{{currentGestureLabel}}</text>
+        <van-icon name="arrow" size="14px" color="#999" />
+      </view>
+    </view>
+
+    <van-action-sheet 
+      show="{{ showGesturePicker }}"
+      actions="{{ gestureOptions }}"
+      bind:select="handleGestureSelect" 
+      bind:close="hideGesturePicker"
+    />
+
+    <view class="form-item">
+      <text class="form-label">特殊打卡选择：</text>
+      <!-- 模式选择 -->
+      <van-radio-group 
+        value="{{formData.checkMode}}" 
+        bind:change="onCheckModeChange"
+      >
+        <van-radio name="none" icon-size="16px">无</van-radio>
+        <van-radio name="scene" icon-size="16px">场景识别</van-radio>
+        <van-radio name="object" icon-size="16px">物体识别</van-radio>
+      </van-radio-group>
+
+      <!-- 场景选择 -->
+      <view wx:if="{{formData.checkMode === 'scene'}}" style="margin-top: 20rpx;">
+        <picker 
+          mode="selector" 
+          range="{{sceneOptions}}" 
+          range-key="label"
+          bindchange="onSceneSelect"
+        >
+          <view class="picker">
+            {{currentSceneLabel || '请选择场景'}}
+            <van-icon name="arrow" size="14px" color="#999" />
+          </view>
+        </picker>
+      </view>
+
+     
+      <!-- 物体识别 -->
+      <!-- 物体识别引导弹窗 -->
+      <van-popup 
+        show="{{ showObjectModeDialog }}"
+        position="center"
+        round
+        custom-class="transparent-popup" 
+        overlay-style="background-color: rgba(0,0,0,0); width: 90%; max-width: 700rpx;" 
+      >
+        <view class="object-guide-popup">
+          <view class="object-guide-header">
+            <text class="object-guide-title">物体识别说明</text>
+          </view>
+          
+          <view class="object-guide-content">
+            <view class="object-guide-item">
+              <van-icon name="info" color="#1989fa" size="36rpx" />
+              <text>请上传清晰的物体照片进行识别</text>
+            </view>
+            <view class="object-guide-item">
+              <van-icon name="warning" color="#ff976a" size="36rpx" />
+              <text>识别结果仅供参考，需要确认上传的物体是否能是否后再使用</text>
+            </view>
+          </view>
+          
+          <view class="object-guide-footer">
+            <van-button 
+              type="primary" 
+              size="small" 
+              custom-class="object-guide-confirm"
+              bind:tap="confirmObjectMode"
+            >我知道了</van-button>
+          </view>
+        </view>
+      </van-popup>
+
+      <view wx:if="{{formData.checkMode === 'object'}}" style="margin-top: 20rpx;">
+
+        <view wx:if="{{!formData.object_type}}" class="upload-area" bindtap="chooseObjectImage">
+          <van-icon name="photograph" size="48rpx" />
+          <text>点击上传物体图片</text>
+        </view>
+        
+        <view wx:if="{{formData.object_type}}" class="object-preview">
+          <image src="{{tempObjectImage}}" mode="aspectFit"></image>
+          <text>识别结果：{{objectDetectResult}}</text>
+          <van-button size="mini" bindtap="resetObject">重新选择</van-button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 自定义范围输入弹窗 - 使用van-popup替代van-dialog -->
+    <van-popup 
+      show="{{showRangeInputDialog}}"
+      position="bottom"
+      round
+      custom-style="height: 40%;"
+    >
+      <view class="custom-range-popup">
+        <view class="popup-header">
+          <text class="popup-title">请输入有效范围</text>
+        </view>
+        <view class="popup-content">
+          <van-field
+            value="{{tempCustomRange}}"
+            placeholder="请输入范围(米)"
+            type="number"
+            border="{{false}}"
+            bind:change="onCustomRangeInput"
+          />
+          <text class="unit">米</text>
+        </view>
+        <view class="popup-footer">
+          <van-button 
+            plain 
+            type="default" 
+            size="small" 
+            bind:tap="cancelCustomRange"
+          >取消</van-button>
+          <van-button 
+            type="primary" 
+            size="small" 
+            bind:tap="confirmCustomRange"
+          >确定</van-button>
+        </view>
+      </view>
+    </van-popup>
+
+    <!-- 参与设置 -->
+    <view class="form-item">
+      <view class="group-header">
+        <text class="form-label">参与群组：</text>
+        <van-button
+          size="small"
+          plain
+          icon="plus"
+          bind:click="selectGroup"
+        >
+          添加群组
+        </van-button>
+      </view>
+      
+      <!-- 已选群组列表 -->
+      <view class="group-list">
+        <view wx:if="{{selectedGroup}}" class="group-item">
+          {{selectedGroup.name}}
+          <van-icon name="cross" bind:tap="removeGroup" />
+        </view>
+        
+        <view wx:if="{{!selectedGroup}}" class="group-empty">
+          <text>暂未选择群组</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 在 popup 外部添加遮罩层 -->
+    <view 
+      wx:if="{{showGroupPicker}}" 
+      class="popup-mask" 
+      catch:tap="closeGroupPicker"
+    ></view>
+    <!-- 群组选择弹窗 -->
+    <!-- 将遮罩层放在 van-popup 内部 -->
+    <van-popup 
+      show="{{showGroupPicker}}" 
+      position="bottom" 
+      round
+      custom-style="height: 40%;"
+      safe-area-inset-bottom
+    >
+      <!-- 遮罩层（放在 popup 内部） -->
+      <view 
+        class="popup-mask" 
+        catch:tap="closeGroupPicker"
+      ></view>
+      
+      <!-- 弹窗内容容器 -->
+      <view class="popup-content">
+        <view class="picker-header">
+          <text class="picker-title">选择群组</text>
+          <text class="picker-hint">(只能选择一个自己创建的群组)</text>
+        </view>
+          
+          <scroll-view scroll-y class="group-picker-container">
+            <view wx:if="{{loadingGroups}}" class="loading-text">
+              <van-loading size="24px">加载中...</van-loading>
+            </view>
+            
+            <view 
+              wx:for="{{availableGroups}}" 
+              wx:key="id" 
+              class="group-option {{selectedGroup && selectedGroup.id === item.id ? 'selected' : ''}}"
+              bindtap="selectSingleGroup"
+              data-group="{{item}}"
+            >
+              <image wx:if="{{item.logo}}" src="{{item.logo}}" class="group-logo" />
+              <view class="group-info">
+                <text class="group-name">{{item.name}}</text>
+                <text class="group-meta">创建于: {{item.formatted_create_time || '未知时间'}}</text>
+              </view>
+              <van-icon 
+                name="success" 
+                size="16px" 
+                color="#07C160" 
+                wx:if="{{selectedGroup && selectedGroup.id === item.id}}"
+              />
+            </view>
+            
+            <view wx:if="{{!loadingGroups && availableGroups.length === 0}}" class="empty-tip">
+              暂无创建的群组
+            </view>
+          </scroll-view>
+          
+      </view>
+    </van-popup>
+
+   <!-- 人脸识别 -->
+    <view class="form-item face-verify">
+      <view class="face-verify-container">
+        <text class="form-label">是否启用人脸识别：</text>
+        <van-switch
+          checked="{{formData.needFaceVerify === 1}}"
+          bind:change="onFaceVerifyChange"
+          active-color="#07c160"
+          size="24px"
+        />
+      </view>
+      <text wx:if="{{formData.needFaceVerify === 1}}" class="face-tip">
+        * 参与者需先完成人脸注册
+      </text>
+    </view>
+
+    <!-- 开始时间 -->
+    <view class="form-item required">
+      <text class="form-label">开始时间：</text>
+      <view class="picker" bindtap="showStartPicker">
+        {{startDateTime || '请选择开始时间'}}
+        <van-icon name="arrow" size="14px" color="#999" />
+      </view>
+    </view>
+
+    <!-- 结束时间 -->
+    <view class="form-item required">
+      <text class="form-label">结束时间：</text>
+      <view class="picker" bindtap="showEndPicker">
+        {{endDateTime || '请选择结束时间'}}
+        <van-icon name="arrow" size="14px" color="#999" />
+      </view>
+    </view>
+
+   <!-- 开始时间选择器 -->
+    <view wx:if="{{showStartPicker}}" class="time-picker-mask" catchtap="onPickerCancel"></view>
+    <van-popup 
+      show="{{ showStartPicker }}" 
+      position="bottom" 
+      round 
+      custom-class="time-picker-popup"
+      overlay-style="display: none" 
+    >
+      <view class="picker-header">
+        <text class="picker-title">选择开始时间</text>
+      </view>
+      <van-datetime-picker
+        type="datetime"
+        value="{{ currentStartDate }}"
+        min-date="{{ minDate }}"
+        max-date="{{ maxDate }}"
+        formatter="{{formatter}}"
+        bind:confirm="onStartConfirm"
+        bind:cancel="onPickerCancel"
+      />
+    </van-popup>
+
+    <!-- 结束时间选择器 -->
+    <view wx:if="{{showEndPicker}}" class="time-picker-mask" catchtap="onPickerCancel"></view>
+    <van-popup 
+      show="{{ showEndPicker }}" 
+      position="bottom" 
+      round 
+      custom-class="time-picker-popup"
+      overlay-style="display: none"
+    >
+      <view class="picker-header">
+        <text class="picker-title">选择结束时间</text>
+      </view>
+      <van-datetime-picker
+        type="datetime"
+        value="{{ currentEndDate }}"
+        min-date="{{ minDate }}"
+        max-date="{{ maxDate }}"
+        formatter="{{formatter}}"
+        bind:confirm="onEndConfirm"
+        bind:cancel="onPickerCancel"
+      />
+    </van-popup>
+  </scroll-view>
+
+  <!-- 发布按钮 -->
+  <van-button
+    type="primary"
+    block
+    custom-class="submit-btn"
+    loading="{{submitting}}"
+    disabled="{{!formValid}}"
+    bind:click="submitChallenge"
+  >
+    {{submitting ? '发布中...' : '立即发布'}}
+  </van-button>
+</view>

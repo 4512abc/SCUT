@@ -1,0 +1,469 @@
+/* 基础变量定义 */
+:root {
+  --primary-color: #07c160;
+  --secondary-color: #1980ff;
+  --accent-color: #ff6b6b;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-tertiary: #999;
+  --border-color: #f0f0f0;
+  --bg-color: #f8f8f8;
+  --card-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 12rpx 40rpx rgba(0, 0, 0, 0.12);
+}
+
+/* 基础样式 */
+page {
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.container {
+  padding-bottom: 40rpx;
+}
+
+/* 导航栏样式 */
+.nav-bar {
+  --nav-bar-height: 88rpx;
+  --nav-bar-title-font-size: 36rpx;
+  --nav-bar-text-color: var(--text-primary);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.nav-right .time {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+/* 用户信息区 */
+.user-info {
+  padding: 40rpx 30rpx;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  margin-bottom: 20rpx;
+  animation: fadeInDown 0.6s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-bottom: 30rpx;
+  border: 4rpx solid #fff;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.avatar:active {
+  transform: scale(0.95);
+}
+
+.avatar::after {
+  content: '✈';
+  position: absolute;
+  bottom: -10rpx;
+  right: -10rpx;
+  background: #ffd700;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.username {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 16rpx;
+  letter-spacing: 1rpx;
+}
+
+.school {
+  font-size: 30rpx;
+  color: var(--text-secondary);
+  margin-bottom: 40rpx;
+  font-weight: 300;
+}
+
+.motto {
+  padding: 20rpx 40rpx;
+  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  position: relative;
+  border-left: 8rpx solid var(--primary-color);
+  padding-left: 60rpx;
+  transition: all 0.3s ease;
+}
+
+.motto:active {
+  transform: translateY(2rpx);
+}
+
+.motto::before {
+  content: '“';
+  position: absolute;
+  left: 20rpx;
+  top: 10rpx;
+  font-size: 48rpx;
+  color: var(--primary-color);
+}
+
+/* 数据卡片 */
+.data-cards {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30rpx;
+  margin: 40rpx 0;
+  gap: 20rpx;
+  animation: fadeInUp 0.6s both 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-item {
+  flex: 1;
+  text-align: center;
+  background: #fff;
+  padding: 30rpx 20rpx;
+  border-radius: 20rpx;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-item:active {
+  transform: translateY(4rpx);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.number {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 10rpx;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Tab切换 */
+.tabs-container {
+  margin: 0 30rpx 30rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.6s both 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tabs {
+  display: flex;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 32rpx;
+  color: var(--text-secondary);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 6rpx;
+  background: var(--primary-color);
+  border-radius: 3rpx;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tab.active .tab-indicator {
+  width: 80rpx;
+}
+
+.tab-slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(7, 193, 96, 0.08);
+  border-radius: 16rpx;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 0;
+}
+
+/* 内容区域 */
+.tab-content {
+  padding: 0 30rpx;
+  animation: fadeIn 0.6s both 0.6s;
+}
+
+/* 博文卡片 */
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+  transform: translateY(20rpx);
+  animation: cardEnter 0.6s forwards;
+}
+
+@keyframes cardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-card:nth-child(1) { animation-delay: 0.7s; }
+.post-card:nth-child(2) { animation-delay: 0.8s; }
+.post-card:nth-child(3) { animation-delay: 0.9s; }
+.post-card:nth-child(4) { animation-delay: 1.0s; }
+
+.post-card:active {
+  transform: translateY(4rpx) !important;
+  box-shadow: var(--card-shadow-hover);
+}
+
+.post-cover {
+  width: 100%;
+  height: 400rpx;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.post-card:active .post-cover {
+  transform: scale(1.02);
+}
+
+.post-content {
+  padding: 30rpx;
+}
+
+.post-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 20rpx;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.post-desc {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 25rpx;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 30rpx;
+}
+
+.tag {
+  font-size: 24rpx;
+  color: var(--primary-color);
+  background: rgba(7, 193, 96, 0.1);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.tag:active {
+  background: rgba(7, 193, 96, 0.2);
+  transform: scale(0.95);
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid var(--border-color);
+  padding-top: 20rpx;
+}
+
+.post-time {
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+  transition: color 0.3s ease;
+}
+
+.post-actions {
+  display: flex;
+  gap: 30rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.action-item:active {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.action-item:active van-icon {
+  animation: bounce 0.4s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* 挑战列表 */
+.challenge-item {
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30rpx;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInRight 0.6s forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.challenge-item:nth-child(1) { animation-delay: 0.7s; }
+.challenge-item:nth-child(2) { animation-delay: 0.8s; }
+.challenge-item:nth-child(3) { animation-delay: 0.9s; }
+
+.challenge-item:active {
+  transform: translateY(4rpx);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.challenge-image {
+  width: 100%;
+  height: 300rpx;
+  display: block;
+}
+
+.challenge-info {
+  padding: 30rpx;
+}
+
+.challenge-info .title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.challenge-info .progress {
+  font-size: 26rpx;
+  color: var(--primary-color);
+}
+
+/* 无更多内容 */
+.no-more {
+  text-align: center;
+  padding: 50rpx 0;
+  font-size: 28rpx;
+  color: var(--text-tertiary);
+  animation: fadeIn 0.6s both;
+}
+
+/* 加载动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  width: 40rpx;
+  height: 40rpx;
+  border: 4rpx solid rgba(7, 193, 96, 0.2);
+  border-top: 4rpx solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 30rpx auto;
+}

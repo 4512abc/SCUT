@@ -1,0 +1,132 @@
+.container {
+  background: #ffffff;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.search-section {
+  background: #fff;
+  padding: 20rpx 40rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  border-radius: 8rpx;
+}
+
+.search-btn {
+  margin-left: 20rpx !important;
+  border-radius: 8rpx !important;
+}
+
+.like-list {
+  padding: 20rpx 40rpx;
+}
+
+.like-item {
+  margin-bottom: 30rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  padding: 10rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.username {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.time-section {
+  padding: 10rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.date {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.post-image {
+  width: 100%;
+  height: 280rpx; /* 调整图片高度 */
+  display: block;
+  object-fit: cover;
+}
+
+.content-info {
+  padding: 10rpx;
+}
+
+.title {
+  font-size: 28rpx; /* 调整标题字体大小 */
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx; /* 调整地址字体大小 */
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.location van-icon {
+  margin-right: 6rpx;
+}
+
+.interaction {
+  display: flex;
+  padding-top: 10rpx;
+  border-top: 1rpx solid #f5f5f5;
+}
+
+.interaction-item {
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.count {
+  font-size: 22rpx; /* 调整互动计数字体大小 */
+  color: #999;
+  margin-left: 6rpx;
+}
+
+.loading-class {
+  padding: 20px 0;
+}
+
+.no-more {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  padding: 10px 0;
+}

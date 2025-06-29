@@ -1,0 +1,93 @@
+/* my_settings.wxss */
+.settings-container {
+  min-height: 100vh;
+  background: #f7f8fa;
+}
+
+.settings-content {
+  padding: 24rpx;
+}
+
+.settings-section {
+  margin-bottom: 32rpx;
+}
+
+.section-title {
+  padding: 24rpx 32rpx 16rpx;
+  color: #969799;
+  font-size: 28rpx;
+}
+
+.setting-group {
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+/* 主题色预览 */
+.theme-preview {
+  display: flex;
+  align-items: center;
+}
+
+.color-block {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+  border: 1rpx solid rgba(0,0,0,0.1);
+}
+
+/* 主题选择器样式 */
+.theme-picker {
+  padding: 32rpx;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 32rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24rpx;
+  padding: 16rpx 0;
+}
+
+.theme-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx;
+  border-radius: 12rpx;
+  transition: all 0.3s;
+}
+
+.theme-item.active {
+  background: #f2f3f5;
+}
+
+.theme-color {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  margin-bottom: 12rpx;
+  border: 1rpx solid rgba(0,0,0,0.1);
+}
+
+.theme-name {
+  font-size: 24rpx;
+  color: #646566;
+}
+
+.loading-class {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}

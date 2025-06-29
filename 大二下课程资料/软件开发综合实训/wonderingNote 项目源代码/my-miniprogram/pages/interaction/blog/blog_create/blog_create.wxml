@@ -1,0 +1,270 @@
+<!-- blog_edit.wxml -->
+<view class="container">
+  <van-nav-bar
+    title="漫游日志"
+    left-text="返回"
+    left-arrow
+    fixed
+    placeholder
+    bind:click-left="navigateBack"
+    safe-area-inset-top
+  />
+  
+  <!-- 状态信息区 -->
+  <view class="status-section">
+    <!--  -->
+    <view class="date-info">
+      <view class="date-row">{{currentDate}}</view>
+      <view class="lunar-row">{{lunarDate}}</view>
+    </view>
+    <view class="mood-weather">
+      <view class="status-item" bindtap="showMoodPicker">
+        <van-icon name="smile-o" size="36rpx" />
+        <text>{{mood || '请选择心情'}}</text> 
+      </view>
+      <view class="status-item" bindtap="showWeatherPicker">
+        <van-icon name="plus" size="36rpx" />
+        <text>{{weather || '请选择天气'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标题区域 -->
+  <view class="title-section">
+    <van-field
+      value="{{ title }}"
+      placeholder="给今天写个标题吧..."
+      border="{{ false }}"
+      maxlength="30"
+      bind:change="onTitleChange"
+      custom-style="background: #fff; padding: 32rpx;"
+    />
+  </view>
+
+  <!-- 编辑器 -->
+  <view class="editor-section">
+    <text class="hint-text">✍️ 写下今日感想、感恩、成长、快乐...</text>
+    <view class="editor-tools">
+      <text class="word-count">{{wordCount}}/1000字</text>
+      <van-button
+        type="primary"
+        size="small"
+        icon="photo-o"
+        bind:click="chooseMedia"
+      >上传图片/视频</van-button>
+    </view>
+    
+    <textarea
+      class="content-input"
+      placeholder="开始写作..."
+      maxlength="1000"
+      auto-height
+      bindinput="onContentChange"
+      value="{{content}}"
+    />
+
+    <!-- 媒体展示区 -->
+    <block wx:if="{{mediaList.length > 0}}">
+      <view class="media-type-tag">
+        <text>{{mediaType === 'image' ? '图片' : '视频'}}</text>
+      </view>
+      
+      <view class="media-list {{mediaType === 'video' ? 'video-list' : ''}}">
+        <block wx:if="{{mediaType === 'image'}}">
+          <view class="media-item" wx:for="{{mediaList}}" wx:key="*this">
+            <image
+              src="{{item}}"
+              mode="aspectFill"
+              bindtap="previewMedia"
+              data-url="{{item}}"
+            />
+            <van-icon
+              name="cross"
+              class="delete-icon"
+              bindtap="deleteMedia"
+              data-index="{{index}}"
+            />
+          </view>
+        </block>
+        
+        <block wx:if="{{mediaType === 'video'}}">
+          <view class="media-item video-item">
+            <video
+              src="{{mediaList[0]}}"
+              show-center-play-btn
+              object-fit="cover"
+            />
+            <van-icon
+              name="cross"
+              class="delete-icon"
+              bindtap="deleteMedia"
+              data-index="0"
+            />
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <!-- 设置区 -->
+  <view class="settings-section">
+    <van-cell-group>
+      <van-cell title="可见性" icon="eye-o">
+        <van-radio-group
+          value="{{visibility}}"
+          bind:change="onVisibilityChange"
+          direction="horizontal"
+        >
+          <van-radio name="public">公开</van-radio>
+          <van-radio name="private">私密</van-radio>
+        </van-radio-group>
+      </van-cell>
+
+      <van-cell
+        title="标签"
+        icon="label-o"
+        is-link
+        bind:click="showTagPicker"
+        value="{{selectedTagsText}}"
+      />
+
+      <van-cell
+        title="位置"
+        icon="location-o"
+        is-link
+        value="{{landmark_name}}"
+        bind:click="chooseLocation"
+      />
+    </van-cell-group>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="action-section">
+    <van-button
+      block
+      type="primary"
+      disabled="{{!content}}"
+      bind:click="saveBlog"
+    >保存</van-button>
+  </view>
+
+  <!-- 心情选择器 -->
+  <van-popup
+    show="{{showMoodPicker}}"
+    position="bottom"
+    round
+    overlay
+    bind:close="onCloseMoodPicker"
+    safe-area-inset-bottom
+  >
+    <view class="picker-wrapper">
+      <view class="picker-header">
+        <text>选择心情</text>
+        <text class="picker-hint">今天感觉如何?</text>
+        <van-icon name="cross" bind:click="onCloseMoodPicker" />
+      </view>
+      
+      <view class="mood-grid">
+        <view 
+          class="mood-item {{mood === item.value ? 'active' : ''}}"
+          wx:for="{{moodList}}"
+          wx:key="value"
+          bindtap="selectMood"
+          data-value="{{item.value}}"
+        >
+          <van-icon name="{{item.icon}}" />
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+
+  <!-- 天气选择器 -->
+  <van-popup
+    show="{{showWeatherPicker}}"
+    position="bottom"
+    round
+    overlay
+    bind:close="onCloseWeatherPicker"
+    safe-area-inset-bottom
+  >
+    <view class="picker-wrapper">
+      <view class="picker-header">
+        <text>选择天气</text>
+        <text class="picker-hint">今天天气怎么样?</text>
+        <van-icon name="cross" bind:click="onCloseWeatherPicker" />
+      </view>
+
+      <view class="weather-grid">
+        <view 
+          class="weather-item {{weather === item.value ? 'active' : ''}}"
+          wx:for="{{weatherList}}"
+          wx:key="value"
+          bindtap="selectWeather"
+          data-value="{{item.value}}"
+        >
+          <van-icon name="{{item.icon}}" />
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+
+  <!-- 标签选择器 -->
+  <van-popup
+    show="{{showTagPicker}}"
+    position="bottom"
+    round
+    overlay
+    bind:close="onCloseTagPicker"
+    safe-area-inset-bottom
+  >
+    <view class="tag-picker">
+      <view class="tag-picker-header">
+        <text class="tag-picker-title">选择标签(已选{{selectedTags.length}}/5)</text>
+        <van-icon name="cross" bind:click="onCloseTagPicker" />
+      </view>
+
+      <view class="tag-input">
+        <van-field
+          value="{{newTag}}"
+          placeholder="添加个人自定义标签选项"
+          border
+          maxlength="10"
+          bind:change="onTagInput"
+          use-button-slot
+        >
+          <van-button
+            slot="button"
+            size="small"
+            type="primary"
+            bind:click="addNewTag"
+          >添加</van-button>
+        </van-field>
+      </view>
+
+      <view class="tag-tips">
+        <text wx:if="{{!selectedTags.length}}">点击下方标签进行选择(最多5个)</text>
+        <view class="selected-preview" wx:else>
+          <text>已选标签：</text>
+          <text class="selected-tag" wx:for="{{selectedTags}}" wx:key="*this">#{{item}}</text>
+        </view>
+      </view>
+
+      <scroll-view class="tag-list" scroll-y>
+        <view
+          class="tag-item {{selectedTags.includes(tag) ? 'active' : ''}}"
+          wx:for="{{tags}}"
+          wx:key="*this"
+          wx:for-item="tag"
+          data-tag="{{tag}}"
+          bindtap="onTagSelect"
+        >#{{tag}}</view>
+      </scroll-view>
+
+      <view class="tag-actions">
+        <van-button block type="primary" bind:click="onCloseTagPicker">确定</van-button>
+      </view>
+    </view>
+  </van-popup>
+</view>

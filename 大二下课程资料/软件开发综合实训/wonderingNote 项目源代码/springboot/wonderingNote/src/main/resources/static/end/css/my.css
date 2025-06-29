@@ -1,0 +1,101 @@
+.mb-red {
+    background-color: red;
+}
+
+.mb-pink {
+    background-color: pink;
+}
+
+.mb-dull {
+    background-color: #8F8F2C;
+}
+
+.mb-orange {
+    background-color: orange;
+}
+
+.mb-orangered {
+    background-color: orangered;
+}
+
+.mb-olive {
+    background-color: olive;
+}
+
+.mb-olivedrab {
+    background-color: olivedrab;
+}
+
+.mb-orchid {
+    background-color: orchid;
+}
+
+.mb-darkcyan {
+    background-color: darkcyan;
+}
+
+.mb-darkolivegreen {
+    background-color: darkolivegreen;
+}
+
+.mb-darkseagreen {
+    background-color: darkseagreen;
+}
+
+.mb-burlywood {
+    background-color: burlywood;
+}
+
+.mb-cadetblue {
+    background-color: cadetblue;
+}
+
+.mb-chocolate {
+    background-color: chocolate;
+}
+
+.mb-forestgreen {
+    background-color: forestgreen;
+}
+
+.mb-green {
+    background-color: green;
+}
+
+.alert {
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

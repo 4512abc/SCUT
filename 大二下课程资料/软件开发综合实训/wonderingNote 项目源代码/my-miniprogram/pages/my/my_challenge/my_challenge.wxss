@@ -1,0 +1,366 @@
+/* my_challenges.wxss */
+/* 导航栏样式 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  z-index: 100;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 30rpx;
+  margin-top: calc(var(--status-bar-height, 44px));
+}
+
+.back-icon {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.placeholder {
+  width: 60rpx;
+}
+
+/* 容器样式 */
+.container {
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding-top: calc(88rpx + var(--status-bar-height, 44px));
+}
+
+/* 搜索区域样式 */
+.search-section {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background: #fff;
+}
+
+.custom-search {
+  flex: 1;
+  margin-right: 20rpx;
+  --search-background-color: #f5f5f5 !important;
+  --search-padding: 20rpx !important;
+  --search-input-height: 64rpx !important;
+}
+
+.search-btn {
+  width: 200rpx !important;
+  height: 64rpx !important;
+  border-radius: 32rpx !important;
+  font-weight: normal !important;
+}
+
+/* 主标签栏样式 */
+.main-tab-bar {
+  display: flex;
+  background: #fff;
+  padding: 0 60rpx;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.main-tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  color: #666;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.main-tab-item.active {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.main-tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48rpx;
+  height: 4rpx;
+  background: #1890ff;
+  border-radius: 2rpx;
+  transition: all 0.3s;
+}
+
+/* 子标签栏样式优化 */
+.sub-tab-bar {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 40rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.sub-tab-item {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  padding: 10rpx 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.sub-tab-item.active {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.sub-tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: #1890ff;
+  border-radius: 2rpx;
+}
+
+/* 挑战列表样式 */
+.challenge-list {
+  height: calc(100vh - 480rpx);
+  padding: 20rpx 30rpx;
+}
+
+.challenge-item {
+  display: flex;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.challenge-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+  margin-right: 24rpx;
+  background-color: #f5f5f5;
+  object-fit: cover;
+}
+
+.info-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.status-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16rpx 0;
+}
+
+.deadline {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.status.ongoing {
+  color: #1890ff;
+  background: rgba(24, 144, 255, 0.1);
+}
+
+.status.completed {
+  color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.bottom-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.participants {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.enter-btn {
+  min-width: 140rpx !important;
+  height: 60rpx !important;
+  border-radius: 30rpx !important;
+  font-size: 26rpx !important;
+  padding: 0 24rpx !important;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 挑战列表样式补充 */
+.challenge-list {
+  height: calc(100vh - 450rpx);
+  padding: 20rpx 30rpx;
+}
+
+.challenge-item {
+  display: flex;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.challenge-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+  margin-right: 24rpx;
+  object-fit: cover;
+}
+
+.info-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.status-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.deadline {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.status.ongoing {
+  color: #1890ff;
+  background: rgba(24, 144, 255, 0.1);
+}
+
+.status.completed {
+  color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.progress-box {
+  margin: 16rpx 0;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.bottom-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.participants {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.enter-btn {
+  min-width: 140rpx !important;
+  height: 60rpx !important;
+  border-radius: 30rpx !important;
+  font-weight: normal !important;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

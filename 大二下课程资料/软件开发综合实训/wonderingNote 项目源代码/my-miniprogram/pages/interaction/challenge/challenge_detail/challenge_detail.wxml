@@ -1,0 +1,212 @@
+<view class="container">
+  <!-- 导航栏使用vant样式 -->
+  <van-nav-bar
+    title="挑战详情"
+    left-text="返回"
+    left-arrow
+    custom-class="nav-bar"
+    bind:click-left="navigateBack"
+  >
+    <view slot="right" class="nav-time">
+      <van-icon name="clock" size="16px" />
+      <text>{{currentTime}}</text>
+    </view>
+  </van-nav-bar>
+
+  <!-- 封面图 -->
+  <van-image
+  v-if="challenge.images"
+  width="100%"
+  height="200px"
+  src="{{challenge.images}}"
+  fit="cover"
+  use-loading-slot 
+  />
+    
+
+  <!-- 内容区 -->
+  <view class="content">
+    <!-- 标题区 -->
+    <van-cell-group inset>
+      <van-cell
+        title="{{challenge.title}}"
+        title-class="challenge-title"
+        value-class="status-tag"
+        value="{{challenge.status === 'ongoing' ? '进行中' : '已结束'}}"
+        icon="label"
+      />
+    </van-cell-group>
+
+    <!-- 基本信息卡片 -->
+    <van-card
+      thumb="{{creatorInfo.avatar || '/assets/default-avatar.png'}}"
+      title="{{creatorInfo.nickname || '匿名用户'}}"
+      desc="挑战发起人"
+      custom-class="creator-card"
+    >
+      <view slot="tags">
+        <van-tag
+          wx:if="{{challenge.object_type}}"
+          type="primary"
+          plain
+          size="medium"
+          custom-class="mr10"
+        >
+          {{challenge.object_type}}
+        </van-tag>
+        <van-tag
+          wx:if="{{challenge.gesture_type}}"
+          type="success"
+          plain
+          size="medium"
+        >
+          {{challenge.gesture_type}}
+        </van-tag>
+      </view>
+      <view slot="footer">
+        <text class="create-time">
+          创建于{{formattedTimes.createTime}}
+        </text>
+      </view>
+    </van-card>
+
+    <!-- 规则区 -->
+    <van-panel
+  title="挑战描述："
+  icon="description"
+  custom-class="rule-panel"
+>
+  <view slot="header" class="panel-header">
+    <van-icon name="description" size="20px" color="#1989fa" />
+    <text class="panel-title">挑战描述</text>
+  </view>
+  <view class="panel-content">
+    {{challenge.description || '暂无详细规则'}}
+  </view>
+</van-panel>
+
+    <!-- 设置区 -->
+    <van-panel
+      title="挑战要求："
+      icon="setting"
+      custom-class="setting-panel"
+    >
+      <van-cell-group>
+        <van-cell
+          title="手势要求"
+          value="{{challenge.gesture_type || '无特定要求'}}"
+          icon="gesture"
+        />
+        <van-cell
+          title="地标位置"
+          value="{{challenge.landmark_name || '无特定地标'}}"
+          icon="location"
+          is-link
+          bind:click="showLocationMap"
+          wx:if="{{challenge.location}}"
+        />
+        <van-cell
+          title="有效范围"
+          value="{{challenge.radius}}米"
+          icon="aim"
+        />
+        <van-cell
+          title="人脸验证"
+          value="{{challenge.need_face_verify ? '需要' : '不需要'}}"
+          icon="user"
+        />
+      </van-cell-group>
+    </van-panel>
+
+    <!-- 修改时间信息面板 -->
+    <van-panel
+      title="时间信息："
+      icon="clock"
+      custom-class="time-panel"
+    >
+      <van-cell
+        title="开始时间"
+        value="{{formattedTimes.startTime}}"
+        icon="underway"
+      />
+      <van-cell
+        title="结束时间"
+        value="{{formattedTimes.endTime}}"
+        icon="flag"
+      />
+      <van-cell
+        title="剩余时间"
+        value="{{remainTimeText}}"
+        icon="countdown"
+        value-class="remain-time {{challenge.status === 'ongoing' ? '' : 'ended'}}"
+      />
+    </van-panel>
+
+    <!-- 排行榜 -->
+    <van-panel
+      title="排行榜"
+      icon="medal"
+      custom-class="leaderboard-panel"
+      wx:if="{{challenge.leaderboard && challenge.leaderboard.length}}"
+    >
+      <scroll-view scroll-x class="leaderboard-scroll">
+        <view class="leaderboard-list">
+          <view class="rank-item" wx:for="{{challenge.leaderboard}}" wx:key="user">
+            <van-image
+              round
+              width="60px"
+              height="60px"
+              src="{{item.avatar || '/assets/default-avatar.png'}}"
+            />
+            <view class="rank-info">
+              <text class="name">{{item.user}}</text>
+              <van-tag type="warning">得分: {{item.score}}</van-tag>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </van-panel>
+
+    <!-- 参与者 -->
+    <van-panel
+      title="参与情况"
+      icon="friends"
+      desc="完成率: {{challenge.statistics.completion_rate || 0}}%"
+      custom-class="participant-panel"
+    >
+      <scroll-view scroll-x class="participant-scroll">
+        <view class="participant-list">
+          <block wx:for="{{participants}}" wx:key="id">
+            <view class="participant-item">
+              <van-image
+                round
+                width="50px"
+                height="50px"
+                src="{{item.avatar || '/assets/default-avatar.png'}}"
+              />
+              <text class="participant-name">{{item.nickname || '用户'}}</text>
+            </view>
+          </block>
+          <view class="more-participants" wx:if="{{participants.length < challenge.statistics.participants}}">
+            <van-icon name="ellipsis" size="24px" />
+            <text>+{{challenge.statistics.participants - participants.length}}人</text>
+          </view>
+        </view>
+      </scroll-view>
+    </van-panel>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <van-button
+      type="primary"
+      block
+      round
+      custom-class="action-btn"
+      disabled="{{isJoined || challenge.status !== 'ongoing'}}"
+      bind:click="handleJoin"
+    >
+      {{isJoined ? '已参加' : '立即参加'}}
+    </van-button>
+  </view>
+</view>

@@ -1,0 +1,223 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "my_settings",
+          "pathName": "pages/my/my_settings/my_settings",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my_like",
+          "pathName": "pages/my/my_like/my_like",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "user_profile",
+          "pathName": "pages/interaction/user_profile/user_profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "manage_group",
+          "pathName": "pages/interaction/group/manage_group/manage_group",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my_group",
+          "pathName": "pages/my/my_group/my_group",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my_blog",
+          "pathName": "pages/my/my_blog/my_blog",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my_challenge",
+          "pathName": "pages/my/my_challenge/my_challenge",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "message_center",
+          "pathName": "pages/my/message_center/message_center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "edit_profile",
+          "pathName": "pages/my/edit_profile/edit_profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my_page",
+          "pathName": "pages/my/my_page/my_page",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "user_profile",
+          "pathName": "pages/interaction/user_profile/user_profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "manage_group",
+          "pathName": "pages/interaction/group/manage_group/manage_group",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "group_create",
+          "pathName": "pages/interaction/group/group_create/group_create",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "challenge_submit",
+          "pathName": "pages/interaction/challenge/challenge_submit/challenge_submit",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "challenge_detail",
+          "pathName": "pages/interaction/challenge/challenge_detail/challenge_detail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "create_challenge",
+          "pathName": "pages/interaction/challenge/create_challenge/create_challenge",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "user_profile",
+          "pathName": "pages/interaction/user_profile/user_profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "manage_challenge",
+          "pathName": "pages/my/manage_challenge/manage_challenge",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "footprint_heatmap",
+          "pathName": "pages/footprint_heatmap/footprint_heatmap",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "challenge_hall",
+          "pathName": "pages/interaction/challenge/challenge_hall/challenge_hall",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "blog_hall",
+          "pathName": "pages/interaction/blog/blog_hall/blog_hall",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "display_hall",
+          "pathName": "pages/interaction/display_hall/display_hall",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "group_create",
+          "pathName": "pages/interaction/group/group_create/group_create",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "faq",
+          "pathName": "pages/interaction/blog/faq/faq",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "blog_detail",
+          "pathName": "pages/interaction/blog/blog_detail/blog_detail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "blog_create",
+          "pathName": "pages/interaction/blog/blog_create/blog_create",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "forget_password",
+          "pathName": "pages/login_related/forget_password/forget_password",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "register",
+          "pathName": "pages/login_related/register/register",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "login",
+          "pathName": "pages/login_related/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "setting": {
+    "skylineRenderEnable": false,
+    "urlCheck": false
+  }
+}

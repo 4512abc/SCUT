@@ -1,0 +1,66 @@
+/* my_page.wxss */
+
+.page {
+  background: #f7f8fa;
+  min-height: 100vh;
+}
+
+.container {
+  background: #f7f8fa;
+  min-height: 100vh;
+  padding: 12px;
+}
+/* 导航栏样式 */
+.nav-bar {
+  background-color: #fff !important;
+}
+
+.nav-bar .van-nav-bar__title {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #323233 !important;
+}
+
+/* 用户卡片样式 */
+.user-card {
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.user-info {
+  padding: 20px !important;
+  background-color: #fff;
+}
+
+.user-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: 500;
+  color: #323233;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #969799;
+}
+
+/* 头像样式 */
+.van-image {
+  border: 2px solid #f0f0f0;
+}

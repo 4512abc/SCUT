@@ -1,0 +1,295 @@
+.container {
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 操作栏 */
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+
+.member-count {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 成员列表 */
+.member-list {
+  height: calc(100vh - var(--van-nav-bar-height, 44px) - 80rpx);
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f5f5f5;
+  position: relative;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 24rpx;
+  background-color: #f5f5f5;
+}
+
+.info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: flex;
+  align-items: center;
+}
+
+.admin-tag {
+  font-size: 24rpx;
+  color: #1890ff;
+  margin-left: 16rpx;
+  padding: 4rpx 12rpx;
+  background: rgba(24, 144, 255, 0.1);
+  border-radius: 24rpx;
+}
+
+.join-time {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.actions {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 80rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 180rpx;
+}
+
+.menu text {
+  display: block;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.menu text:active {
+  background: #f5f5f5;
+}
+
+.menu text:first-child {
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+/* 邀请弹窗 */
+.invite-popup {
+  padding: 40rpx;
+}
+
+.invite-title {
+  font-size: 36rpx;
+  color: #333;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.invite-options {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.invite-btn {
+  width: 100% !important;
+  height: 100rpx !important;
+  line-height: 100rpx !important;
+  font-size: 32rpx !important;
+}
+
+/* 搜索输入 */
+.search-input {
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+}
+
+/* 加载状态 */
+.no-more {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  padding: 30rpx 0;
+}
+/* 搜索结果样式 */
+.search-result {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.user-info .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-info .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info .name {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.user-info .email {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.action-buttons {
+  margin-top: 40rpx;
+}
+
+.action-buttons .van-button {
+  margin-bottom: 20rpx;
+}
+/* 新增提醒按钮样式 */
+.remind-btn {
+  margin-right: 10rpx;
+}
+
+/* 调整操作栏布局 */
+.action-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.member-count {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+}
+/* 挑战弹窗样式 - 新增/修改部分 */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.popup-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.challenge-list {
+  height: calc(100% - 80rpx);
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.challenge-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.challenge-item:active {
+  transform: scale(0.98);
+  background: #fafafa;
+}
+
+.challenge-cover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 24rpx;
+  background-color: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.challenge-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.challenge-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.challenge-creator {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.challenge-time {
+  font-size: 26rpx;
+  color: #ee0a24;
+}
+
+/* 通知按钮样式 */
+.challenge-item .van-button {
+  margin-left: 20rpx;
+  flex-shrink: 0;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+/* 空状态样式 */
+.van-empty {
+  padding: 100rpx 0;
+}
+
+/* 关闭按钮样式 */
+.popup-header .van-icon {
+  padding: 8rpx;
+  color: #969799;
+}

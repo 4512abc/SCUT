@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true
+}

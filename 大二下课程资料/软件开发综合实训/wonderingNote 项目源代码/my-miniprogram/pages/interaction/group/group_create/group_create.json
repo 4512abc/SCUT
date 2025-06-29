@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
+  },
+  "navigationStyle": "custom"
+}

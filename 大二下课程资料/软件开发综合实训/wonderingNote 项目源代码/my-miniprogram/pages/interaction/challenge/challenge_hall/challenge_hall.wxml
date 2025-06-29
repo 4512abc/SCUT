@@ -1,0 +1,129 @@
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <van-nav-bar
+      title="挑战"
+      fixed
+      placeholder
+      border="{{false}}"
+      safe-area-inset-top
+      custom-class="nav-bar"
+      title-class="nav-title"
+    />
+    <view class="search-container">
+      <van-search
+        value="{{searchValue}}"
+        placeholder="搜索标题或标签"
+        shape="round"
+        bind:change="onSearch"
+        bind:clear="clearSearch"
+        custom-class="search-bar"
+      >
+        <view slot="action" wx:if="{{searchValue}}" bindtap="clearSearch">取消</view>
+      </van-search>
+      
+      <!-- 新增时间搜索组件 -->
+      <view class="time-search">
+        <view 
+          class="time-item {{startTime ? 'active' : ''}}" 
+          bindtap="showTimePicker"
+          data-type="start"
+        >
+          {{startTime ? startTime : '开始时间'}}
+        </view>
+        <text>至</text>
+        <view 
+          class="time-item {{endTime ? 'active' : ''}}" 
+          bindtap="showTimePicker"
+          data-type="end"
+          disabled="{{!startTime}}"
+        >
+          {{endTime ? endTime : '结束时间'}}
+        </view>
+        <van-icon 
+          wx:if="{{startTime || endTime}}"
+          name="clear" 
+          size="16px" 
+          color="#999" 
+          bindtap="clearTimeSearch"
+        />
+      </view>
+    </view>
+
+    <!-- 时间选择器 -->
+    <van-popup 
+      show="{{showTimePicker}}" 
+      position="bottom"
+      round
+      bind:close="onTimeCancel"
+    >
+      <van-datetime-picker
+        type="date"
+        value="{{currentDate}}"
+        min-date="{{minDate}}"
+        max-date="{{maxDate}}"
+        formatter="{{formatter}}"
+        bind:confirm="onTimeConfirm"
+        bind:cancel="onTimeCancel"
+      />
+    </van-popup>
+
+    <!-- 搜索状态提示 -->
+    <view class="search-status">
+      <view wx:if="{{isSearching}}" class="search-tips">
+        <text wx:if="{{searchKeyword}}">标题包含"{{searchKeyword}}"</text>
+        <text wx:if="{{startTime}}"> {{searchKeyword ? '且' : ''}}发布时间 ≥ {{startTime}}</text>
+        <text wx:if="{{endTime}}"> {{searchKeyword || startTime ? '且' : ''}}发布时间 ≤ {{endTime}}</text>
+        <text class="clear-all" bindtap="clearSearch">清除所有</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 挑战列表 -->
+  <view class="challenge-list">
+    <block wx:for="{{challenges}}" wx:key="index">
+      <view class="challenge-item" bindtap="navigateToDetail" data-index="{{index}}">
+        <image src="{{item.image}}" class="challenge-cover" mode="aspectFill"/>
+        <view class="challenge-content">
+          <view class="challenge-title">{{item.title}}</view>
+          <view class="challenge-desc">{{item.description}}</view>
+          <view class="tag-list">
+            <view
+              wx:for="{{item.tags}}"
+              wx:key="*this"
+              wx:for-item="tag"
+              class="tag-item"
+            >{{tag}}</view>
+          </view>
+          <view class="challenge-info">
+            <view class="user-info">
+              <image src="{{item.avatar}}" class="avatar" data-userId="{{item.user_id}}" catchtap="navigateToUserDetail"></image>
+              <text class="username"  data-userId="{{item.user_id}}" catchtap="navigateToUserDetail"
+              >{{item.user}}</text>
+            </view>
+            <view class="interaction-info">
+              <view class="info-item end-time">
+                <van-icon name="underway-o" size="16px"/>
+                <text class="count">{{item.endTime}}</text>
+              </view>
+              <view class="info-item">
+                <van-icon name="friends-o" size="16px"/>
+                <text class="count">{{item.participants}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 发起挑战按钮 -->
+  <van-button
+    icon="plus"
+    type="primary" 
+    color="#1989fa"
+    custom-class="write-btn"
+    bind:click="navigateToCreate"
+    round
+  >发起挑战</van-button>
+</view>

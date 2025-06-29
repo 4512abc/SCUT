@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/footprint_heatmap/footprint_heatmap",
+    "pages/login_related/login/login",
+    "pages/login_related/register/register",
+    "pages/login_related/forget_password/forget_password",
+    "pages/my/my_page/my_page",
+    "pages/my/edit_profile/edit_profile",
+    "pages/my/my_like/my_like",
+    "pages/my/my_blog/my_blog",
+    "pages/my/my_group/my_group",
+    "pages/my/message_center/message_center",
+    "pages/my/my_settings/my_settings",
+    "pages/my/my_challenge/my_challenge",
+    "pages/my/manage_challenge/manage_challenge",
+    "pages/interaction/blog/blog_hall/blog_hall",
+    "pages/interaction/blog/blog_detail/blog_detail",
+    "pages/interaction/blog/blog_create/blog_create",
+    "pages/interaction/blog/faq/faq",
+    "pages/interaction/challenge/challenge_hall/challenge_hall",
+    "pages/interaction/challenge/challenge_detail/challenge_detail",
+    "pages/interaction/challenge/challenge_submit/challenge_submit",
+    "pages/interaction/challenge/create_challenge/create_challenge",
+    "pages/interaction/group/group_create/group_create",
+    "pages/interaction/group/manage_group/manage_group",
+    "pages/interaction/user_profile/user_profile"
+  ],
+  "entryPagePath": "pages/login_related/login/login",
+  "window": {
+    "navigationBarTitleText": "Wondering Note",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "/static/icons/home.png",
+        "selectedIconPath": "/static/icons/home_selected.png"
+      },
+      {
+        "pagePath": "pages/interaction/blog/blog_hall/blog_hall",
+        "text": "游记",
+        "iconPath": "/static/icons/travel_note.png",
+        "selectedIconPath": "/static/icons/travel_note_selected.png"
+      },
+      {
+        "pagePath": "pages/interaction/challenge/challenge_hall/challenge_hall",
+        "text": "挑战",
+        "iconPath": "/static/icons/challenge.png",
+        "selectedIconPath": "/static/icons/challenge_selected.png"
+      },
+      {
+        "pagePath": "pages/footprint_heatmap/footprint_heatmap",
+        "text": "足迹",
+        "iconPath": "/static/icons/footprint.png",
+        "selectedIconPath": "/static/icons/footprint_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my_page/my_page",
+        "text": "我的",
+        "iconPath": "/static/icons/my.png",
+        "selectedIconPath": "/static/icons/my_selected.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  },
+  "requiredBackgroundModes": [
+    "canvas"
+  ],
+  "rendererOptions": {
+    "progressiveRender": true
+  },
+  "requiredPrivateInfos": ["chooseLocation", "getLocation"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于打卡验证"
+    }
+  }
+}

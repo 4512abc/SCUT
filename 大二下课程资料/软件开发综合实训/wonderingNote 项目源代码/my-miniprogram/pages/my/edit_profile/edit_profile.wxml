@@ -1,0 +1,108 @@
+<view class="container">
+  <van-nav-bar
+    title="编辑资料"
+    left-text="返回"
+    left-arrow
+    bind:click-left="navigateBack"
+    safe-area-inset-top
+  />
+
+  <view class="content">
+    <!-- 头像区 -->
+    <view class="avatar-section">
+      <image class="avatar" src="{{avatarUrl}}" mode="aspectFill" />
+      <view class="camera-icon" bindtap="chooseImage">
+        <van-icon name="photograph" size="40rpx" color="#fff" />
+      </view>
+    </view>
+
+    <!-- 表单区 -->
+    <view class="form-container">
+      <view class="form-item">
+        <text class="label">用户名</text>
+        <input
+          class="input"
+          value="{{nickname}}"
+          placeholder="请输入用户名"
+          bindinput="onNicknameChange"
+        />
+        <view wx:if="{{isNicknameChanged}}" class="hint-text">
+          * 用户名修改将在保存时生效
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">简介</text>
+        <input
+          class="input"
+          value="{{bio}}"
+          placeholder="请输入个人简介"
+          bindinput="onBioChange"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">性别</text>
+        <view class="gender-selector">
+          <view class="gender-option {{gender === '男' ? 'active' : ''}}"
+                bindtap="selectGender" data-gender="男">
+            <van-icon name="manager" size="40rpx" color="{{gender === '男' ? '#1890ff' : '#999'}}" />
+            <text class="gender-text">男</text>
+          </view>
+          <view class="gender-option {{gender === '女' ? 'active' : ''}}"
+                bindtap="selectGender" data-gender="女">
+            <van-icon name="contact" size="40rpx" color="{{gender === '女' ? '#ff4d94' : '#999'}}" />
+            <text class="gender-text">女</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">出生日期</text>
+        <picker mode="date" value="{{birthday}}" start="1900-01-01" end="{{currentDate}}" bindchange="onDateChange">
+          <view class="picker">{{birthday || '请选择出生日期'}}</view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="label">所在地区</text>
+        <picker 
+          mode="region" 
+          value="{{region}}" 
+          bindchange="onRegionChange"
+        >
+          <view class="picker">
+            {{location ? location : '请选择所在地区'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+    <view wx:if="{{!faceRegistered}}" class="face-section">
+      <van-button
+        type="warning"
+        block
+        custom-class="save-btn"
+        bindtap="registerFace"
+      >
+        注册人脸向量
+      </van-button>
+      <view class="hint-text">
+        * 一个账号只能注册一次，请选择正对屏幕的清晰照片
+      </view>
+    </view>
+
+
+    <!-- 保存按钮 -->
+    <van-button 
+      type="primary" 
+      block 
+      custom-class="save-btn" 
+      bindtap="saveProfile"
+      loading="{{loading}}"
+    >
+      保存修改
+    </van-button>
+  </view>
+</view>

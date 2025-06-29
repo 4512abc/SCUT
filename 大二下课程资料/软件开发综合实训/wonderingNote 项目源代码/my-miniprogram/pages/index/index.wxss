@@ -1,0 +1,234 @@
+/* calendar.wxss */
+.container {
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+.nav-bar {
+  background: #fff !important;
+}
+
+.nav-title {
+  font-weight: 500 !important;
+  font-size: 32rpx !important;
+}
+
+.intro-section {
+  background: #fff;
+  padding: 40rpx 30rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.intro-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.intro-subtitle {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.calendar-section {
+  background: #fff;
+  margin: 0 30rpx 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+.month-header {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.month-swiper {
+  height: 580rpx;
+}
+
+.month-card {
+  padding: 20rpx;
+}
+
+.calendar-content {
+  --calendar-height: 600rpx;
+}
+
+/* 新增样式 */
+.note-wrapper {
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+.note-wrapper:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+  transition: all 0.2s;
+}
+
+.notes-list {
+  padding: 0 30rpx;
+  height: calc(100vh - 800rpx);
+}
+
+.note-card {
+  margin-bottom: 30rpx !important;
+  border-radius: 16rpx !important;
+  background: #fff !important;
+  padding: 24rpx !important;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04) !important;
+  position: relative;
+  z-index: 1;
+  pointer-events: none !important;
+}
+/* 点击反馈效果 */
+.card-hover {
+  opacity: 0.8;
+  transform: scale(0.98);
+  transition: all 0.2s;
+}
+
+/* 防止内容遮挡 */
+.notes-section {
+  position: relative;
+  z-index: 1;
+}
+.note-thumb {
+  width: 180rpx !important;
+  height: 180rpx !important;
+  border-radius: 12rpx !important;
+}
+
+.note-title {
+  font-size: 30rpx !important;
+  font-weight: 500 !important;
+  margin-bottom: 12rpx !important;
+}
+
+.note-desc {
+  font-size: 26rpx !important;
+  color: #666 !important;
+  line-height: 1.6 !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+.notes-header {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.notes-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.notes-count {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.card-bottom {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.card-stats {
+  display: flex;
+  align-items: center;
+  gap: 45rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.card-stats text {
+  
+  margin-right: 40rpx;
+}
+
+.action-buttons {
+  position: fixed;
+  bottom: 40rpx;
+  right: 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  z-index: 100;
+}
+
+.action-btn {
+  width: 220rpx !important;
+  height: 80rpx !important;
+  border-radius: 100rpx !important;
+  font-weight: normal !important;
+  font-size: 28rpx !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.action-btn .van-icon {
+  font-size: 32rpx !important;
+  margin-right: 8rpx !important;
+}
+
+.write-btn {
+  background: #1989fa !important;
+  border: none !important;
+}
+
+.challenge-btn {
+  background: #ee0a24 !important;
+  border: none !important;
+}
+
+/* 添加当天样式 */
+.today {
+  background: #07c160 !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+.has-note .van-calendar__day {
+  position: relative;
+}
+
+.van-calendar__day.has-note::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #07c160;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* 覆盖日历默认样式 */
+.van-calendar__day--selected {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.van-calendar__selected-day {
+  background: transparent !important;
+  color: inherit !important;
+}
+

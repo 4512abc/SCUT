@@ -1,0 +1,264 @@
+@startuml
+
+' 设置方向为垂直排列
+left to right direction
+
+' 用户表
+entity User {
+  * id : BIGINT UNSIGNED <<PK>>
+  account : VARCHAR(100)
+  password : VARCHAR(255)
+  phone : VARCHAR(20)
+  email : VARCHAR(100)
+  avatar : VARCHAR(2000)
+  status : ENUM('ACTIVE','SUSPENDED','FORZEN','DELETED')
+  wx_openid : VARCHAR(128)
+  wx_unionid : VARCHAR(128)
+  create_time : DATETIME
+  update_time : DATETIME
+  access_level : ENUM('super_admin','admin','user')
+}
+
+' 用户资料扩展表
+entity UserProfile {
+  * user_id : BIGINT UNSIGNED <<PK>>
+  gender : TINYINT
+  birthday : DATE
+  bio : VARCHAR(200)
+  settings : JSON
+  location : VARCHAR(100)
+}
+
+' 标签表
+entity Tag {
+  * id : BIGINT UNSIGNED <<PK>>
+  name : VARCHAR(100)
+  description : VARCHAR(500)
+}
+
+' 文件信息表
+entity FileInfo {
+  * id : BIGINT UNSIGNED <<PK>>
+  file_name : VARCHAR(255)
+  origin_name : VARCHAR(255)
+  file_path : VARCHAR(512)
+  file_suffix : VARCHAR(10)
+}
+
+' 挑战主表
+entity Challenge {
+  * id : BIGINT UNSIGNED <<PK>>
+  title : VARCHAR(100)
+  description : VARCHAR(500)
+  creator_id : BIGINT UNSIGNED
+  object_type : VARCHAR(20)
+  gesture_type : VARCHAR(20)
+  landmark_id : BIGINT UNSIGNED
+  location : POINT
+  radius : DOUBLE
+  start_time : DATETIME
+  end_time : DATETIME
+  participants : VARCHAR(2000)
+  team_id : BIGINT UNSIGNED
+  create_time : DATETIME
+  images : VARCHAR(2000)
+}
+
+' 博文表
+entity Post {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  title : VARCHAR(255)
+  content : TEXT
+  images : VARCHAR(2000)
+  videos : VARCHAR(2000)
+  location : POINT
+  is_public : TINYINT(1)
+  view_count : INT UNSIGNED
+  like_count : INT UNSIGNED
+  comment_count : INT UNSIGNED
+  status : TINYINT
+  create_time : DATETIME
+}
+
+' 地标表
+entity Landmark {
+  * id : BIGINT UNSIGNED <<PK>>
+  name : VARCHAR(100)
+  description : VARCHAR(500)
+  location : POINT
+  create_time : DATETIME
+}
+
+' 群组表
+entity Team {
+  * id : BIGINT UNSIGNED <<PK>>
+  name : VARCHAR(100)
+  logo : VARCHAR(255)
+  creator_id : BIGINT UNSIGNED
+  max_members : INT UNSIGNED
+  create_time : DATETIME
+}
+
+' 通知表
+entity Notification {
+  * id : BIGINT UNSIGNED <<PK>>
+  sender_id : BIGINT UNSIGNED
+  receiver_id : BIGINT UNSIGNED
+  type : TINYINT
+  content : VARCHAR(300)
+  is_read : TINYINT(1)
+  create_time : DATETIME
+  type_id : BIGINT UNSIGNED
+}
+
+' 公告表
+entity Announcement {
+  * id : BIGINT UNSIGNED <<PK>>
+  title : VARCHAR(100)
+  content : TEXT
+  type : TINYINT
+  publisher_id : BIGINT UNSIGNED
+  push_type : TINYINT
+  create_time : DATETIME
+  update_time : DATETIME
+}
+
+' 转发表
+entity Forward {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  target_type : ENUM('BLOG','CHALLENGE')
+  target_id : BIGINT
+  comment : TEXT
+  create_time : DATETIME
+}
+
+' 点赞记录表
+entity Like {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  target_type : ENUM('BLOG','COMMENT')
+  target_id : BIGINT UNSIGNED
+  create_time : DATETIME
+}
+
+' 评论表
+entity Comment {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  is_root : TINYINT
+  post_id : BIGINT UNSIGNED
+  parent_id : BIGINT UNSIGNED
+  content : VARCHAR(500)
+  like_count : INT UNSIGNED
+  status : TINYINT
+  create_time : DATETIME
+}
+
+' 操作日志表
+entity OperationLog {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  module : VARCHAR(50)
+  action : VARCHAR(50)
+  target_id : VARCHAR(100)
+  detail : VARCHAR(50)
+  create_time : DATETIME
+}
+
+' 审核日志表
+entity AuditLog {
+  * id : BIGINT UNSIGNED <<PK>>
+  target_type : ENUM('report','blog','challenge')
+  target_id : BIGINT UNSIGNED
+  auditor_id : BIGINT UNSIGNED
+  status : TINYINT
+  reason : VARCHAR(500)
+  create_time : DATETIME
+}
+
+' 举报记录表
+entity Report {
+  * id : BIGINT UNSIGNED <<PK>>
+  target_type : ENUM('post','comment','user','challenge')
+  target_id : BIGINT UNSIGNED
+  reason : VARCHAR(500)
+  reporter_id : BIGINT UNSIGNED
+  status : ENUM('待处理','已处理')
+  handle_result : VARCHAR(200)
+  create_time : DATETIME
+}
+
+' 验证码表
+entity SmsCode {
+  * id : BIGINT UNSIGNED <<PK>>
+  identifier : VARCHAR(100)
+  type : TINYINT
+  code : VARCHAR(10)
+  expire_time : DATETIME
+  status : TINYINT
+}
+
+' 人脸特征表
+entity FaceFeatures {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  face_image : VARCHAR(255)
+  face_vector : TEXT
+  create_time : DATETIME
+}
+
+' 用户编码表
+entity FaceEncoding {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  face_encoding : TEXT
+  create_time : DATETIME
+  update_time : DATETIME
+}
+
+' 关注关系表
+entity Follow {
+  * follower_id : BIGINT UNSIGNED <<PK>>
+  * followee_id : BIGINT UNSIGNED <<PK>>
+  create_time : DATETIME
+}
+
+' 挑战参与记录表
+entity Participation {
+  * id : BIGINT UNSIGNED <<PK>>
+  user_id : BIGINT UNSIGNED
+  challenge_id : BIGINT UNSIGNED
+  evidence : JSON
+  complete_time : DATETIME
+}
+
+' 群组成员表
+entity TeamMember {
+  * team_id : BIGINT UNSIGNED <<PK>>
+  * user_id : BIGINT UNSIGNED <<PK>>
+  role : TINYINT
+  join_time : DATETIME
+  other_info : JSON
+}
+
+' 博文标签关联表
+entity PostTag {
+  * post_id : BIGINT UNSIGNED <<PK>>
+  * tag_id : BIGINT UNSIGNED <<PK>>
+}
+
+' 挑战标签关联表
+entity ChallengeTag {
+  * challenge_id : BIGINT UNSIGNED <<PK>>
+  * tag_id : BIGINT UNSIGNED <<PK>>
+}
+
+' 用户标签关联表
+entity UserTag {
+  * user_id : BIGINT UNSIGNED <<PK>>
+  * tag_id : BIGINT UNSIGNED <<PK>>
+}
+
+@enduml

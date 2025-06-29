@@ -1,0 +1,130 @@
+/* 主容器 */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40rpx;
+  background: #f8f8f8;
+}
+
+/* 主表单区域 */
+.form-main {
+  flex: 1; /* 占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中 */
+}
+
+/* 表单区域 */
+.form-section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 60rpx 40rpx; /* 增加内边距 */
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  margin: 40rpx 0; /* 增加外边距 */
+}
+
+/* 自定义输入框样式 */
+.custom-field {
+  padding: 40rpx 0; /* 增加高度 */
+  border-bottom: 1rpx solid #eee;
+}
+
+
+/* 辅助链接 */
+.action-links {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+.link-text {
+  color: #07c160;
+  font-size: 26rpx;
+}
+
+/* 登录按钮 */
+.login-btn {
+  margin-top: 60rpx;
+  border-radius: 50rpx !important;
+  height: 100rpx;
+  background: #07c160 !important;
+  border: none !important;
+  font-size: 36rpx;
+}
+
+/* 切换登录方式按钮样式 */
+.switch-login-type {
+  text-align: center;
+  font-size: 28rpx;
+  color: #07c160;
+  margin: 30rpx 0;
+  padding: 20rpx;
+}
+
+.switch-login-type:active {
+  opacity: 0.8;
+}
+
+/* 协议文本 */
+.agreement {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+.protocol-link {
+  color: #07c160;
+}
+
+/* 分割线 */
+.divider-line {
+  position: relative;
+  margin: 60rpx 0;
+  text-align: center;
+}
+.divider-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1rpx solid #ddd;
+  z-index: 1;
+}
+.divider-text {
+  position: relative;
+  background: #f8f8f8;
+  padding: 0 20rpx;
+  color: #999;
+  font-size: 26rpx;
+  z-index: 2;
+}
+
+.login-methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-footer {
+  flex-shrink: 0; /* 防止压缩 */
+  padding-bottom: 350rpx;
+}
+
+.method-btn {
+  width: 400rpx !important;  /* 调整按钮宽度 */
+  height: 90rpx !important;  /* 调整按钮高度 */
+  border-radius: 50rpx !important;
+  color: #07c160 !important;
+  border-color: #07c160 !important;
+  margin: 10rpx 0;
+  font-size: 32rpx;
+}
+

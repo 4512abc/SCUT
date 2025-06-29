@@ -1,0 +1,134 @@
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <van-nav-bar
+    title="用户主页"
+    left-text="返回"
+    left-arrow
+    custom-class="nav-bar"
+    bind:click-left="navigateBack"
+  >
+    <view slot="right" class="nav-right">
+      <text class="time">{{currentTime}}</text>
+    </view>
+  </van-nav-bar>
+
+  <!-- 用户信息区 -->
+  <view class="user-info">
+    <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill" />
+    <text class="username">{{userInfo.account}}</text>
+    <text class="school">{{userInfo.location}}</text>
+    <view class="motto">
+      <text>{{userInfo.bio}}</text>
+    </view>
+  </view>
+
+  <!-- 数据卡片 -->
+  <view class="data-cards">
+    <view class="card-item">
+      <text class="number">{{stats.posts}}</text>
+      <text class="label">博文</text>
+    </view>
+    <view class="card-item">
+      <text class="number">{{stats.challenges}}</text>
+      <text class="label">挑战</text>
+    </view>
+    <view class="card-item">
+      <text class="number">{{stats.comments}}</text>
+      <text class="label">评论</text>
+    </view>
+    <view class="card-item">
+      <text class="number">{{stats.days}}</text>
+      <text class="label">漫游天数</text>
+    </view>
+  </view>
+
+  <!-- Tab切换 -->
+  <view class="tabs-container">
+    <view class="tabs">
+      <view 
+        class="tab {{activeTab === 'posts' ? 'active' : ''}}" 
+        bindtap="switchTab" 
+        data-tab="posts"
+      >
+        发表博文
+        <view class="tab-indicator"></view>
+      </view>
+      <view 
+        class="tab {{activeTab === 'challenges' ? 'active' : ''}}" 
+        bindtap="switchTab" 
+        data-tab="challenges"
+      >
+        参与挑战
+        <view class="tab-indicator"></view>
+      </view>
+    </view>
+    <view class="tab-slider" animation="{{tabAnimation}}"></view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="tab-content">
+    <!-- 博文列表 - 新设计 -->
+    <view class="content-section posts-section" wx:if="{{activeTab === 'posts'}}">
+      <block wx:for="{{posts}}" wx:key="id">
+        <view 
+          class="post-card" 
+          bindtap="navigateToDetail"
+          data-id="{{item.id}}"
+        >
+          <!-- 封面图 -->
+          <image class="post-cover" src="{{item.image}}" mode="aspectFill" />
+          
+          <!-- 内容区 -->
+          <view class="post-content">
+            <text class="post-title">{{item.title}}</text>
+            <text class="post-desc">{{item.description || '暂无描述'}}</text>
+            
+            <!-- 标签 -->
+            <view class="post-tags" wx:if="{{item.tags && item.tags.length}}">
+              <text class="tag" wx:for="{{item.tags}}" wx:key="*this">#{{item}}</text>
+            </view>
+            
+            <!-- 底部信息 -->
+            <view class="post-footer">
+              <text class="post-time">{{item.time}}</text>
+              <view class="post-actions">
+                <view class="action-item">
+                  <van-icon name="like-o" size="16px" />
+                  <text>{{item.likes}}</text>
+                </view>
+                <view class="action-item">
+                  <van-icon name="comment-o" size="16px" />
+                  <text>{{item.comments}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      
+      <view class="no-more" wx:if="{{!hasMorePosts}}">
+        <text>没有更多内容了</text>
+      </view>
+    </view>
+
+    <!-- 挑战列表 -->
+    <view class="content-section" wx:if="{{activeTab === 'challenges'}}">
+      <view 
+        class="challenge-item" 
+        wx:for="{{challenges}}" 
+        wx:key="id"
+        bindtap="navigateToChallenge"
+        data-id="{{item.id}}"
+      >
+        <image class="challenge-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="challenge-info">
+          <text class="title">{{item.title}}</text>
+          <text class="progress">截止 {{item.endTime}}</text>
+        </view>
+      </view>
+      <view class="no-more" wx:if="{{!hasMoreChallenges}}">
+        <text>没有更多挑战了</text>
+      </view>
+    </view>
+  </view>
+</view>

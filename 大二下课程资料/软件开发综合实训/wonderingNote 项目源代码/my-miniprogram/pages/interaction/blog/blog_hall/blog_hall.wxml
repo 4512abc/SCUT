@@ -1,0 +1,129 @@
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <van-nav-bar
+      title="游记"
+      fixed
+      placeholder
+      border="{{false}}"
+      custom-class="nav-bar"
+      title-class="nav-title"
+    />
+    <view class="search-container">
+      <van-search
+        value="{{searchValue}}"
+        placeholder="搜索标题"
+        shape="round"
+        bind:change="onSearch"
+        bind:clear="clearSearch"
+        custom-class="search-bar"
+      >
+        <view slot="action" wx:if="{{searchValue}}" bindtap="clearSearch">取消</view>
+      </van-search>
+      
+      <view class="time-search">
+        <view 
+          class="time-item {{startTime ? 'active' : ''}}" 
+          bindtap="showTimePicker"
+          data-type="start"
+        >
+          {{startTime ? startTime : '开始时间'}}
+        </view>
+        <text>至</text>
+        <view 
+          class="time-item {{endTime ? 'active' : ''}}" 
+          bindtap="showTimePicker"
+          data-type="end"
+          disabled="{{!startTime}}"
+        >
+          {{endTime ? endTime : '结束时间'}}
+        </view>
+        <van-icon 
+          wx:if="{{startTime || endTime}}"
+          name="clear" 
+          size="16px" 
+          color="#999" 
+          bindtap="clearTimeSearch"
+        />
+      </view>
+    </view>
+
+    <!-- 时间选择器 -->
+    <van-popup 
+      show="{{showTimePicker}}" 
+      position="bottom"
+      round
+      bind:close="onTimeCancel"
+    >
+      <van-datetime-picker
+        type="date"
+        value="{{currentDate}}"
+        min-date="{{minDate}}"
+        max-date="{{maxDate}}"
+        formatter="{{formatter}}"
+        bind:confirm="onTimeConfirm"
+        bind:cancel="onTimeCancel"
+      />
+    </van-popup>
+
+    <!-- 搜索状态提示 -->
+    <view class="search-status">
+      <view wx:if="{{isSearching}}" class="search-tips">
+        <text wx:if="{{searchKeyword}}">标题包含"{{searchKeyword}}"</text>
+        <text wx:if="{{startTime}}"> {{searchKeyword ? '且' : ''}}发布时间 ≥ {{startTime}}</text>
+        <text wx:if="{{endTime}}"> {{searchKeyword || startTime ? '且' : ''}}发布时间 ≤ {{endTime}}</text>
+        <text class="clear-all" bindtap="clearSearch">清除所有</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 博文列表 -->
+  <view class="blog-list">
+    <block wx:for="{{blogs}}" wx:key="index">
+      <view class="blog-item" bindtap="navigateToBlogDetail" data-index="{{index}}" data-id="{{item.id}}">
+        <image src="{{item.cover}}" class="blog-cover" mode="aspectFill"/>
+        <view class="blog-content">
+          <view class="blog-title">{{item.title}}</view>
+          <view class="blog-desc">{{item.description}}</view>
+          <!-- 标签列表 -->
+          <view class="tag-list">
+            <view 
+              wx:for="{{item.tags}}" 
+              wx:key="*this" 
+              wx:for-item="tag"
+              class="tag-item {{activeTagFilter === tag ? 'active' : ''}}"
+              catchtap="onTagTap"
+              data-tag="{{tag}}"
+            >{{tag}}</view>
+          </view>
+          <view class="blog-info">
+            <view class="user-info">
+              <image src="{{item.avatar}}" class="avatar" data-userId="{{item.user_id}}" catchtap="navigateToUserDetail"></image>
+              <text class="username"  data-userId="{{item.user_id}}" catchtap="navigateToUserDetail"
+              >{{item.user}}</text>
+            </view>
+            <view class="interaction-info">
+              <view class="info-item">
+                <van-icon name="comment-o" size="16px"/>
+                <text class="count">{{item.comments}}</text>
+              </view>
+              <view class="info-item">
+                <van-icon name="like-o" size="16px"/>
+                <text class="count">{{item.likes}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <van-button
+    icon="edit"
+    type="primary"
+    color="#1989fa"
+    custom-class="write-btn"
+    bind:click="navigateToWrite"
+    round
+  >写游记</van-button>
+</view>

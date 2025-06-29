@@ -1,0 +1,157 @@
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <van-nav-bar
+    title="我的群组"
+    left-text="返回"
+    left-arrow
+    bind:click-left="navigateBack"
+    fixed
+    placeholder
+    safe-area-inset-top
+  />
+
+  <!-- Tab切换 -->
+  <van-tabs 
+    active="{{activeTab}}" 
+    bind:change="onTabChange"
+    sticky
+    animated
+    color="#1890ff"
+    line-width="24px"
+  >
+    <van-tab title="我加入的"></van-tab>
+    <van-tab title="我创建的"></van-tab>
+  </van-tabs>
+
+  <!-- 群组列表 -->
+  <scroll-view 
+    class="group-list" 
+    scroll-y
+    bindscrolltolower="onReachBottom"
+  >
+    <!-- 当前Tab内容 -->
+    <block wx:if="{{activeTab === 0}}">
+      <block wx:for="{{joinedGroups}}" wx:key="id">
+        <view class="group-item">
+          <image class="group-logo" src="{{item.logo || '/images/default-group.png'}}" mode="aspectFill" />
+          <view class="group-info">
+            <view class="header">
+              <text class="name">{{item.name}}</text>
+              <!-- 添加挑战查看按钮（仅在我加入的群组显示） -->
+              <view wx:if="{{activeTab === 0}}" class="challenge-btn" bindtap="showChallenges" data-id="{{item.id}}">
+                <van-icon name="records" size="16px" />
+                <text>查看挑战</text>
+              </view>
+              
+              <!-- 管理按钮（仅在我创建的群组显示） -->
+              <van-button 
+                wx:if="{{activeTab === 1}}"
+                size="small" 
+                plain 
+                custom-class="manage-btn"
+                bindtap="navigatoToManageGroup" 
+                data-id="{{item.id}}"
+              >
+                管理成员
+              </van-button>
+            </view>
+            <view class="meta">
+              <text class="member-count">当前{{item.membersCount}}人</text>
+              <text class="member-count">上限{{item.maxMember}}人</text>
+              <text class="update-time">更新于 {{item.updateTime}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <block wx:if="{{activeTab === 1}}">
+      <block wx:for="{{createdGroups}}" wx:key="id">
+        <view class="group-item" bindtap="navigatoToManageGroup" data-id="{{item.id}}">
+          <image class="group-logo" src="{{item.logo || '/images/default-group.png'}}" mode="aspectFill" />
+          <view class="group-info">
+            <view class="header">
+              <text class="name">{{item.name}}</text>
+              <van-button 
+                size="small" 
+                plain 
+                custom-class="manage-btn"
+              >
+                管理成员
+              </van-button>
+            </view>
+            <view class="meta">
+              <text class="member-count">{{item.membersCount}}人</text>
+              <text class="member-count">上限{{item.maxMember}}人</text>
+              <text class="update-time">更新于 {{item.updateTime}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{(activeTab === 0 && joinedGroups.length === 0) || (activeTab === 1 && createdGroups.length === 0)}}">
+      <image class="empty-icon" src="/images/empty-group.png" />
+      <text class="empty-text">
+        {{activeTab === 0 ? '您尚未加入任何群组' : '您尚未创建任何群组'}}
+      </text>
+    </view>
+
+    <!-- 加载状态 -->
+    <van-loading wx:if="{{loading}}" size="24px" custom-class="loading">加载中...</van-loading>
+    <view wx:if="{{!loading && ((activeTab === 0 && !joinedHasMore) || (activeTab === 1 && !createdHasMore))}}" class="no-more">
+      没有更多了
+    </view>
+  </scroll-view>
+
+  <!-- 底部创建按钮 -->
+  <view class="footer">
+    <van-button 
+      type="primary" 
+      block 
+      round
+      custom-class="create-btn"
+      bind:click="navigateToCreateGroup"
+    >
+      + 创建群组
+    </van-button>
+  </view>
+</view>
+
+<van-popup 
+  show="{{showChallengePopup}}" 
+  position="bottom" 
+  round
+  custom-style="height: 70%;"
+  bind:close="closeChallengePopup"
+>
+  <view class="popup-header">
+    <text class="popup-title">群组挑战</text>
+    <van-icon name="cross" size="18px" bindtap="closeChallengePopup" />
+  </view>
+  
+  <scroll-view scroll-y class="challenge-list">
+    <block wx:for="{{currentGroupChallenges}}" wx:key="id">
+      <view class="challenge-item" bindtap="navigateToChallenge" data-id="{{item.id}}">
+        <image class="challenge-cover" src="{{item.image || '/images/default-challenge.png'}}" />
+        <view class="challenge-info">
+          <text class="challenge-name">{{item.title}}</text>
+          <text class="challenge-time">{{item.startTime}} 至 {{item.endTime}}</text>
+        </view>
+        <van-button 
+          size="normal" 
+          plain 
+          type="primary" 
+          class="view-detail-btn"
+          bindtap="navigateToChallenge" 
+          data-id="{{item.id}}"
+        >
+          查看详情
+        </van-button>
+      </view>
+    </block>
+    
+    <van-empty wx:if="{{currentGroupChallenges.length === 0}}" description="暂无挑战" />
+  </scroll-view>
+</van-popup>

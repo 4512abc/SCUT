@@ -1,0 +1,53 @@
+﻿/*=============================================================
+    Authour URI: www.binarytheme.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+   
+    ========================================================  */
+
+/*==============================================
+    MAIN BOX  STYLES    
+    =============================================*/
+.main-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.main-box a, .main-box a:hover {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.main-box h5 {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/*==============================================
+    Table  STYLES
+    =============================================*/
+.nx-table-header {
+    padding-bottom: 15px;
+    position: relative;
+}
+.nx-table-header input {
+    float: right;
+}
+.nx-table-header i {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    color: #bbbbbb;
+}
+
+

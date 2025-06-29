@@ -1,0 +1,93 @@
+<!-- 自定义导航栏 -->
+<van-toast id="van-toast" />
+
+<view class="nav-bar">
+  <view class="nav-content">
+    <view class="back-icon" bindtap="navigateBack">
+      <van-icon name="arrow-left" size="20px" color="#333" />
+    </view>
+    <text class="nav-title">漫游趣战</text>
+    <view class="placeholder"></view>
+  </view>
+</view>
+
+<view class="container">
+  <!-- 搜索区域 -->
+  <view class="search-section" wx:if="{{mainTab === 1 || mainTab === 2}}">
+    <van-search
+      value="{{searchValue}}"
+      placeholder="挑战标题/挑战内容"
+      input-align="left"
+      custom-class="custom-search"
+      bind:search="onSearch"
+      bind:change="onSearchInput"
+    />
+    <van-button 
+      size="small" 
+      custom-class="search-btn"
+      bindtap="onSearch"
+    >
+      搜索
+    </van-button>
+  </view>
+
+  <!-- 主标签切换 -->
+  <view class="main-tab-bar">
+    <view
+      class="main-tab-item {{mainTab === 0 ? 'active' : ''}}"
+      bindtap="switchMainTab"
+      data-index="0"
+    >
+      参与的挑战
+    </view>
+    <view
+      class="main-tab-item {{mainTab === 1 ? 'active' : ''}}"
+      bindtap="switchMainTab"
+      data-index="1"
+    >
+      发起的挑战
+    </view>
+      <view
+      class="main-tab-item {{mainTab === 2 ? 'active' : ''}}"
+      bindtap="switchMainTab"
+      data-index="2"
+    >
+      群组挑战管理
+    </view>
+  </view>
+
+  <!-- 挑战列表部分 -->
+  <scroll-view class="challenge-list" scroll-y>
+    <block wx:for="{{currentChallenges}}" wx:key="id">
+      <view class="challenge-item" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <image class="challenge-image" src="{{item.formattedCover}}" mode="aspectFill" />
+        <view class="info-box">
+          <text class="title">{{item.title}}</text>
+          <view class="status-line">
+            <text class="deadline">剩余 {{item.daysLeft}} 天</text>
+          </view>
+          <!-- 修改底部行部分 -->
+          <view class="bottom-line">
+            <text class="participants">{{item.participantsCount}}人参与</text>
+            <van-button
+              wx:if="{{mainTab === 0 ? true : (item.team_id ? true : false)}}"
+              type="primary"
+              size="small"
+              custom-class="enter-btn"
+              catchtap="enterChallenge"
+              data-id="{{item.id}}" data-teamid="{{item.team_id}}"
+            >
+              {{mainTab === 0 ? '打卡提交' : '管理挑战'}}
+            </van-button>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态展示 -->
+    <view class="empty-state" wx:if="{{currentChallenges.length === 0}}">
+      <image class="empty-icon" src="/images/empty.png" />
+      <text class="empty-text">暂无相关挑战</text>
+    </view>
+  </scroll-view>
+</view>

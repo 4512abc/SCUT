@@ -1,0 +1,166 @@
+<view class="container">
+  <!-- 主要内容 -->
+  <scroll-view class="content" scroll-y>
+    <!-- 头部信息 -->
+    <view class="header">
+      <text class="title">{{challenge.title}}</text>
+      <view class="status">
+        <van-icon name="underway" size="16px" color="#1890ff" />
+        <text class="remain-time">{{remainTimeText}}</text>
+      </view>
+    </view>
+
+    <!-- 挑战规则 -->
+    <view class="rule-section">
+      <text class="section-title">挑战描述</text>
+      <text class="rule-text">{{challenge.description}}</text>
+    </view>
+
+    <!-- 验证表单 -->
+    <view class="form-section">
+      <!-- 手势验证 -->
+      <block wx:if="{{challenge.gesture_type}}">
+        <view class="form-item">
+          <text>手势打卡：</text>
+          <text class="highlight">{{challenge.gesture_type}}</text>
+          <view class="upload-box" bindtap="uploadGesture">
+            <block wx:if="{{!gestureImage}}">
+              <van-icon name="photograph" size="40px" color="#ccc" />
+              <text class="hint">点击上传验证图片</text>
+            </block>
+            <image wx:else src="{{gestureImage}}" class="preview-image" mode="aspectFill" />
+          </view>
+          <view wx:if="{{gestureVerified}}" class="verify-result">
+            <van-icon name="passed" color="#07c160" />
+            <text>{{gestureResult.displayText}}</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 特殊打卡要求 -->
+      <view class="form-item" wx:if="{{challenge.specialRequirement}}">
+        <text class="label">特殊打卡要求</text>
+        <view class="requirement-desc">
+          <text>需要识别{{challenge.specialRequirement.type==='scene'?'场景':'物体'}}: </text>
+          <text class="highlight">{{challenge.specialRequirement.value}}</text>
+        </view>
+        <view class="upload-box" bindtap="verifySpecialRequirement">
+          <block wx:if="{{!specialImage}}">
+            <van-icon name="photograph" size="40px" color="#ccc" />
+            <text class="hint">点击上传验证图片</text>
+          </block>
+          <image wx:else src="{{specialImage}}" class="preview-image" mode="aspectFill" />
+        </view>
+        <view wx:if="{{landmarkVerified && sceneVerifyResult}}" class="verify-result">
+          <van-icon name="passed" color="#07c160" />
+          <text>{{sceneVerifyResult.displayText}}</text>
+        </view>
+      </view>
+
+      <!-- 位置验证 -->
+      <view class="form-item">
+        <text class="label">位置验证（有效范围{{challenge.radius}}米）</text>
+        <view class="location-section">
+          <view class="location-info">
+            <van-icon name="location" size="16px" color="#1890ff" />
+            <text class="distance">{{distance ? distance + '米' : '点击验证位置'}}</text>
+          </view>
+          <van-button 
+            type="{{locationResult ? 'success' : 'danger'}}"
+            size="small" 
+            plain 
+            icon="{{locationResult ? 'checked' : 'cross'}}"
+            bind:click="checkLocation"
+          >
+            {{locationResult ? '验证成功' : '验证位置'}}
+          </van-button>
+        </view>
+        
+        <!-- 地图显示 -->
+        <map 
+          id="verifyMap" 
+          longitude="{{challenge.location.lng}}" 
+          latitude="{{challenge.location.lat}}" 
+          scale="14"
+          markers="{{markers}}"
+          polygons="{{polygons}}"
+          class="verify-map"
+        ></map>
+      </view>
+
+      <!-- 人脸识别 -->
+      <block wx:if="{{challenge.need_face_verify}}">
+        <view class="form-item">
+          <text class="label">人脸识别验证</text>
+          <view class="face-verify-section">
+            <block wx:if="{{!isFaceVerified}}">
+              <van-button 
+                type="info" 
+                size="small" 
+                icon="user-circle-o"
+                bind:click="verifyFace"
+              >
+                开始人脸验证
+              </van-button>
+            </block>
+            <block wx:else>
+              <van-icon name="checked" color="#07c160" size="20px" />
+              <text class="verified-text">已通过人脸验证</text>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 统一的摄像头组件 -->
+  <view class="camera-container" wx:if="{{showCamera && !isFaceVerified}}">
+    <view class="camera-content">
+      <!-- 头部 -->
+      <view class="camera-header">
+        <text>{{showFaceVerify ? '人脸验证' : '手势验证'}}</text>
+        <van-icon name="close" bindtap="closeAllCameraOperations" />
+      </view>
+      
+      <!-- 摄像头主体 -->
+      <view class="camera-body">
+        <camera 
+          device-position="{{cameraPosition}}"
+          flash="off"
+          style="width: 100%; height: 100%;"
+          binderror="handleCameraError"
+        >
+          <!-- 人脸验证UI -->
+          <view class="scan-guide" wx:if="{{showFaceVerify}}">
+            <view class="scan-box"></view>
+            <text class="guide-text">请将面部对准框内</text>
+            <text class="detecting-text" wx:if="{{isFaceDetecting}}">检测中...</text>
+          </view>
+          
+          <!-- 手势验证UI -->
+          <view class="scan-guide" wx:if="{{showGestureVerify}}">
+            <view class="gesture-instruction">
+              <text>请做出数字 {{randomGestureNumber}} 的手势</text>
+            </view>
+            <view class="gesture-scan-box"></view>
+            <text class="guide-text">请将手势对准框内</text>
+            <text class="detecting-text" wx:if="{{isGestureDetecting}}">检测中...</text>
+          </view>
+        </camera>
+      </view>
+      
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <van-button 
+    type="primary" 
+    block 
+    custom-class="submit-btn"
+    loading="{{loading}}"
+    disabled="{{!canSubmit}}"
+    bind:click="submitChallenge"
+  >
+    {{loading ? '提交中...' : '提交验证'}}
+  </van-button>
+</view>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>公告</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/element/index.css" rel="stylesheet" />
+    <link href="../css/quill.snow.css" rel="stylesheet" />
+    <link href="../css/announcementIssue.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper" v-cloak>
+      <nav
+        class="navbar navbar-default navbar-cls-top"
+        style="margin-bottom: 0"
+      >
+        <div class="navbar-header">
+          <a
+            class="navbar-brand"
+            href="javascript:void(0)"
+            @click="goToPage('main')"
+            >后台管理系统</a
+          >
+        </div>
+
+        <div class="header-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-info"
+            @click="logout"
+            title="退出登录"
+          >
+            <i class="fa fa-sign-out" style="font-size: 32px"></i>
+          </a>
+        </div>
+        <div class="header-right" style="padding-top: 25px">
+          欢迎您，{{currentUser.userInfo.account}}，
+        </div>
+        <div class="header-left">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('main')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >信息概述</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('userManagement')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >数据管理</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('personal')"
+                class="nav-button"
+                style="margin-right: 20px"
+                >个人中心</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 左侧导航栏 -->
+      <nav class="navbar-default navbar-side">
+        <div class="sidebar-collapse">
+          <ul class="nav" id="main-menu">
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('userManagement')"
+                ><i class="fa fa-table"> 用户管理</i></a
+              >
+            </li>
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('challenge')"
+                ><i class="fa fa-table"> 挑战</i></a
+              >
+            </li>
+            <li>
+              <a href="javascript: void(0)" @click="goToPage('blog')">
+                <i class="fa fa-table"> 博文</i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-area-chart"> 公告</i>
+                <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level collapse">
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    @click="goToPage('announcementManagement')"
+                  >
+                    <i class="fa fa-table"> 公告管理</i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="active-menu"
+                    href="javascript: void(0)"
+                    @click="goToPage('announcementIssue')"
+                  >
+                    <i class="fa fa-table"> 发布公告</i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="javascript: void(0)"
+                @click="goToPage('groupManagement')"
+              >
+                <i class="fa fa-table"> 团队管理</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="page-wrapper">
+        <div id="page-inner">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">发布公告</div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="title">标题</label>
+                    <input
+                      type="text"
+                      id="title"
+                      v-model="entity.title"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="content">正文</label>
+                    <div id="editor"></div>
+                  </div>
+                  <div class="form-group">
+                    <label>公告类型</label>
+                    <div class="radio">
+                      <label>
+                        <input
+                          type="radio"
+                          v-model="entity.type"
+                          :value="1"
+                          name="type"
+                        />
+                        后台
+                      </label>
+                      <label style="margin-left: 20px">
+                        <input
+                          type="radio"
+                          v-model="entity.type"
+                          :value="2"
+                          name="type"
+                        />
+                        用户端
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>发布时间</label>
+                    <p>{{ currentDate }}</p>
+                  </div>
+                  <button id="saveBtn" class="btn btn-primary">发布公告</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/my.js"></script>
+    <script src="../js/vue2.6.11/vue.min.js"></script>
+    <script src="../js/vue2.6.11/axios.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/element/index.js"></script>
+    <script src="../js/quill.js"></script>
+    <script src="../js/announcementIssue.js"></script>
+    </script>
+  </body>
+</html>

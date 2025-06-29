@@ -1,0 +1,90 @@
+<!-- my_blog.wxml -->
+<view class="container">
+  <!-- 导航栏 -->
+  <van-nav-bar
+    title="我的游记"
+    left-text="返回"
+    left-arrow
+    bind:click-left="goBack"
+    fixed
+    placeholder
+    safe-area-inset-top
+  />
+
+  <!-- 搜索栏 - 移除margin-top -->
+  <view class="search-bar">
+    <van-search
+      value="{{ searchValue }}"
+      placeholder="搜索游记标题"
+      shape="round"
+      background="#ffffff"
+      use-action-slot
+      bind:search="onSearch"
+      bind:change="onSearchInput"
+      custom-class="custom-search"
+    >
+    <view slot="action" bindtap="onSearch">搜索</view>
+    </van-search>
+    
+  </view>
+
+  <!-- 修改标签标题为"最多点赞" -->
+  <van-tabs 
+    active="{{ active }}" 
+    bind:change="onChange"
+    sticky
+    swipeable
+    animated
+    color="#1989fa"
+  >
+    <van-tab title="最新发布"></van-tab>
+    <van-tab title="最多点赞"></van-tab>
+  </van-tabs>
+
+  <!-- 游记列表 - 修改为挑战卡片样式 -->
+  <scroll-view class="blog-list" scroll-y>
+    <block wx:if="{{ blogs.length === 0 }}">
+      <view class="empty-state">
+        <image class="empty-icon" src="/images/empty.png" />
+        <text class="empty-text">暂无游记</text>
+      </view>
+    </block>
+    <block wx:for="{{ blogs }}" wx:key="id">
+      <view class="blog-item" bindtap="navigateToBlogDetail" data-id="{{ item.id }}">
+        <view class="blog-card">
+          <image class="blog-image" src="{{ item.coverUrl }}" mode="aspectFill" />
+          <view class="info-box">
+            <text class="title">{{ item.title }}</text>
+            <view class="status-line">
+              <text class="date">{{ formatDate(item.createTime) }} {{ getWeekday(item.createTime) }}</text>
+              <van-tag type="primary" size="medium">{{ item.isPublic ? '公开' : '私密' }}</van-tag>
+            </view>
+            <view class="content">{{ item.content }}</view>
+            <view class="bottom-line">
+              <view class="interaction-item">
+                <van-icon name="like-o" size="16px" />
+                <text>{{ item.likeCount || 0 }}</text>
+              </view>
+              <view class="interaction-item">
+                <van-icon name="chat-o" size="16px" />
+                <text>{{ item.commentCount || 0 }}</text>
+              </view>
+              <view 
+                class="delete-btn" 
+                catchtap="deleteBlog" 
+                data-id="{{ item.id }}"
+              >
+                <van-icon name="delete" size="16px" color="#ee0a24" />
+                <text>删除</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 加载状态 -->
+  <van-loading wx:if="{{ loading }}" size="24px" vertical>加载中...</van-loading>
+  <view wx:if="{{ !hasMore && blogs.length > 0 }}" class="no-more">没有更多了</view>
+</view>

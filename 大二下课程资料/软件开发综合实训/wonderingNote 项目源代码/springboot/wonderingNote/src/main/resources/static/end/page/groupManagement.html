@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>后台管理系统</title>
+  <meta
+          http-equiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/font-awesome.css" rel="stylesheet" />
+  <link href="../css/basic.css" rel="stylesheet" />
+  <link href="../css/custom.css" rel="stylesheet" />
+  <link href="../css/my.css" rel="stylesheet" />
+  <link href="../css/element/index.css" rel="stylesheet" />
+  <link href="../css/groupManagement.css" rel="stylesheet" />
+</head>
+<body>
+<div id="wrapper" v-cloak>
+  <nav
+          class="navbar navbar-default navbar-cls-top"
+          style="margin-bottom: 0"
+  >
+    <div class="navbar-header">
+      <a
+              class="navbar-brand"
+              href="javascript:void(0)"
+              @click="goToPage('main')"
+      >后台管理系统</a
+      >
+    </div>
+
+    <div class="header-right">
+      <a
+              href="javascript:void(0)"
+              class="btn btn-info"
+              @click="logout"
+              title="退出登录"
+      >
+        <i class="fa fa-sign-out" style="font-size: 32px"></i>
+      </a>
+    </div>
+    <div class="header-right" style="padding-top: 25px">
+      欢迎您，{{currentUser.userInfo.account}}
+    </div>
+    <div class="header-left">
+      <ul class="nav navbar-nav">
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('main')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >信息概述</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('userManagement')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >数据管理</a
+          >
+        </li>
+        <li>
+          <a
+                  href="javascript: void(0)"
+                  @click="goToPage('personal')"
+                  class="nav-button"
+                  style="margin-right: 20px"
+          >个人中心</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 左侧导航栏 -->
+  <nav class="navbar-default navbar-side">
+    <div class="sidebar-collapse">
+      <ul class="nav" id="main-menu">
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('userManagement')"
+          ><i class="fa fa-table"> 用户管理</i></a
+          >
+        </li>
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('challenge')"
+          ><i class="fa fa-table"> 挑战</i></a
+          >
+        </li>
+        <li>
+          <a href="javascript: void(0)" @click="goToPage('blog')"
+          ><i class="fa fa-table"> 博文</i></a
+          >
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-area-chart"> 公告</i>
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level collapse">
+            <li>
+              <a
+                      href="javascript:void(0)"
+                      @click="goToPage('announcementManagement')"
+              >
+                <i class="fa fa-table"> 公告管理</i>
+              </a>
+            </li>
+            <li>
+              <a
+                      href="javascript: void(0)"
+                      @click="goToPage('announcementIssue')"
+              >
+                <i class="fa fa-table"> 发布公告</i>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+                  class="active-menu"
+                  href="javascript: void(0)"
+                  @click="goToPage('groupManagement')"
+          ><i class="fa fa-table"> 团队管理</i></a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="page-wrapper">
+    <div id="page-inner">
+      <!-- 列表视图 -->
+      <div v-if="!showTeamDetail" class="panel panel-default">
+        <div class="panel-heading">群组管理</div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <div class="nx-table-header">
+              <div class="search-area">
+                <!-- 左侧日期选择 -->
+                <div class="date-range">
+                  <span class="filter-label">创建时间：</span>
+                  <input
+                          type="date"
+                          v-model="info4Search.startTime"
+                          class="form-control input-sm"
+                  />
+                  <label>至</label>
+                  <input
+                          type="date"
+                          v-model="info4Search.endTime"
+                          class="form-control input-sm"
+                  />
+                </div>
+                <!-- 右侧搜索框 -->
+                <div class="search-box">
+                  <input
+                          type="text"
+                          placeholder="请输入团队名称"
+                          v-model="info4Search.teamName"
+                          @keyup.enter="searchTeams"
+                  />
+                  <i
+                          class="glyphicon glyphicon-search"
+                          @click="searchTeams"
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>团队名称</th>
+                <th>团队头像</th>
+                <th>创建时间</th>
+                <th>用户人数</th>
+                <th>团队ID</th>
+                <th>创建者ID</th>
+                <th>创建者账号</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="obj in objs" :key="obj.teamId">
+                <td>{{obj.name}}</td>
+                <td>
+                  <el-button
+                          type="primary"
+                          size="small"
+                          @click="previewImage(obj)"
+                  >
+                    预览头像
+                  </el-button>
+                </td>
+                <td>{{obj.createTime}}</td>
+                <td>{{obj.userNumber}}</td>
+                <td>{{obj.teamId}}</td>
+                <td>{{obj.createdUserId}}</td>
+                <td>{{obj.createdUserAccount}}</td>
+                <td>
+                  <button
+                          class="btn btn-primary btn-xs"
+                          @click="viewDetail(obj.teamId)"
+                  >
+                    查看详情
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!-- 添加图片预览对话框 -->
+            <el-dialog
+                    :visible.sync="dialogVisible"
+                    title="头像预览"
+                    custom-class="preview-dialog"
+            >
+              <img
+                      :src="previewImageUrl"
+                      style="width: 100%"
+                      alt="Preview"
+              />
+            </el-dialog>
+
+            <ul class="pagination">
+              <li class="page-item" v-bind:class="{disabled:preActive}">
+                <a
+                        class="page-link"
+                        href="javascript:void(0)"
+                        v-on:click="loadTable(pageInfo.pageNum - 1)"
+                >上一页</a
+                >
+              </li>
+              <li class="page-item">
+                <a
+                        class="page-link"
+                        v-if="pageInfo.pageNum > 1"
+                        href="javascript:void(0)"
+                        v-on:click="loadTable(pageInfo.pageNum - 1)"
+                >
+                  {{pageInfo.pageNum - 1}}
+                </a>
+              </li>
+
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)"
+                >{{pageInfo.pageNum}}</a
+                >
+              </li>
+
+              <li class="page-item">
+                <a
+                        class="page-link"
+                        v-if="pageInfo.hasNextPage"
+                        href="javascript:void(0)"
+                        v-on:click="loadTable(pageInfo.pageNum + 1)"
+                >{{pageInfo.pageNum + 1}}</a
+                >
+              </li>
+              <li class="page-item" v-bind:class="{disabled:nextActive}">
+                <a
+                        class="page-link"
+                        href="javascript:void(0)"
+                        v-on:click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)"
+                >下一页</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- 添加群组详情视图 -->
+      <div v-if="showTeamDetail" class="panel panel-default">
+        <div class="panel-heading">
+          <span>团队详情</span>
+          <button class="btn btn-default pull-right" @click="backToList">
+            返回列表
+          </button>
+        </div>
+        <div class="team-detail-container">
+          <!-- 左侧团队信息 -->
+          <div class="team-info-section">
+            <div class="team-profile-header">
+              <div class="team-logo">
+                <img
+                        :src="getTeamLogoUrl(selectedTeam.logo)"
+                        alt="团队logo"
+                />
+              </div>
+              <h2 class="team-name">{{selectedTeam.name}}</h2>
+              <div class="team-id">ID: {{selectedTeam.teamId}}</div>
+            </div>
+
+            <div class="team-info-list">
+              <div class="team-info-item">
+                <i class="fa fa-users"></i>
+                <span>成员数量：{{selectedTeam.membersCount || 0}}</span>
+              </div>
+              <div class="team-info-item">
+                <i class="fa fa-clock-o"></i>
+                <span
+                >创建时间：{{formatDateTime(selectedTeam.createTime)}}</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧内容区域 -->
+          <div class="content-section">
+            <div class="stats-grid">
+              <div
+                      class="stat-card"
+                      :class="{ active: currentTab === 'members' }"
+                      @click="switchTab('members')"
+              >
+                <div class="number">{{selectedTeam.membersCount || 0}}</div>
+                <div class="label">团队成员</div>
+              </div>
+              <div
+                      class="stat-card"
+                      :class="{ active: currentTab === 'challenges' }"
+                      @click="switchTab('challenges')"
+              >
+                <div class="number">{{selectedTeam.total || 0}}</div>
+                <div class="label">团队挑战</div>
+              </div>
+            </div>
+
+            <!-- 成员列表 -->
+            <div
+                    v-if="currentTab === 'members'"
+                    class="member-list"
+                    @scroll="handleScroll"
+            >
+              <div
+                      v-for="member in teamMembers"
+                      :key="member.id"
+                      class="member-card"
+                      @click="viewUserDetail(member.id)"
+                      style="cursor: pointer"
+              >
+                <img
+                        :src="getMemberAvatarUrl(member.user_avatar)"
+                        class="member-avatar"
+                        :alt="member.user_account"
+                />
+                <div class="member-info">
+                  <div class="member-header">
+                    <div class="member-name">{{member.user_account}}</div>
+                    <div class="member-id">ID: {{member.id}}</div>
+                  </div>
+                  <div class="member-meta">
+                    <div class="member-meta-item">
+                      <i class="fa fa-clock-o"></i>
+                      <span>加入时间：{{member.join_time}}</span>
+                    </div>
+                    <div class="member-meta-item">
+                      <i class="fa fa-history"></i>
+                      <span>最近登录：{{member.update_time}}</span>
+                    </div>
+                  </div>
+                  <div
+                          class="member-role"
+                          :style="{
+                          background: member.role === 'owner' ? '#e1f3e1' : '#f1f8ff',
+                          color: member.role === 'owner' ? '#28a745' : '#0366d6'
+                        }"
+                  >
+                    <i
+                            :class="member.role === 'owner' ? 'fa fa-crown' : 'fa fa-user'"
+                    ></i>
+                    {{member.role === 'owner' ? '团队所有者' : '成员'}}
+                  </div>
+                </div>
+              </div>
+              <!-- 加载状态提示 -->
+              <div v-if="membersLoading" class="loading-more">
+                加载中...
+              </div>
+              <div
+                      v-if="!hasMoreMembers && teamMembers.length > 0"
+                      class="no-more"
+              >
+                没有更多成员了
+              </div>
+            </div>
+
+            <!-- 修改挑战卡片模板 -->
+            <div v-if="currentTab === 'challenges'" class="challenge-list">
+              <div class="challenge-container">
+                <template
+                        v-for="(challenge, index) in teamChallenges"
+                        :key="challenge.id"
+                >
+                  <div
+                          v-if="index < 2"
+                          class="challenge-card"
+                          @click="viewChallengeDetail(challenge.id)"
+                  >
+                    <div class="challenge-header">
+                      <h3 class="challenge-title">{{challenge.title}}</h3>
+                    </div>
+
+                    <!-- 参与者列表 -->
+                    <div class="challenge-participants">
+                      <div class="participants-header">
+                        <i class="fa fa-users"></i>
+                        <span
+                        >参与者列表 ({{challenge.participants ?
+                                JSON.parse(JSON.parse(challenge.participants)).length
+                                : 0}})</span
+                        >
+                      </div>
+                      <div class="participants-list">
+                        <template v-if="challenge.participants">
+                          <div
+                                  v-for="participant in JSON.parse(JSON.parse(challenge.participants))"
+                                  :key="participant.user_id"
+                                  class="participant-tag"
+                          >
+                            ID: {{participant.user_id}}
+                          </div>
+                        </template>
+                        <div v-else class="no-participants">暂无参与者</div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 分页部分不变 -->
+              <!-- 添加挑战列表分页 -->
+              <ul class="pagination" v-if="teamChallenges.length > 0">
+                <li
+                        class="page-item"
+                        v-bind:class="{disabled: challengePageInfo.pageNum <= 1}"
+                >
+                  <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          @click="loadTeamChallenges(selectedTeam.teamId, challengePageInfo.pageNum - 1)"
+                  >上一页</a
+                  >
+                </li>
+                <li class="page-item" v-if="challengePageInfo.pageNum > 1">
+                  <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          @click="loadTeamChallenges(selectedTeam.teamId, challengePageInfo.pageNum - 1)"
+                  >
+                    {{challengePageInfo.pageNum - 1}}
+                  </a>
+                </li>
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)"
+                  >{{challengePageInfo.pageNum}}</a
+                  >
+                </li>
+                <li class="page-item" v-if="challengePageInfo.hasNextPage">
+                  <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          @click="loadTeamChallenges(selectedTeam.teamId, challengePageInfo.pageNum + 1)"
+                  >
+                    {{challengePageInfo.pageNum + 1}}
+                  </a>
+                </li>
+                <li
+                        class="page-item"
+                        v-bind:class="{disabled: !challengePageInfo.hasNextPage}"
+                >
+                  <a
+                          class="page-link"
+                          href="javascript:void(0)"
+                          @click="loadTeamChallenges(selectedTeam.teamId, challengePageInfo.hasNextPage ? challengePageInfo.pageNum + 1 : challengePageInfo.pageNum)"
+                  >下一页</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.metisMenu.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/element/index.js"></script>
+<script src="../js/groupManegement.js"></script>
+</body>
+</html>

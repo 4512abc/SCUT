@@ -1,0 +1,77 @@
+# ========== 操作系统 ==========
+# Windows 临时文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS 临时文件
+.DS_Store
+
+# ========== IDE ==========
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# VSCode
+.vscode/
+
+# ========== 构建产物 ==========
+# Maven / Gradle
+target/
+build/
+out/
+
+# Java 编译文件
+*.class
+*.jar
+*.war
+*.ear
+
+# ========== 日志 & 缓存 ==========
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Spring Boot 临时文件
+.spring-boot-devtools.properties
+
+# ========== 环境配置（敏感信息） ==========
+*.env
+.env.*
+application-*.yml
+application-*.properties
+
+# ========== 数据库 & 缓存 ==========
+*.db
+*.sqlite
+*.h2.db
+
+# ========== 文件限制 ==========
+# 忽略 10MB 以上的大文件（防止 Git 变卡）
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.iso
+*.exe
+*.bin
+*.img
+*.mp4
+*.mp3
+*.avi
+*.mov
+*.mkv
+*.psd
+*.ai
+*.ttf
+*.woff
+*.woff2
+*.pdf
+
+# 大文件夹（如 node_modules 或 libs，手动管理）
+node_modules/
+lib/
+libs/
