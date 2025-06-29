@@ -1,0 +1,6 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  "../../../4_1.srcs/sources_1/imports/4_1mealy/mealy.sv"
+sv xil_defaultlib  "../../../4_1.srcs/sim_1/imports/4_1mealy/mealy_tb.sv"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"

@@ -1,0 +1,16 @@
+`timescale 1ns / 1ps
+////////////////////////////////////////////////////////////////////////////////// 
+// Module Name: xup_or5
+//////////////////////////////////////////////////////////////////////////////////
+module xup_or5 #(parameter DELAY = 3)(
+    input a,
+    input b,
+    input c,
+    input d,
+    input e,
+    output y
+    );
+    
+    or #DELAY (y,a,b,c,d,e);
+    
+endmodule

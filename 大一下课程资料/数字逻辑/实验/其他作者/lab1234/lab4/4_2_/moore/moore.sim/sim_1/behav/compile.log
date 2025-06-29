@@ -1,0 +1,7 @@
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/XILINX/lab4/4_2_/moore/moore.srcs/sources_1/imports/4_2_/moore.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module div3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/XILINX/lab4/4_2_/moore/moore.srcs/sim_1/imports/4_2_/moore_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module div3_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/lab4/4_2_/moore/moore.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

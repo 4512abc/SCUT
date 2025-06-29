@@ -1,0 +1,80 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step6: Banking Project - Sort and Search Customers</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step6: Banking Project - Sort and Search Customers</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this exercise you will sort and search the array of bank customers by their names.
+This will require you to have the <TT>Customer</TT> class implement the
+<TT>Comparable</TT> interface.
+</P>
+
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step6</TT>
+on your computer.  Copy the previous Banking project files.
+</P>
+
+
+<OL>
+
+  <LI>Add the <TT>sortCustomers</TT> and <TT>searchCustomers</TT> method to the <TT>Bank</TT> class.
+      <P>
+
+  <LI>Modify the <TT>Customer</TT> class to implement the <TT>Comparable</TT>
+      interface.  You will need to specify the <TT>compareTo</TT> method.
+      Make this method compare the two customers in a lexigraphical order
+      with the last name taking precedence over the first name.  For example,
+      "Joe Smith" should come before "Samuel Smith".
+      <P>
+  <LI>Add the <TT>searchCustomers</TT> method to the <TT>Bank</TT> class. So user can choose sort or search special customer in Bank's customers array. Search resault should display the customer's detail information as report show.
+      <P>
+
+  <LI>Create the <TT>CustomerReport</TT> class to call the <TT>sortCustomers</TT>
+      method before generating the report. The report display as below:
+      <P>
+
+  <LI>Compile and run the <TT>TestBanking</TT> program.  You should see the
+      following output:
+<PRE>
+			CUSTOMERS REPORT
+			================
+
+Customer: Bryant, Owen
+    Checking Account: current balance is 00.00
+
+Customer: Simms, Jane
+    Savings Account: current balance is 00.00
+    Checking Account: current balance is 00.00
+
+Customer: Soley, Maria
+    Checking Account: current balance is 00.00
+    Savings Account: current balance is 50.00
+
+Customer: Soley, Tim
+    Savings Account: current balance is 500.00
+    Checking Account: current balance is 00.00
+</PRE>
+      <P>
+
+</OL>
+
+</P>
+
+
+</BODY>
+
+</HTML>

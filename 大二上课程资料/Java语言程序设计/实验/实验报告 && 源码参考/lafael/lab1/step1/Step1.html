@@ -1,0 +1,90 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step1: Banking project-Create a Simple Banking Package</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step1: Banking project-Create a Simple Banking Package</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+This Banking project will consist of a bank with several customers with several account each and a report.
+</P>
+
+<P>
+In this lab, you will create very simple version of the <TT>Account</TT>
+class.  You will place this source file in the <TT>banking</TT> package.
+A test program, <TT>TestBanking</TT>, has been written in the default package that creates
+a single account.  It initializes the balance of that account and performs
+several simple transactions.  Finally, the test program displays the final
+balance of the account.
+</P>
+
+<CENTER>
+  <IMG SRC="UML.gif" ALT="The UML Model of the banking Package" BORDER=0>
+</CENTER>
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/Step1</TT> on your computer.
+
+<OL>
+
+  <LI>Create the <TT>banking</TT> directory.  Use a command such as:
+<PRE>
+mkdir banking
+</PRE>
+      <P>
+
+<TT></TT>
+  <LI>Create the <TT>Account</TT> class in the file <TT>Account.java</TT>
+      under the <TT>banking</TT> directory.  This class must implement the
+      model in the above UML diagram.
+      <P>
+	<OL>
+	  <LI>declare one private object attribute: <TT>balance</TT>; this attribute will hold
+	      the current (or "running") balance of the bank account
+	  <LI>declare a public constructor that takes one parameter (<TT>init_balance</TT>);
+	      that populates the <TT>balance</TT> attribute
+	  <LI>declare a public method <TT>getBalance</TT> that retrieves the current balance
+	  <LI>declare a public method <TT>deposit</TT> that adds the <TT>amount</TT> parameter to the current balance
+	  <LI>declare a public method <TT>withdraw</TT> that removes the <TT>amount</TT> parameter
+	      from the current balance
+	</OL>
+      <P>
+
+  <LI>In the main <TT>LAB4/Step1</TT> directory, compile the <TT>TestBanking.java</TT>
+      file.  This has a cascading effect of compiling all of the classes used
+      in the program; thus compiling the <TT>Customer.java</TT> and <TT>Account.java</TT>
+      files under the <TT>banking</TT> directory.<BR>
+      <TT>javac -d . TestBanking.java</TT>
+      <P>
+	</OL>
+<H3>Testing</H3>
+<p>
+<OL>
+Run the <TT>TestBanking</TT> class.  You shoud see the following output:
+<PRE>
+Creating an account with a 500.00 balance.
+Withdraw 150.00
+Deposit 22.50
+Withdraw 47.62
+The account has a balance of 324.88
+</PRE>
+
+</OL>
+
+</P>
+
+
+</BODY>
+
+</HTML>

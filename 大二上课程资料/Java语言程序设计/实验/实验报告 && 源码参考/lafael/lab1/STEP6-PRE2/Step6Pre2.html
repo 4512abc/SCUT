@@ -1,0 +1,116 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step6Pre2: Use the Singleton Design Pattern</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step6Pre2: Use the Singleton Design Pattern</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this exercise you will modify the <TT>Bank</TT> class to implement the
+Singleton design pattern.
+</P>
+
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step6-pre2</TT> on your computer.
+Copy your all of the Java files from step6-pre1
+into the <TT>banking.domain</TT> package directory.
+</P>
+
+<P>
+<FONT COLOR=red>
+Note: at this stage the Banking Project has need for a more complex
+package hierarchy because we will be creating a <TT>CustomerReport</TT> class
+which belongs in the <TT>banking.reports</TT> package. Therefore, the
+"domain" classes need to be placed in the <TT>banking/domain</TT>
+directory. Also, you will need to change the package declaration for each
+of these files.
+</FONT>
+</P>
+
+<TT></TT>
+<H4>Modify the <TT>Bank</TT> Class to Implement the Singleton Design Pattern</H4>
+
+<CENTER> <IMG SRC="UML.gif" BORDER=0> </CENTER>
+
+<P>
+
+<OL><TT></TT>
+
+  <LI>Modify the <TT>Bank</TT> class to create a public static method,
+      called <TT>getBank</TT>, that returns an instance of the <TT>Bank</TT> class.
+      <P>
+
+  <LI>The single instance should be a static attribute and should be private.
+      Likewise, make the <TT>Bank</TT> constructor private.
+      <P>
+
+</OL>
+
+</P>
+
+
+<H4>Modify the <TT>CustomerReport</TT> Class</H4>
+
+<P>
+In the previous Banking Project step6-pre1, the "customer report" was
+embedded in the <TT>main</TT> method of the <TT>TestBanking</TT> program.
+In this exercise, this code has been pulled out into the <TT>CustomerReport</TT> class
+in the <TT>banking.reports</TT> package. Your task will be to modify this
+class to use the Singleton bank object.
+</P>
+
+<OL><TT></TT>
+
+  <LI>Hunt for the line of code marked by the comment block <TT>/*** ... ***/</TT>
+     <BR>
+      Modify this line to retrieve the Singleton bank object.
+      <P>
+
+</OL>
+
+
+<H4>Compile and Run the <TT>TestBanking</TT> Program</H4>
+
+<OL>
+
+  <LI>Compile and run this program.  You should see the following output.
+<PRE>
+			CUSTOMERS REPORT
+			================
+
+Customer: Simms, Jane
+    Savings Account: current balance is ¤ 500.00
+    Checking Account: current balance is ¤ 200.00
+
+Customer: Bryant, Owen
+    Checking Account: current balance is ¤ 200.00
+
+Customer: Soley, Tim
+    Savings Account: current balance is ¤ 1,500.00
+    Checking Account: current balance is ¤ 200.00
+
+Customer: Soley, Maria
+    Checking Account: current balance is ¤ 200.00
+    Savings Account: current balance is ¤ 150.00
+</PRE>
+
+</OL>
+
+</P>
+
+
+</BODY>
+
+</HTML>

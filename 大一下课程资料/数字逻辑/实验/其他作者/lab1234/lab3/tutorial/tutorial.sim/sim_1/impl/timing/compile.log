@@ -1,0 +1,9 @@
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tutorial
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.srcs/sim_1/imports/tutorial_/tutorial_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tutorial_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/glbl.v:6]

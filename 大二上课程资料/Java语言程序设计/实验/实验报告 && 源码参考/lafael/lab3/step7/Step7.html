@@ -1,0 +1,126 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step7: Create Your Own Exception </TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step7: Create Your Own Exception </H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this exercise you will create an <TT>OverdraftException</TT> that is
+thrown by the <TT>withdraw</TT> method in the <TT>Account</TT> class.
+</P>
+
+
+<H3>Directions</H3>
+
+<CENTER> <IMG SRC="UML.gif" ALT="The UML Diagram of the Banking Exceptions" BORDER=0> </CENTER>
+
+<P>
+Start by changing your working directory to <TT>/step7</TT>
+on your computer.  Create the <TT>banking</TT> directory.  Copy the previous
+Banking project files in this package directory.
+</P>
+
+
+<H4>Create the <TT>OverdraftException</TT> Class</H4>
+<P>
+
+<OL>
+
+  <LI>Create a public class, called <TT>OverdraftException</TT>, in the
+      <TT>banking.domain</TT> package.  This class extends the <TT>Exception</TT> class.
+      <P>
+
+  <LI>Add a private attribute called <TT>deficit</TT> that holds a <TT>double</TT>.
+      Add a public accessor called <TT>getDeficit</TT>.
+      <P>
+
+  <LI>Add a public constructor that takes two arguments: <TT>message</TT> and
+      <TT>deficit</TT>. The <TT>message</TT> parameter should be passed to the
+      super class constructor.  The <TT>deficit</TT> parameter initializes the
+      <TT>deficit</TT> attribute.
+      <P>
+
+</OL>
+
+</P>
+
+
+<H4>Modify the <TT>Account</TT> Class</H4>
+<P>
+Modify the <TT>witdraw</TT> method:
+
+<OL><TT></TT>
+
+  <LI>Rewrite the <TT>witdraw</TT> method so that it does not return a value
+      (that is, <TT>void</TT>).  Declare that this method throws the
+      <TT>OverdraftException</TT>.
+      <P>
+
+  <LI>Modify the code to throw a new exception that specifies "Insufficient funds"
+      and the deficit (the amount requested subtracted by the current balance).
+      <P>
+
+</OL>
+
+</P>
+
+
+<H4>Modify the <TT>CheckingAccount</TT> Class</H4>
+<P>
+Modify the <TT>witdraw</TT> method:
+
+<OL>
+
+  <LI>Rewrite the <TT>witdraw</TT> method so that it does not return a value
+      (that is, <TT>void</TT>).  Declare that this method throws the
+      <TT>OverdraftException</TT>.
+      <P>
+
+  <LI>Modify the code to throw an exception if necessary. There are two
+      cases that need to be handled. First, there is a deficit with no
+      overdraft protection from the savings account; use the message "No
+      overdraft protection" for this exception. Second, the <TT>overdraftProtection</TT>
+      amount is sufficient to cover the deficit; use the message
+      "Insufficient funds for overdraft protection" for this exception.
+      <P>
+
+</OL>
+
+</P>
+
+
+<H4>Compile and Run the <TT>TestBanking</TT> Program</H4>
+<P>
+You should see the following output:
+<PRE>
+Customer [Simms, Jane] has a checking balance of 200.0 with a 500.00 overdraft protection.
+Checking Acct [Jane Simms] : withdraw 150.00
+Checking Acct [Jane Simms] : deposit 22.50
+Checking Acct [Jane Simms] : withdraw 147.62
+Checking Acct [Jane Simms] : withdraw 470.00
+Exception: Insufficient funds for overdraft protection   Deficit: 470.0
+Customer [Simms, Jane] has a checking balance of 0.0
+
+Customer [Bryant, Owen] has a checking balance of 200.0
+Checking Acct [Owen Bryant] : withdraw 100.00
+Checking Acct [Owen Bryant] : deposit 25.00
+Checking Acct [Owen Bryant] : withdraw 175.00
+Exception: No overdraft protection   Deficit: 50.0
+Customer [Bryant, Owen] has a checking balance of 125.0
+</PRE>
+</P>
+
+
+</BODY>
+
+</HTML>

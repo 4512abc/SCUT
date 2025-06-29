@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 22:14:18 2023
+# Process ID: 15292
+# Log file: C:/XILINX/labtwo/xup_and_test/xup_and_test/vivado.log
+# Journal file: C:/XILINX/labtwo/xup_and_test/xup_and_test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/XILINX/labtwo/xup_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'.
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri May 12 22:26:31 2023...

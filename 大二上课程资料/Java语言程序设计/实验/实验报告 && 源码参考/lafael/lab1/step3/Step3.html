@@ -1,0 +1,73 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step3: Banking project-Conditionalize the withdraw Method</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step3: Banking project-Conditionalize the withdraw Method</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this lab you will modify the <TT>withdraw</TT> method to return
+a boolean value to specify if the transaction was successful.
+</P>
+
+<CENTER>
+  <IMG SRC="UML.gif" ALT="The UML Model of the banking Package" BORDER=0>
+</CENTER>
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step3</TT> on your computer.
+
+<OL>
+
+  <LI>Create the <TT>banking</TT> directory.  Copy the previous Banking project
+      files in this package directory.
+      <P>
+
+  <LI>Modify the <TT>Account</TT> class to conditionalize the <TT>withdraw</TT>
+      and <TT>deposit</TT> methods.
+      <P>
+	<OL>
+	  <LI>Modify the <TT>deposit</TT> method to return <TT>true</TT>.
+	      (meaning all deposits are successful)
+	  <LI>Modify the <TT>withdraw</TT> method to check that the amount
+	      being withdrawn is not greater than the current balance.
+	      If <TT>amt</TT> is less than <TT>balance</TT>, then subtract
+	      the amount from the balance and return <TT>true</TT>; else,
+	      leave the balance alone and return <TT>false</TT>.
+	</OL>
+      <P>
+</OL>
+      
+<H3>Testing</H3>
+<p>
+<OL>In the main <TT>step3</TT> directory, compile and run the <TT>TestBanking</TT> program.
+      You shoud see the following output:
+<PRE>
+Creating the customer Jane Smith.
+Creating her account with a 500.00 balance.
+Withdraw 150.00: true
+Deposit 22.50: true
+Withdraw 47.62: true
+Withdraw 400.00: false
+Customer [Smith, Jane] has a balance of 324.88
+</PRE>
+
+</OL>
+
+</P>
+
+
+</BODY>
+
+</HTML>

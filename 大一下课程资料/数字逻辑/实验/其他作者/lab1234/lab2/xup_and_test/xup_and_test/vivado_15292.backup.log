@@ -1,0 +1,107 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 00:55:49 2023
+# Process ID: 2524
+# Log file: C:/XILINX/labtwo/xup_and_test/xup_and_test/vivado.log
+# Journal file: C:/XILINX/labtwo/xup_and_test/xup_and_test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/XILINX/labtwo/xup_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'.
+launch_simulation
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/elaborate.log
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/simulate.log
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xelab.pb
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xup_and_tb_behav.wdb
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xup_and_tb_behav1.wdb
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xup_and_tb_behav2.wdb
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xup_and_tb_behav3.wdb
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'xup_and_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav'
+"xvlog -m64 -prj xup_and_tb_vlog.prj"
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/ipshared/xilinx.com/xup_and2_v1_0/f79cde5a/xup_and2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xup_and2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/ip/system_xup_and2_0_0/sim/system_xup_and2_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module system_xup_and2_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/ipshared/xilinx.com/xup_and_vector_v1_0/de6250be/xup_and_vector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xup_and_vector
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/ip/system_xup_and_vector_0_0/sim/system_xup_and_vector_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module system_xup_and_vector_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hdl/system.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module system
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hdl/system_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module system_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sim_1/imports/sources/xup_and_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xup_and_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav'
+Vivado Simulator 2014.4
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: C:/XILINX/Vivado/2014.4/bin/unwrapped/win64.o/xelab.exe -wto 0635d7d70bf24e0bb1def8ba2afa2ea2 --debug typical --relax -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot xup_and_tb_behav xil_defaultlib.xup_and_tb xil_defaultlib.glbl -log elaborate.log 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.xup_and2
+Compiling module xil_defaultlib.system_xup_and2_0_0
+Compiling module xil_defaultlib.xup_and_vector(SIZE=3,DELAY=2)
+Compiling module xil_defaultlib.system_xup_and_vector_0_0
+Compiling module xil_defaultlib.system
+Compiling module xil_defaultlib.system_wrapper
+Compiling module xil_defaultlib.xup_and_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot xup_and_tb_behav
+
+****** Webtalk v2014.4 (64-bit)
+  **** SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+  **** IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+    ** Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+
+source C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xsim.dir/xup_and_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+
+    while executing
+"webtalk_transmit -clientid 3256962350 -regid "212733907_0_0_301" -xml C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xsim.dir..."
+    (file "C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav/xsim.dir/xup_and_tb_behav/webtalk/xsim_webtalk.tcl" line 41)
+INFO: [Common 17-206] Exiting Webtalk at Fri May 12 00:56:25 2023...
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "xup_and_tb_behav -key {Behavioral:sim_1:Functional:xup_and_tb} -tclbatch {xup_and_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2014.4
+Time resolution is 1 ps
+source xup_and_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 100ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'xup_and_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 100ns
+open_hw
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Fri May 12 00:57:14 2023] Launched synth_1...
+Run output will be captured here: C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.runs/synth_1/runme.log
+[Fri May 12 00:57:14 2023] Launched impl_1...
+Run output will be captured here: C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.runs/impl_1/runme.log

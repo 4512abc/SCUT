@@ -1,0 +1,11 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 22:14:18 2023
+# Process ID: 15292
+# Log file: C:/XILINX/labtwo/xup_and_test/xup_and_test/vivado.log
+# Journal file: C:/XILINX/labtwo/xup_and_test/xup_and_test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.xpr

@@ -1,0 +1,400 @@
+/*
+
+Vivado v2014.4 (64-bit)
+SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+Process ID: 33472
+
+Current time: 	5/12/23 12:00:42 AM
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 8
+Version: 6.2
+Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 1536x864
+Screen resolution (DPI): 96
+Available screens: 1
+
+Java version: 	1.8.0_05 64-bit
+Java home: 	C:/XILINX/Vivado/2014.4/tps/win64/jre
+
+User name: 	reaction 02
+User directory: C:/XILINX/labtwo/xup_and_test/xup_and_test
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+Vivado preferences path: C:/Users/reaction 02/AppData/Roaming/Xilinx/Vivado/2014.4/vivado.ini
+Vivado layouts directory: C:/Users/reaction 02/AppData/Roaming/Xilinx/Vivado/2014.4/layouts/application
+
+GUI allocated memory:	215 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 474 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// cm:N (ch:JFrame):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 42 MB (+41537kb) [00:00:02]
+// [Engine Memory]: 404 MB (+272091kb) [00:00:02]
+// [GUI Memory]: 48 MB (+6510kb) [00:00:03]
+// [Engine Memory]: 414 MB (+10809kb) [00:00:03]
+// [Engine Memory]: 455 MB (+43192kb) [00:00:03]
+// Tcl Message: open_project C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/XILINX/labtwo/xup_lib'. INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'. 
+// [Engine Memory]: 456 MB (+679kb) [00:00:04]
+// [Engine Memory]: 457 MB (+487kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 460 MB (+3870kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 461 MB (+831kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 463 MB (+2019kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 48 MB (+11kb) [00:00:04]
+// [GUI Memory]: 49 MB (+766kb) [00:00:04]
+// [GUI Memory]: 50 MB (+788kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 50 MB (+383kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 51 MB (+788kb) [00:00:04]
+// [Engine Memory]: 463 MB (+339kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 464 MB (+552kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 465 MB (+1671kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 468 MB (+2818kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 468 MB (+40kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 470 MB (+2252kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 471 MB (+925kb) [00:00:04]
+// [Engine Memory]: 473 MB (+1880kb) [00:00:04]
+// [Engine Memory]: 474 MB (+745kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Project name: xup_and_test; location: C:/XILINX/labtwo/xup_and_test/xup_and_test; part: xc7a35tcpg236-1
+dismissDialog("Open Project"); // cm:N (ch:JFrame)
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// HMemoryUtils.trashcanNow. Engine heap size: 474 MB. GUI used memory: 29 MB. Current time: 5/12/23 12:00:44 AM
+// [Engine Memory]: 483 MB (+10084kb) [00:00:11]
+// [GUI Memory]: 56 MB (+5166kb) [00:00:12]
+// [Engine Memory]: 484 MB (+675kb) [00:00:12]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Simulation Settings]", 10, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_SETTINGS
+// Project Settings: addNotify
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 492 MB (+7966kb) [00:00:13]
+selectTab(PAResourceOtoP.ProjectSettingsSimulationPanel_TABBED_PANE, PAResourceOtoP.ProjectSettingsSimulationPanel_SIMULATION, "Simulation", 2); // g:JideTabbedPane (JPanel:JComponent, k:bn)
+dismissDialog("Project Settings"); // k:bn (ch:JFrame)
+// [GUI Memory]: 61 MB (+5971kb) [00:00:16]
+// [Engine Memory]: 493 MB (+1093kb) [00:00:16]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // Z:JMenuItem (ag:JPopupMenu, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: FILE_SET_CHANGE
+// d:cm (ch:JFrame):  Run Simulation : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Tcl Message: INFO: [USF-XSim-27] Simulation object is 'sim_1' INFO: [USF-XSim-37] Inspecting design source files for 'xup_and_tb' in fileset 'sim_1'... INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... INFO: [USF-XSim-2] XSim::Compile design INFO: [USF-XSim-61] Executing 'COMPILE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav' 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav' 
+// TclEventType: LAUNCH_SIM
+// Tcl Message: ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '' file for more information. 
+// a:a (ch:JFrame): Critical Messages: addNotify
+dismissDialog("Run Simulation"); // d:cm (ch:JFrame)
+// Elapsed time: 13 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// b:g (ch:JFrame): Add Sources: addNotify
+selectRadioButton(PAResourceAtoD.AddSrcWizard_SPECIFY_SIMULATION_SPECIFIC_HDL_FILES, "Add or create simulation sources"); // a:JRadioButton (JPanel:JComponent, b:g)
+selectButton("NEXT", "Next >"); // JButton:AbstractButton (ButtonPanel:JPanel, b:g)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files..."); // a:JButton (H:JPanel, b:g)
+dismissFileChooser();
+// 'f' command handler elapsed time: 9 seconds
+dismissDialog("Add Sources"); // b:g (ch:JFrame)
+// [GUI Memory]: 71 MB (+10305kb) [00:00:51]
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 3); // u:k (I:JPanel, ch:JFrame)
+// [GUI Memory]: 80 MB (+8832kb) [00:01:09]
+// [Engine Memory]: 561 MB (+71512kb) [00:01:11]
+// Elapsed time: 20 seconds
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, ch:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 561 MB. GUI used memory: 31 MB. Current time: 5/12/23 12:01:49 AM
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 133, 130); // dT:J (JPanel:JComponent, ch:JFrame)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 0, 123); // dT:J (JPanel:JComponent, ch:JFrame)
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // dT:J (JPanel:JComponent, ch:JFrame)
+// Elapsed time: 83 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 448, 33); // dT:J (JPanel:JComponent, ch:JFrame)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 162, 131); // dT:J (JPanel:JComponent, ch:JFrame)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 137, 122); // dT:J (JPanel:JComponent, ch:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// b:g (ch:JFrame): Add Sources: addNotify
+selectButton("NEXT", "Next >"); // JButton:AbstractButton (ButtonPanel:JPanel, b:g)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files..."); // a:JButton (H:JPanel, b:g)
+setFileChooser("C:/XILINX/labtwo/sources/xup_and_tb.v");
+selectButton("FINISH", "Finish"); // JButton:AbstractButton (ButtonPanel:JPanel, b:g)
+// 'f' command handler elapsed time: 15 seconds
+dismissDialog("Add Sources"); // b:g (ch:JFrame)
+// b:g (ch:JFrame): Add Sources: addNotify
+// bB:N (b:g): Import Source Conflicts: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, bB:N)
+dismissDialog("Import Source Conflicts"); // bB:N (b:g)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: set_property SOURCE_SET sources_1 [get_filesets sim_1] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: import_files -fileset sim_1 -force -norecurse C:/XILINX/labtwo/sources/xup_and_tb.v 
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// Elapsed time: 33 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 7, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// cm:N (ch:JFrame):  Open Block Design : addNotify
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Message: open_bd_design {C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/system.bd} 
+// Tcl Message: Adding component instance block -- xilinx.com:XUP:xup_and2:1.0 - xup_and2_0 Adding component instance block -- xilinx.com:XUP:xup_and_vector:1.0 - xup_and_vector_0 Successfully read diagram <system> from BD file <C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/system.bd> 
+dismissDialog("Open Block Design"); // cm:N (ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// TclEventType: LOAD_FEATURE
+// q:N (ch:JFrame): Re-customize IP: addNotify
+// Elapsed time: 16 seconds
+setText("Delay", "3"); // N:an (aH:M, q:N)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, q:N)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// Tcl Message: startgroup 
+// Tcl Message: set_property -dict [list CONFIG.DELAY {3}] [get_bd_cells xup_and2_0] 
+// Tcl Message: endgroup 
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectTab((HResource) null, (HResource) null, "Design", 0); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, ch:JFrame)
+// Elapsed time: 15 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 2); // u:k (I:JPanel, ch:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, xup_and_tb (xup_and_tb.v), DUT - system_wrapper (system_wrapper.v), system_i - system (system.bd)]", 8, true, false, false, false, true, false); // u:k (I:JPanel, ch:JFrame) - Popup Trigger - Node
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, xup_and_tb (xup_and_tb.v), DUT - system_wrapper (system_wrapper.v), system_i - system (system.bd)]", 8, true, false, false, false, true, false); // u:k (I:JPanel, ch:JFrame) - Popup Trigger - Node
+selectMenuItem(PAResourceCommand.PACommandNames_CREATE_TOP_HDL, "Create HDL Wrapper..."); // Z:JMenuItem (ag:JPopupMenu, Popup:JWindow)
+// Run Command: PAResourceCommand.PACommandNames_CREATE_TOP_HDL
+// a:ac (ch:JFrame): Create HDL Wrapper: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, a:ac)
+// 'J' command handler elapsed time: 7 seconds
+dismissDialog("Create HDL Wrapper"); // a:ac (ch:JFrame)
+// TclEventType: RSB_SCRIPT_TASK
+// cm:N (ch:JFrame):  Create HDL Wrapper : addNotify
+// Tcl Message: make_wrapper -files [get_files C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/system.bd] -top 
+// Tcl Message: INFO: [BD 41-1379] This design does not contain any processor. 
+// Tcl Message: Generated Block Design Tcl file C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl Exporting to file C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hw_handoff/system.hwh 
+// [Engine Memory]: 581 MB (+20967kb) [00:04:56]
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 584 MB (+3899kb) [00:04:56]
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: Verilog Output written to : system.v Verilog Output written to : system_wrapper.v Wrote  : <C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/system.bd>  
+dismissDialog("Create HDL Wrapper"); // cm:N (ch:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 585 MB. GUI used memory: 42 MB. Current time: 5/12/23 12:05:34 AM
+// [Engine Memory]: 585 MB (+319kb) [00:04:58]
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 586 MB (+1409kb) [00:05:02]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Simulation Settings]", 10, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_SETTINGS
+// TclEventType: FILE_SET_CHANGE
+// Project Settings: addNotify
+dismissDialog("Project Settings"); // k:bn (ch:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // Z:JMenuItem (ag:JPopupMenu, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: FILE_SET_CHANGE
+// d:cm (ch:JFrame):  Run Simulation : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: LAUNCH_SIM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// [Engine Memory]: 603 MB (+18079kb) [00:05:07]
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 604 MB (+548kb) [00:05:07]
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// Tcl Message: launch_simulation 
+// Tcl Message: INFO: [BD 41-1379] This design does not contain any processor. 
+// Tcl Message: Generated Block Design Tcl file C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl Exporting to file C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/hw_handoff/system.hwh Verilog Output written to : system.v Verilog Output written to : system_wrapper.v Wrote  : <C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.srcs/sources_1/bd/system/system.bd>  
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav' 
+// TclEventType: LAUNCH_SIM
+// TclEventType: LOAD_FEATURE
+// Tcl Message: INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.sim/sim_1/behav' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "xup_and_tb_behav -key {Behavioral:sim_1:Functional:xup_and_tb} -tclbatch {xup_and_tb.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// Tcl Message: Vivado Simulator 2014.4 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// [Engine Memory]: 604 MB (+20kb) [00:05:12]
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Waveform: addNotify
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Waveform: addNotify
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 606 MB (+2215kb) [00:05:12]
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 608 MB (+2220kb) [00:05:12]
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// [Engine Memory]: 610 MB (+1585kb) [00:05:12]
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// HMemoryUtils.trashcanNow. Engine heap size: 613 MB. GUI used memory: 45 MB. Current time: 5/12/23 12:05:50 AM
+// Tcl Message: Time resolution is 1 ps 
+// Tcl Message: source xup_and_tb.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } # run 100ns 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'xup_and_tb_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 100ns 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 890.172 ; gain = 0.000 
+// 'c' command handler elapsed time: 6 seconds
+// [Engine Memory]: 613 MB (+3878kb) [00:05:12]
+dismissDialog("Run Simulation"); // d:cm (ch:JFrame)
+// [Engine Memory]: 641 MB (+29167kb) [00:05:13]
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// [Engine Memory]: 646 MB (+5271kb) [00:05:14]
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 51 MB. Current time: 5/12/23 12:05:56 AM
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+maximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // O:a (Workspace:JPanel, ch:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:00 AM
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.GraphicalView_ZOOM_FIT, "Waveform Viewer_zoom_fit"); // v:JideButton (CommandBar:DockableBar, ch:JFrame)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 168, 61); // n:a (JViewport:JComponent, ch:JFrame)
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+selectButton(RDIResource.WaveformView_ADD_MARKER, "Waveform Viewer_waveformAddMarker"); // v:JideButton (CommandBar:DockableBar, ch:JFrame)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:06 AM
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 182, -4); // n:a (JViewport:JComponent, ch:JFrame)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:07 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:07 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:07 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:07 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:07 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:08 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:08 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:08 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:08 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:08 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:09 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:09 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:09 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:10 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:10 AM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// HMemoryUtils.trashcanNow. Engine heap size: 646 MB. GUI used memory: 47 MB. Current time: 5/12/23 12:06:12 AM
+// Elapsed time: 51 seconds
+closeView(RDIResource.RDIViews_WAVEFORM_VIEWER, "Untitled 1*"); // u:aG (TdiGroup:JideTabbedPane, ch:JFrame)

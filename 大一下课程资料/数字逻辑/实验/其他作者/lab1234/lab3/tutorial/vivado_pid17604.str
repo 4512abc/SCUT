@@ -1,0 +1,315 @@
+/*
+
+Vivado v2014.4 (64-bit)
+SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+Process ID: 17604
+
+Current time: 	5/12/23 7:45:19 PM
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 8
+Version: 6.2
+Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 1536x864
+Screen resolution (DPI): 96
+Available screens: 1
+
+Java version: 	1.8.0_05 64-bit
+Java home: 	C:/XILINX/Vivado/2014.4/tps/win64/jre
+
+User name: 	reaction 02
+User directory: C:/XILINX/labthree/tutorial
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+Vivado preferences path: C:/Users/reaction 02/AppData/Roaming/Xilinx/Vivado/2014.4/vivado.ini
+Vivado layouts directory: C:/Users/reaction 02/AppData/Roaming/Xilinx/Vivado/2014.4/layouts/application
+
+GUI allocated memory:	209 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 506 MB
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// cm:N (ch:JFrame):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 42 MB (+41483kb) [00:00:03]
+// [Engine Memory]: 403 MB (+271436kb) [00:00:03]
+// [Engine Memory]: 461 MB (+60882kb) [00:00:03]
+// [Engine Memory]: 469 MB (+7544kb) [00:00:03]
+// [Engine Memory]: 470 MB (+1306kb) [00:00:04]
+// [GUI Memory]: 57 MB (+15579kb) [00:00:04]
+// [Engine Memory]: 470 MB (+589kb) [00:00:04]
+// Tcl Message: open_project C:/XILINX/labthree/tutorial/tutorial.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'. 
+// [Engine Memory]: 506 MB (+37412kb) [00:00:04]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 57 MB (+590kb) [00:00:05]
+// [GUI Memory]: 57 MB (+30kb) [00:00:05]
+// [GUI Memory]: 58 MB (+1138kb) [00:00:05]
+// [GUI Memory]: 59 MB (+569kb) [00:00:05]
+// [GUI Memory]: 60 MB (+599kb) [00:00:05]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 60 MB (+569kb) [00:00:05]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Project name: tutorial; location: C:/XILINX/labthree/tutorial; part: xc7a35tcpg236-1
+dismissDialog("Open Project"); // cm:N (ch:JFrame)
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// HMemoryUtils.trashcanNow. Engine heap size: 506 MB. GUI used memory: 30 MB. Current time: 5/12/23 7:45:21 PM
+// [Engine Memory]: 507 MB (+1306kb) [00:00:08]
+// [Engine Memory]: 508 MB (+847kb) [00:00:08]
+// Elapsed time: 31 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 24, false); // w:Y (v:I, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream 
+// Tcl Message: [Fri May 12 19:45:52 2023] Launched impl_1... Run output will be captured here: C:/XILINX/labthree/tutorial/tutorial.runs/impl_1/runme.log 
+// [GUI Memory]: 65 MB (+5400kb) [00:00:43]
+// TclEventType: RUN_COMPLETED
+// Q:al (ch:JFrame): Bitstream Generation Completed: addNotify
+// Elapsed time: 92 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER, "Open Hardware Manager"); // a:JRadioButton (JPanel:JComponent, Q:al)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, Q:al)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// TclEventType: LOAD_FEATURE
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw 
+dismissDialog("Bitstream Generation Completed"); // Q:al (ch:JFrame)
+// [GUI Memory]: 68 MB (+2589kb) [00:02:22]
+// [GUI Memory]: 68 MB (+57kb) [00:02:27]
+// [GUI Memory]: 68 MB (+122kb) [00:02:32]
+// [GUI Memory]: 69 MB (+780kb) [00:02:37]
+// [GUI Memory]: 69 MB (+128kb) [00:02:42]
+// [GUI Memory]: 69 MB (+49kb) [00:02:47]
+// [GUI Memory]: 70 MB (+861kb) [00:02:52]
+// [GUI Memory]: 70 MB (+49kb) [00:02:57]
+// [GUI Memory]: 70 MB (+128kb) [00:03:02]
+// [GUI Memory]: 70 MB (+47kb) [00:03:07]
+// [GUI Memory]: 71 MB (+861kb) [00:03:12]
+// [GUI Memory]: 71 MB (+49kb) [00:03:17]
+// [GUI Memory]: 71 MB (+128kb) [00:03:22]
+// [GUI Memory]: 72 MB (+776kb) [00:03:27]
+// [GUI Memory]: 72 MB (+128kb) [00:03:32]
+// [GUI Memory]: 72 MB (+49kb) [00:03:38]
+// [GUI Memory]: 72 MB (+126kb) [00:03:43]
+// [GUI Memory]: 73 MB (+782kb) [00:03:48]
+// [GUI Memory]: 73 MB (+134kb) [00:03:53]
+// [GUI Memory]: 73 MB (+55kb) [00:03:58]
+// [Engine Memory]: 518 MB (+10084kb) [00:04:02]
+// Elapsed time: 124 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // Z:JMenuItem (ag:JPopupMenu, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: FILE_SET_CHANGE
+// d:cm (ch:JFrame):  Run Simulation : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Tcl Message: INFO: [USF-XSim-27] Simulation object is 'sim_1' INFO: [USF-XSim-37] Inspecting design source files for 'tutorial_tb' in fileset 'sim_1'... INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... INFO: [USF-XSim-2] XSim::Compile design INFO: [USF-XSim-61] Executing 'COMPILE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav' 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: "xvlog -m64 -prj tutorial_tb_vlog.prj" Determining compilation order of HDL files. INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.srcs/sources_1/imports/tutorial_/tutorial.v" into library xil_defaultlib INFO: [VRFC 10-311] analyzing module tutorial INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.srcs/sim_1/imports/tutorial_/tutorial_tb.v" into library xil_defaultlib INFO: [VRFC 10-311] analyzing module tutorial_tb INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav/glbl.v" into library xil_defaultlib INFO: [VRFC 10-311] analyzing module glbl 
+// Tcl Message: INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav' 
+// TclEventType: LAUNCH_SIM
+// TclEventType: LOAD_FEATURE
+// Tcl Message:  ****** Webtalk v2014.4 (64-bit)   **** SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014   **** IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014     ** Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.  source C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav/xsim.dir/tutorial_tb_behav/webtalk/xsim_webtalk.tcl -notrace      while executing "webtalk_transmit -clientid 1725926400 -regid "212733907_0_0_301" -xml C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav/xsim.dir/tutorial_tb_behav/..."     (file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav/xsim.dir/tutorial_tb_behav/webtalk/xsim_webtalk.tcl" line 41) INFO: [Common 17-206] Exiting Webtalk at Fri May 12 19:49:38 2023... 
+// Tcl Message: INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/behav' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "tutorial_tb_behav -key {Behavioral:sim_1:Functional:tutorial_tb} -tclbatch {tutorial_tb.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// Tcl Message: Vivado Simulator 2014.4 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Waveform: addNotify
+// [Engine Memory]: 520 MB (+2060kb) [00:04:25]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Waveform: addNotify
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// [Engine Memory]: 521 MB (+1662kb) [00:04:25]
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: Time resolution is 1 ps 
+// Tcl Message: source tutorial_tb.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } # run 200ns 
+// Tcl Message: LED output matched at                  60 LED output matched at                 120 LED output matched at                 180 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'tutorial_tb_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 200ns 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 828.688 ; gain = 0.000 
+// [Engine Memory]: 522 MB (+401kb) [00:04:25]
+// 'c' command handler elapsed time: 5 seconds
+dismissDialog("Run Simulation"); // d:cm (ch:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 526 MB. GUI used memory: 38 MB. Current time: 5/12/23 7:49:44 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 526 MB (+4497kb) [00:04:29]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+maximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // O:a (Workspace:JPanel, ch:JFrame)
+selectButton(RDIResource.GraphicalView_ZOOM_FIT, "Waveform Viewer_zoom_fit"); // v:JideButton (CommandBar:DockableBar, ch:JFrame)
+// [Engine Memory]: 535 MB (+9003kb) [00:04:32]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 40 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:50 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 38 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 535 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:51 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 536 MB (+1159kb) [00:04:37]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:52 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:52 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 536 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 538 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:49:53 PM
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 538 MB (+2146kb) [00:04:39]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 11, false); // w:Y (v:I, ch:JFrame)
+// [GUI Memory]: 73 MB (+469kb) [00:04:42]
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_POST_IMPLEMENTATION_TIMING, "Run Post-Implementation Timing Simulation"); // Z:JMenuItem (ag:JPopupMenu, ch:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_POST_IMPLEMENTATION_TIMING
+// TclEventType: FILE_SET_CHANGE
+// d:cm (ch:JFrame):  Run Simulation : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation -mode post-implementation -type timing 
+// Tcl Message: INFO: [USF-XSim-27] Simulation object is 'sim_1' 
+// [GUI Memory]: 80 MB (+7253kb) [00:04:44]
+// [Engine Memory]: 635 MB (+101662kb) [00:04:44]
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 759 MB. GUI used memory: 37 MB. Current time: 5/12/23 7:50:00 PM
+// [Engine Memory]: 774 MB (+146493kb) [00:04:46]
+// [Engine Memory]: 855 MB (+84144kb) [00:04:46]
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi.loadEngineXgd elapsed time: 0.4s
+// [Engine Memory]: 882 MB (+28684kb) [00:04:48]
+// TclEventType: DESIGN_NEW
+// Device: addNotify
+// [Engine Memory]: 883 MB (+1146kb) [00:04:49]
+// [Engine Memory]: 884 MB (+1101kb) [00:04:49]
+// [GUI Memory]: 90 MB (+9920kb) [00:04:49]
+// [Engine Memory]: 885 MB (+495kb) [00:04:49]
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2014.4 
+// Tcl Message: Loading clock regions from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/ClockRegion.xml Loading clock buffers from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/ClockBuffers.xml Loading clock placement rules from C:/XILINX/Vivado/2014.4/data/parts/xilinx/artix7/ClockPlacerRules.xml Loading package pin functions from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/PinFunctions.xml... Loading package from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/cpg236/Package.xml Loading io standards from C:/XILINX/Vivado/2014.4/data\./parts/xilinx/artix7/IOStandards.xml Loading device configuration modes from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/ConfigModes.xml 
+// Tcl Message: INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: Parsing XDC File [C:/XILINX/labthree/tutorial/.Xil/Vivado-17604-LAPTOP-I9ARGKMK/dcp/tutorial.xdc] Finished Parsing XDC File [C:/XILINX/labthree/tutorial/.Xil/Vivado-17604-LAPTOP-I9ARGKMK/dcp/tutorial.xdc] Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1029.902 ; gain = 0.000 
+// Tcl Message: Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1029.902 ; gain = 0.000 
+// Tcl Message: INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). INFO: [Project 1-111] Unisim Transformation Summary: No Unisim elements were transformed.  
+// Device view-level: 0.0
+// [Engine Memory]: 887 MB (+2244kb) [00:04:49]
+// [Engine Memory]: 889 MB (+2883kb) [00:04:50]
+// [GUI Memory]: 90 MB (+68kb) [00:04:50]
+// [GUI Memory]: 90 MB (+381kb) [00:04:50]
+// Tcl Message: open_run: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1153.371 ; gain = 324.684 
+// [Engine Memory]: 898 MB (+8564kb) [00:04:50]
+// Tcl Message: INFO: [USF-XSim-32] Writing simulation netlist file for design 'impl_1'... INFO: [USF-XSim-92] write_verilog -mode timesim -nolib -sdf_anno true -force -file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.v" 

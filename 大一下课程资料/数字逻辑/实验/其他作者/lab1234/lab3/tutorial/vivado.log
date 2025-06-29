@@ -1,0 +1,133 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 20:02:47 2023
+# Process ID: 21968
+# Log file: C:/XILINX/labthree/tutorial/vivado.log
+# Journal file: C:/XILINX/labthree/tutorial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labthree/tutorial/tutorial.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'.
+launch_simulation -mode post-implementation -type timing
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/simulate.log
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.sdf
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.wdb
+WARNING: [Vivado 12-3661] Failed to remove file:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/xelab.pb
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2014.4
+Loading clock regions from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/ClockRegion.xml
+Loading clock buffers from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/ClockBuffers.xml
+Loading clock placement rules from C:/XILINX/Vivado/2014.4/data/parts/xilinx/artix7/ClockPlacerRules.xml
+Loading package pin functions from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/PinFunctions.xml...
+Loading package from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/artix7/xc7a35t/cpg236/Package.xml
+Loading io standards from C:/XILINX/Vivado/2014.4/data\./parts/xilinx/artix7/IOStandards.xml
+Loading device configuration modes from C:/XILINX/Vivado/2014.4/data\parts/xilinx/artix7/ConfigModes.xml
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/XILINX/labthree/tutorial/.Xil/Vivado-21968-LAPTOP-I9ARGKMK/dcp/tutorial.xdc]
+Finished Parsing XDC File [C:/XILINX/labthree/tutorial/.Xil/Vivado-21968-LAPTOP-I9ARGKMK/dcp/tutorial.xdc]
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1028.934 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1028.934 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 1193.258 ; gain = 353.043
+INFO: [USF-XSim-32] Writing simulation netlist file for design 'impl_1'...
+INFO: [USF-XSim-92] write_verilog -mode timesim -nolib -sdf_anno true -force -file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.v"
+write_verilog: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 1207.172 ; gain = 13.914
+INFO: [USF-XSim-33] Writing SDF file...
+INFO: [USF-XSim-93] write_sdf -mode timesim -process_corner slow -force -file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.sdf"
+write_sdf: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1517.277 ; gain = 310.105
+INFO: [USF-XSim-34] Netlist generated:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.v
+INFO: [USF-XSim-35] SDF generated:C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.sdf
+INFO: [USF-XSim-37] Inspecting design source files for 'tutorial_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing'
+"xvlog -m64 -prj tutorial_tb_vlog.prj"
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/tutorial_tb_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tutorial
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.srcs/sim_1/imports/tutorial_/tutorial_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tutorial_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/glbl.v:6]
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing'
+Vivado Simulator 2014.4
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: C:/XILINX/Vivado/2014.4/bin/unwrapped/win64.o/xelab.exe -wto 81cf4bd223e3483e8ba2821a4810a767 --debug typical --relax --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot tutorial_tb_time_impl -transport_int_delays -pulse_r 0 -pulse_int_r 0 xil_defaultlib.tutorial_tb xil_defaultlib.glbl -log elaborate.log 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "tutorial_tb_time_impl.sdf", for root module "tutorial_tb/tut1".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "tutorial_tb_time_impl.sdf", for root module "tutorial_tb/tut1".
+Time Resolution for simulation is 1ps
+Compiling module simprims_ver.OBUF
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
+Compiling module simprims_ver.x_lut3_mux4
+Compiling module simprims_ver.x_lut3_mux4_reduced_0
+Compiling module simprims_ver.LUT3
+Compiling module simprims_ver.IBUF
+Compiling module xil_defaultlib.tutorial
+Compiling module xil_defaultlib.tutorial_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tutorial_tb_time_impl
+
+****** Webtalk v2014.4 (64-bit)
+  **** SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+  **** IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+    ** Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+
+source C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/xsim.dir/tutorial_tb_time_impl/webtalk/xsim_webtalk.tcl -notrace
+
+    while executing
+"webtalk_transmit -clientid 3130598530 -regid "212733907_0_0_301" -xml C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/xsim.dir/tutorial_tb_..."
+    (file "C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing/xsim.dir/tutorial_tb_time_impl/webtalk/xsim_webtalk.tcl" line 41)
+INFO: [Common 17-206] Exiting Webtalk at Fri May 12 20:05:35 2023...
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/XILINX/labthree/tutorial/tutorial.sim/sim_1/impl/timing'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tutorial_tb_time_impl -key {Post-Implementation:sim_1:Timing:tutorial_tb} -tclbatch {tutorial_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2014.4
+Time resolution is 1 ps
+source tutorial_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 200ns
+LED output matched at                  60
+LED output matched at                 120
+LED output matched at                 180
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tutorial_tb_time_impl' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 200ns
+launch_simulation: Time (s): cpu = 00:00:26 ; elapsed = 00:00:24 . Memory (MB): peak = 1517.277 ; gain = 677.063
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri May 12 20:09:54 2023...

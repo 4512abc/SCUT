@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Module Name: xup_tff
+//////////////////////////////////////////////////////////////////////////////////
+module xup_tff#(parameter DELAY = 3)(
+    input t,
+    input clk,
+    output q
+    );
+    reg q;
+    initial q=0;
+    always @(posedge clk)
+    begin 
+        q <= #DELAY t^q;
+    end
+    
+endmodule

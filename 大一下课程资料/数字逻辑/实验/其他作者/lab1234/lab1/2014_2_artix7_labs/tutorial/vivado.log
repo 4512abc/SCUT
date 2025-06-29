@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Sun May 07 23:35:18 2023
+# Process ID: 24284
+# Log file: C:/XILINX/homework/2014_2_artix7_labs/tutorial/vivado.log
+# Journal file: C:/XILINX/homework/2014_2_artix7_labs/tutorial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/XILINX/homework/2014_2_artix7_sources/XUP_LIB'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/XILINX/Vivado/2014.4/data/ip'.
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun May 07 23:35:41 2023...
+rcs/sources_1/bd/design_1/design_1.bd}
+Adding component instance block -- xilinx.com:xup:xup_inv:1.0 - xup_inv_0
+Adding component instance block -- xilinx.com:xup:xup_and2:1.0 - xup_and2_0
+Adding component instance block -- xilinx.com:xup:xup_and2:1.0 - xup_and2_1
+Adding component instance block -- xilinx.com:xup:xup_inv:1.0 - xup_inv_1
+Adding component instance block -- xilinx.com:xup:xup_or2:1.0 - xup_or2_0
+Successfully read diagram <design_1> from BD file <C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.srcs/sources_1/bd/design_1/design_1.bd>
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun May 07 23:35:39 2023...

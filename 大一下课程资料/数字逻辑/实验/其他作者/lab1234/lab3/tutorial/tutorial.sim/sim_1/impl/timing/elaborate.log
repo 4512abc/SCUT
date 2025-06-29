@@ -1,0 +1,24 @@
+Vivado Simulator 2014.4
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: C:/XILINX/Vivado/2014.4/bin/unwrapped/win64.o/xelab.exe -wto 81cf4bd223e3483e8ba2821a4810a767 --debug typical --relax --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot tutorial_tb_time_impl -transport_int_delays -pulse_r 0 -pulse_int_r 0 xil_defaultlib.tutorial_tb xil_defaultlib.glbl -log elaborate.log 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "tutorial_tb_time_impl.sdf", for root module "tutorial_tb/tut1".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "tutorial_tb_time_impl.sdf", for root module "tutorial_tb/tut1".
+Time Resolution for simulation is 1ps
+Compiling module simprims_ver.OBUF
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
+Compiling module simprims_ver.x_lut3_mux4
+Compiling module simprims_ver.x_lut3_mux4_reduced_0
+Compiling module simprims_ver.LUT3
+Compiling module simprims_ver.IBUF
+Compiling module xil_defaultlib.tutorial
+Compiling module xil_defaultlib.tutorial_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tutorial_tb_time_impl

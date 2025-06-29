@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 19 17:41:12 2023
+# Process ID: 20900
+# Log file: C:/XILINX/lab4/4_1/4_1.runs/impl_1/div3.vdi
+# Journal file: C:/XILINX/lab4/4_1/4_1.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source div3.tcl -notrace

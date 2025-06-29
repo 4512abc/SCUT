@@ -1,0 +1,96 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step2: Banking Project-Create Customer Accounts</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step2: Banking Project-Create Customer Accounts</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this lab you will expand the Banking project by adding a
+<TT>Customer</TT> class.  A customer will contain one <TT>Account</TT> object.
+</P>
+
+<CENTER> 
+<TABLE BORDER=0 CELLSPACING=10 WIDTH=614>
+<TR>
+  <TD> <IMG SRC="UML.gif" BORDER=0 ALT="The UML Diagram of the Customer Class" WIDTH=614 HEIGHT=237> </TD>
+</TR>
+<TR>
+  <TD>
+    <FONT COLOR=blue>
+    Note: please refer to  <I>UML Modeling in Java</I> to help
+    understand this UML diagram.  For example, the <TT>account</TT> relationship
+    can be implemented as a data attribute in the <TT>Customer</TT> class;
+    eventhough, it is not mentioned in the "attributes" section of 
+    the <TT>Customer</TT> class block.
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+</CENTER> 
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step2</TT> on your computer.
+
+<OL>
+
+  <LI>Make the <TT>banking</TT> directory.
+      <P>
+
+  <LI>Copy the Banking project files from
+      the previous Banking lab to this directory.  Use a command such as:
+<PRE>
+copy ../step1/banking/*.java banking/
+</PRE>
+      <P>
+
+  <LI>Create the <TT>Customer</TT> class in the file <TT>Customer.java</TT>
+      under the <TT>banking</TT> directory.  This directory represents the
+      Java package structure for your program.  This class must implement
+      the model in the above UML diagram.
+	<OL>
+	  <LI>declare three private object attributes: <TT>firstName</TT>, <TT>lastName</TT>, and
+	      <TT>account</TT>
+	  <LI>declare a public constructor that takes two parameters (<TT>f</TT> and <TT>l</TT>)
+	      that populate the object attributes
+	  <LI>declare two public accessors for the object attributes; these methods
+	      <TT>getFirstName</TT> and <TT>getLastName</TT> simply return the appropriate attribute
+	  <LI>declare the <TT>setAccount</TT> method to assign the <TT>account</TT> attribute
+	  <LI>declare the <TT>getAccount</TT> method to retrieve the <TT>account</TT> attribute
+	</OL>
+      <P>
+<TT></TT>
+</OL>
+      
+<H3>Testing</H3>
+<p>
+<OL>In the main <TT>step2</TT> directory, compile and run the <TT>TestBanking</TT> program.
+      You shoud see the following output:
+<PRE>
+Creating the customer Jane Smith.
+Creating her account with a 500.00 balance.
+Withdraw 150.00
+Deposit 22.50
+Withdraw 47.62
+Customer [Smith, Jane] has a balance of 324.88
+</PRE>
+
+</OL>
+
+</P>
+
+
+</BODY>
+
+</HTML>

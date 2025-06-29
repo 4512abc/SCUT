@@ -1,0 +1,5 @@
+Creating an account with a 500.00 balance.
+Withdraw 150.00
+Deposit 22.50
+Withdraw 47.62
+The account has a balance of 324.88

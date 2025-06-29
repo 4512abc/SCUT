@@ -1,0 +1,88 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step4: Banking project-Use Arrays to Represent Associations</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step4: Banking project-Use Arrays to Represent Associations</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this lab you will use arrays to implement the multiplicity on the
+association between a bank and its customers.
+</P>
+
+
+<CENTER>
+  <IMG SRC="UML.gif" BORDER=0 ALT="The UML Model of the banking Package">
+</CENTER>
+
+
+<H3>Directions</H3>
+
+<P>
+To the <TT>banking</TT> package, you will add the <TT>Bank</TT> class as
+modeled by the UML diagram above.  A bank object simply keeps track of an
+association between itself and its customers.  We will implement this
+aggregate association with an array of <TT>Customer</TT> objects.  We will
+also need to keep a integer attribute that keeps track of how many customers
+currently exist in the bank.
+</P>
+
+<TT></TT>
+
+<OL>
+
+  <LI>Create the <TT>banking</TT> directory.  Copy the previous Banking project
+      files in this package directory.
+      <P>
+
+  <LI>Add two attributes to the <TT>Bank</TT> class: <TT>customers</TT>
+      (an array of <TT>Customer</TT> objects) and <TT>numberOfCustomers</TT>
+      (an integer that keeps track of the next <TT>customers</TT> array index).
+      </P>
+
+  <LI>Add a public constructor that initializes the <TT>customers</TT> array
+      with some appropriate maximum size (at least bigger than 5).
+      </P>
+
+  <LI>Add the <TT>addCustomer</TT> method.  This method must construct a new
+      <TT>Customer</TT> object from the parameters (first name, last name)
+      and place it on the <TT>customers</TT> array.  It
+      must also increment the <TT>numberOfCustomers</TT> attribute.
+      </P>
+
+  <LI>Add the <TT>getNumOfCustomers</TT> accessor method, which returns
+      the <TT>numberOfCustomers</TT> attribute.
+      </P>
+
+  <LI>Add the <TT>getCustomer</TT> method.  This method returns the customer
+      associated with the given <TT>index</TT> parameter.
+      </P>
+</OL>
+      
+<H3>Testing</H3>
+<p>
+<OL>Compile and run the <TT>TestBanking</TT> program.
+      You shoud see the following output:
+<PRE>
+Customer [1] is Simms, Jane
+Customer [2] is Bryant, Owen
+Customer [3] is Soley, Tim
+Customer [4] is Soley, Maria
+</PRE>
+
+</OL>
+
+</P>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 20:02:47 2023
+# Process ID: 21968
+# Log file: C:/XILINX/labthree/tutorial/vivado.log
+# Journal file: C:/XILINX/labthree/tutorial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labthree/tutorial/tutorial.xpr
+launch_simulation -mode post-implementation -type timing
+source tutorial_tb.tcl
+close_sim

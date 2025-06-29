@@ -1,0 +1,172 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step5: Banking project-Create Subclasses of Bank Accounts</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step5: Banking project-Create Subclasses of Bank Accounts</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this lab you will create two subclasses of the <TT>Account</TT> class
+in the Banking project: <TT>SavingsAccount</TT> and <TT>CheckingAccount</TT>.
+You will override the <TT>withdraw</TT> method for checking accounts and use
+<TT>super</TT> to invoke a parent constructor.
+</P>
+
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step5</TT> on your computer.
+</P>
+
+<H4>Implementing the Account Subclasses</H4>
+
+<CENTER> <IMG SRC="UML.gif" ALT="The UML Diagram of the Account Subclasses" BORDER=0> </CENTER>
+
+<P>
+To the <TT>banking</TT> package, you will add the <TT>SavingsAccount</TT>
+and <TT>CheckingAccount</TT> subclasses as modeled by the UML diagram above.
+</P>
+
+<OL>
+
+  <LI>Create the <TT>banking</TT> directory.  Copy the previous Banking project
+      files in this package directory.
+      <P>
+
+  <H5>Modify the Account Class</H5>
+
+  <LI>In the UML diagram the <TT>Account</TT> class has changed: The <TT>balance</TT>
+      attribute is now <I>protected</I> (indicated by the <TT>#</TT> character
+      instead of the <TT>-</TT> character).
+     <P>
+
+  <LI>Change the access mode of the <TT>balance</TT> attribute to <TT>protected</TT>.
+     <P>
+
+  <H5>The Savings Account Subclass</H5>
+
+  <LI>Implement the <TT>SavingsAccount</TT> class as modeled in the above
+     UML diagram.  
+     <P>
+
+  <LI>The <TT>SavingsAccount</TT> class must extend the <TT>Account</TT> class.
+     
+     <P>
+
+  <LI>It must include an <TT>interestRate</TT> attribute with type <TT>double</TT>.
+     
+     <P>
+
+  <LI>It must include a public constructor that takes two parameters:
+     <TT>balance</TT> and <TT>interest_rate</TT>.  This constructor must
+     pass the <TT>balance</TT> parameter to the parent constructor by calling
+     <TT>super(balance)</TT>.
+     <P>
+
+  <H5>The Checking Account Subclass</H5>
+
+  <LI>Implement the <TT>CheckingAccount</TT> class as modeled in the above
+     UML diagram.  
+     <P>
+
+  <LI>The <TT>CheckingAccount</TT> class must extend the <TT>Account</TT> class.
+     
+     <P>
+
+  <LI>It must include an <TT>overdraftProtection</TT> attribute with type <TT>double</TT>.
+      <P>
+
+  <LI>It must include one public constructor that takes one parameter:
+     <TT>balance</TT>.  This constructor must
+     pass the <TT>balance</TT> parameter to the parent constructor by calling
+     <TT>super(balance)</TT>.
+     <P>
+
+  <LI>It must include another public constructor that takes two parameters:
+     <TT>balance</TT> and <TT>protect</TT>.  This constructor must
+     pass the <TT>balance</TT> parameter to the parent constructor by calling
+     <TT>super(balance)</TT> and set the <TT>overdraftProtection</TT> attribute.
+     <P>
+
+  <LI>The <TT>CheckingAccount</TT> class must override the <TT>withdraw</TT>
+      method.  It must it perform the following check: if the current balance
+      is adequate to cover the <TT>amount</TT> to withdraw, then proceed as
+      usual. If not <EM>and if there is overdraft protection</EM>, then
+      attempt to cover the difference (<TT>balance</TT> - <TT>amount</TT>)
+      by value of the <TT>overdraftProtection</TT>.  If the amount needed
+      to cover the overdraft is greater than the current level of protection,
+      then the whole transaction must fail with the checking balance unaffected.
+      <P>
+      	
+     <LI>It must include one public method  <TT>getOverdraftProtection</TT> that return value of the <TT>overdraftProtection</TT>.
+     <P>
+
+</OL>
+
+<H3>Testing</H3>
+<p>
+<OL>
+In the main <TT>step5</TT> directory, compile and execute the
+<TT>TestBanking</TT> program.  The output should be:
+
+<PRE>
+Creating the customer Jane Smith.
+Creating her Savings Account with a 500.00 balance and 3% interest.
+Creating the customer Owen Bryant.
+Creating his Checking Account with a 500.00 balance and no overdraft protection.
+Creating the customer Tim Soley.
+Creating his Checking Account with a 500.00 balance and 500.00 in overdraft protection.
+Creating the customer Maria Soley.
+Maria shares her Checking Account with her husband Tim.
+
+Retrieving the customer Jane Smith with her savings account.
+Withdraw 150.00: true
+Deposit 22.50: true
+Withdraw 47.62: true
+Withdraw 400.00: false
+Customer [Simms, Jane] has a balance of 324.88
+
+Retrieving the customer Owen Bryant with his checking account with no overdraft protection.
+Withdraw 150.00: true
+Deposit 22.50: true
+Withdraw 47.62: true
+Withdraw 400.00: false
+Customer [Bryant, Owen] has a balance of 324.88
+
+Retrieving the customer Tim Soley with his checking account that has overdraft protection.
+Withdraw 150.00: true
+Deposit 22.50: true
+Withdraw 47.62: true
+Withdraw 400.00: true
+Now the overdraft protection of checking account is ###.##(print the actual value here)
+Customer [Soley, Tim] has a balance of 0.0
+
+Retrieving the customer Maria Soley with her joint checking account with husband Tim.
+Deposit 150.00: true
+Withdraw 750.00: false
+Customer [Soley, Maria] has a balance of 150.0
+</PRE>
+</OL>
+Notice that Jane's savings account and Owen's checking account fundamentaly
+behave as a plain-old bank account.  But Tim & Maria's joint checking account
+has 500.00 worth of overdraft protection.  Tim's transactions dip into that
+protection and therefore his ending balance is 0.00.  His account's overdraft
+protection level is 424.88.  Finally, Maria deposits 150.00 into this joint
+account; raising the balance from 0.00 to 150.00.  Then she tries withdraw
+1000.00, which fails because neither the balance nor the overdraft protection
+can cover that requested amount.
+</P>
+
+</BODY>
+
+</HTML>

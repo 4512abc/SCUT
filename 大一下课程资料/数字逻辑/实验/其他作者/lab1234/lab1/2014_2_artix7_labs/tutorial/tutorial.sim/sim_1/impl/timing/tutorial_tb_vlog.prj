@@ -1,0 +1,6 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "tutorial_tb_time_impl.v"
+verilog xil_defaultlib  "../../../../../../2014_2_artix7_sources/tutorial/tutorial_tb.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"

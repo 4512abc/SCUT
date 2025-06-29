@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1683891012">
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="PWROPT-DCP" Name="tutorial_pwropt.dcp"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="tutorial_timing_summary_postroute_physopted.pb"/>
+  <File Type="PA-DCP" Name="tutorial.dcp"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="tutorial_timing_summary_routed.rpt"/>
+  <File Type="PA-TCL" Name="tutorial.tcl"/>
+  <File Type="PWROPT-DRC" Name="tutorial_drc_pwropted.rpt"/>
+  <File Type="OPT-DCP" Name="tutorial_opt.dcp"/>
+  <File Type="OPT-DRC" Name="tutorial_drc_opted.rpt"/>
+  <File Type="PLACE-DCP" Name="tutorial_placed.dcp"/>
+  <File Type="PLACE-IO" Name="tutorial_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="tutorial_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="tutorial_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="tutorial_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="tutorial_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="tutorial_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="tutorial_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="tutorial_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="tutorial_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="tutorial_drc_physopted.rpt"/>
+  <File Type="ROUTE-DCP" Name="tutorial_routed.dcp"/>
+  <File Type="ROUTE-DRC" Name="tutorial_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="tutorial_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="tutorial_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="tutorial_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="tutorial_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="tutorial_route_status.pb"/>
+  <File Type="ROUTE-TIMING-PB" Name="tutorial_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="tutorial_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="tutorial_incremental_reuse_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="tutorial_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="tutorial_timing_summary_postroute_physopted.rpt"/>
+  <File Type="RDI-RDI" Name="tutorial.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="tutorial_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="tutorial.bit"/>
+  <File Type="BG-BIN" Name="tutorial.bin"/>
+  <File Type="BITSTR-MSK" Name="tutorial.msk"/>
+  <File Type="BITSTR-RBT" Name="tutorial.rbt"/>
+  <File Type="BITSTR-NKY" Name="tutorial.nky"/>
+  <File Type="BITSTR-BMM" Name="tutorial_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="tutorial.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="tutorial.sysdef"/>
+  <File Type="BG-BGN" Name="tutorial.bgn"/>
+  <File Type="BG-DRC" Name="tutorial.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/tutorial_/tutorial.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../tutorial_/tutorial.v"/>
+        <Attr Name="ImportTime" Val="1355814252"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="tutorial"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/tutorial_/Basys3_Master.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../tutorial_/Basys3_Master.xdc"/>
+        <Attr Name="ImportTime" Val="1439184284"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2014"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

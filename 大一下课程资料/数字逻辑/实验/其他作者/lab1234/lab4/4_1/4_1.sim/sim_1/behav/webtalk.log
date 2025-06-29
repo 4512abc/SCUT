@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Webtalk v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 19 17:39:28 2023
+# Process ID: 20740
+# Log file: C:/XILINX/lab4/4_1/4_1.sim/sim_1/behav/webtalk.log
+# Journal file: C:/XILINX/lab4/4_1/4_1.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/XILINX/lab4/4_1/4_1.sim/sim_1/behav/xsim.dir/div3_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+
+    while executing
+"webtalk_transmit -clientid 2803138522 -regid "212733907_0_0_301" -xml C:/XILINX/lab4/4_1/4_1.sim/sim_1/behav/xsim.dir/div3_tb_behav/webtalk/usage_stat..."
+    (file "C:/XILINX/lab4/4_1/4_1.sim/sim_1/behav/xsim.dir/div3_tb_behav/webtalk/xsim_webtalk.tcl" line 32)
+INFO: [Common 17-206] Exiting Webtalk at Fri May 19 17:39:29 2023...

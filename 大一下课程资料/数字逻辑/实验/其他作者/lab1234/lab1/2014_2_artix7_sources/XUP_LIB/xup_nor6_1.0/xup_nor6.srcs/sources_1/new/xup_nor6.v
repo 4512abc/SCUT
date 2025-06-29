@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Module Name: xup_nor6
+//////////////////////////////////////////////////////////////////////////////////
+module xup_nor6 #(parameter DELAY = 3)(
+    input a,
+    input b,
+    input c,
+    input d,
+    input e,
+    input f,
+    output y
+    );
+    
+    nor #DELAY (y,a,b,c,d,e,f);
+    
+endmodule

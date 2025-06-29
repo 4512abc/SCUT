@@ -1,0 +1,41 @@
+{
+   guistr: "# # String gsaved with Nlview 6.4.10  2014-10-02 bk=1.3207 VDI=35 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port SW3 -pg 1 -y 300 -defaultsOSRD
+preplace port SW4 -pg 1 -y 410 -defaultsOSRD
+preplace port SW5 -pg 1 -y 440 -defaultsOSRD
+preplace port SW6 -pg 1 -y 470 -defaultsOSRD
+preplace port LD0 -pg 1 -y 40 -defaultsOSRD
+preplace port SW7 -pg 1 -y 510 -defaultsOSRD
+preplace port LD1 -pg 1 -y 130 -defaultsOSRD
+preplace port LD2 -pg 1 -y 190 -defaultsOSRD
+preplace port LD3 -pg 1 -y 300 -defaultsOSRD
+preplace port LD4 -pg 1 -y 410 -defaultsOSRD
+preplace port LD5 -pg 1 -y 440 -defaultsOSRD
+preplace port LD6 -pg 1 -y 470 -defaultsOSRD
+preplace port LD7 -pg 1 -y 510 -defaultsOSRD
+preplace port SW0 -pg 1 -y 40 -defaultsOSRD
+preplace port SW1 -pg 1 -y 120 -defaultsOSRD
+preplace port SW2 -pg 1 -y 240 -defaultsOSRD
+preplace inst xup_inv_0 -pg 1 -lvl 2 -y 40 -defaultsOSRD
+preplace inst xup_inv_1 -pg 1 -lvl 1 -y 180 -defaultsOSRD -resize 80 60
+preplace inst xup_or2_0 -pg 1 -lvl 3 -y 190 -defaultsOSRD
+preplace inst xup_and2_0 -pg 1 -lvl 2 -y 130 -defaultsOSRD
+preplace inst xup_and2_1 -pg 1 -lvl 2 -y 270 -defaultsOSRD -resize 80 80
+preplace netloc SW4_1 1 0 4 NJ 410 NJ 410 NJ 410 N
+preplace netloc SW2_1 1 0 2 80 260 N
+preplace netloc SW1_1 1 0 2 NJ 120 N
+preplace netloc SW7_1 1 0 4 NJ 510 NJ 510 NJ 510 N
+preplace netloc SW6_1 1 0 4 NJ 470 NJ 470 NJ 470 N
+preplace netloc xup_or2_0_y 1 3 1 N
+preplace netloc xup_inv_0_y 1 2 2 NJ 40 N
+preplace netloc SW0_1 1 0 2 NJ 40 N
+preplace netloc SW3_1 1 0 2 NJ 300 240
+preplace netloc xup_inv_1_y 1 1 1 240
+preplace netloc xup_and2_0_y 1 2 2 440 130 N
+preplace netloc SW5_1 1 0 4 NJ 440 NJ 440 NJ 440 N
+preplace netloc xup_and2_1_y 1 2 2 440 300 NJ
+levelinfo -pg 1 60 160 360 540 640
+",
+}
+0

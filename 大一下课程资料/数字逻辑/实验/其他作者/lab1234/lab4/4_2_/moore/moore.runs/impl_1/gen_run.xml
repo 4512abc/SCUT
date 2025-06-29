@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1684510554">
+  <File Type="PWROPT-DCP" Name="div3_pwropt.dcp"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="PLACE-DCP" Name="div3_placed.dcp"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
+  <File Type="PWROPT-DRC" Name="div3_drc_pwropted.rpt"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="div3_timing_summary_routed.rpt"/>
+  <File Type="PA-TCL" Name="div3.tcl"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="OPT-DCP" Name="div3_opt.dcp"/>
+  <File Type="OPT-DRC" Name="div3_drc_opted.rpt"/>
+  <File Type="PLACE-IO" Name="div3_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="div3_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="div3_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="div3_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="div3_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="div3_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="div3_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="div3_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="div3_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="div3_drc_physopted.rpt"/>
+  <File Type="ROUTE-DCP" Name="div3_routed.dcp"/>
+  <File Type="ROUTE-DRC" Name="div3_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="div3_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="div3_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="div3_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="div3_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="div3_route_status.pb"/>
+  <File Type="ROUTE-TIMING-PB" Name="div3_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="div3_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="div3_incremental_reuse_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="div3_postroute_physopt.dcp"/>
+  <File Type="RDI-RDI" Name="div3.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="div3_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="div3_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="div3_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="div3.bit"/>
+  <File Type="BG-BIN" Name="div3.bin"/>
+  <File Type="BITSTR-MSK" Name="div3.msk"/>
+  <File Type="BITSTR-RBT" Name="div3.rbt"/>
+  <File Type="BITSTR-NKY" Name="div3.nky"/>
+  <File Type="BITSTR-BMM" Name="div3_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="div3.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="div3.sysdef"/>
+  <File Type="BG-BGN" Name="div3.bgn"/>
+  <File Type="BG-DRC" Name="div3.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/4_2_/moore.sv">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../moore.sv"/>
+        <Attr Name="ImportTime" Val="1684508098"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="div3"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/4_2moore/moore.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../4_2/4_2moore/moore.xdc"/>
+        <Attr Name="ImportTime" Val="1684488706"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2014">
+      <Desc>Vivado Implementation Defaults</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

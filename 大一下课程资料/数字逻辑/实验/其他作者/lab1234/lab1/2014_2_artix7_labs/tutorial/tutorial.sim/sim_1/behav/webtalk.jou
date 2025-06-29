@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Mon May 08 18:51:54 2023
+# Process ID: 17980
+# Log file: C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/behav/webtalk.log
+# Journal file: C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/behav/xsim.dir/tutorial_tb_behav/webtalk/xsim_webtalk.tcl -notrace

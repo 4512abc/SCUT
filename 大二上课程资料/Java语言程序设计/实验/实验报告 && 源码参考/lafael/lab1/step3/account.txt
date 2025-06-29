@@ -1,0 +1,7 @@
+Creating the customer Jane Smith.
+Creating her account with a 500.00 balance.
+Withdraw 150.00: true
+Deposit 22.50: true
+Withdraw 47.62: true
+Withdraw 400.00: false
+Customer [Smith, Jane] has a balance of 324.88

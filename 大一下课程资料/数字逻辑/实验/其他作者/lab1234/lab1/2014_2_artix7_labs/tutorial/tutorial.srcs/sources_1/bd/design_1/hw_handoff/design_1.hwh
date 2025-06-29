@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 07 21:14:08 2023" VIVADOVERSION="2014.4">
+
+  <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="design_1_imp" PACKAGE="cpg236" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="xup_inv_0_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_inv_0" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD1" SIGIS="undef" SIGNAME="xup_and2_0_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_0" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD2" SIGIS="undef" SIGNAME="xup_or2_0_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_or2_0" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD3" SIGIS="undef" SIGNAME="xup_and2_1_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_1" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD4" SIGIS="undef" SIGNAME="External_Ports_SW4">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="SW4"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD5" SIGIS="undef" SIGNAME="External_Ports_SW5">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="SW5"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD6" SIGIS="undef" SIGNAME="External_Ports_SW6">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="SW6"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD7" SIGIS="undef" SIGNAME="External_Ports_SW7">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="SW7"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW0" SIGIS="undef" SIGNAME="External_Ports_SW0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_inv_0" PORT="a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW1" SIGIS="undef" SIGNAME="External_Ports_SW1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_0" PORT="a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW2" SIGIS="undef" SIGNAME="External_Ports_SW2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_inv_1" PORT="a"/>
+        <CONNECTION INSTANCE="xup_and2_1" PORT="a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW3" SIGIS="undef" SIGNAME="External_Ports_SW3">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_1" PORT="b"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW4" SIGIS="undef" SIGNAME="External_Ports_SW4">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="LD4"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW5" SIGIS="undef" SIGNAME="External_Ports_SW5">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="LD5"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW6" SIGIS="undef" SIGNAME="External_Ports_SW6">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="LD6"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SW7" SIGIS="undef" SIGNAME="External_Ports_SW7">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="LD7"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <MODULES>
+    <MODULE FULLNAME="/xup_and2_0" HWVERSION="1.0" INSTANCE="xup_and2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_and2" VLNV="xilinx.com:xup:xup_and2:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xup_and2_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_SW1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xup_inv_1_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_inv_1" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_and2_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_or2_0" PORT="a"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xup_and2_1" HWVERSION="1.0" INSTANCE="xup_and2_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_and2" VLNV="xilinx.com:xup:xup_and2:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xup_and2_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_SW2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="External_Ports_SW3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_and2_1_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_or2_0" PORT="b"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD3"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xup_inv_0" HWVERSION="1.0" INSTANCE="xup_inv_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_inv" VLNV="xilinx.com:xup:xup_inv:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xup_inv_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_SW0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_inv_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xup_inv_1" HWVERSION="1.0" INSTANCE="xup_inv_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_inv" VLNV="xilinx.com:xup:xup_inv:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xup_inv_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_SW2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_inv_1_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_and2_0" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xup_or2_0" HWVERSION="1.0" INSTANCE="xup_or2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_or2" VLNV="xilinx.com:xup:xup_or2:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xup_or2_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="xup_and2_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_and2_0" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xup_and2_1_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xup_and2_1" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_or2_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+  <REPOSITORIES/>
+
+</EDKSYSTEM>

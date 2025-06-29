@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Fri May 12 00:55:49 2023
+# Process ID: 2524
+# Log file: C:/XILINX/labtwo/xup_and_test/xup_and_test/vivado.log
+# Journal file: C:/XILINX/labtwo/xup_and_test/xup_and_test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/XILINX/labtwo/xup_and_test/xup_and_test/xup_and_test.xpr
+launch_simulation
+source xup_and_tb.tcl
+open_hw
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1

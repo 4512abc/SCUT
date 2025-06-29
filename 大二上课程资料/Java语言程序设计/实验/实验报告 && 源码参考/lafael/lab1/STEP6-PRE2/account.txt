@@ -1,0 +1,17 @@
+                CUSTOMERS REPORT
+                ================
+
+Customer: Simms, Jane
+    Savings Account: current balance is € 500.00
+    Checking Account: current balance is € 200.00
+
+Customer: Bryant, Owen
+    Checking Account: current balance is € 200.00
+
+Customer: Soley, Tim
+    Savings Account: current balance is € 1,500.00
+    Checking Account: current balance is € 200.00
+
+Customer: Soley, Maria
+    Checking Account: current balance is € 200.00
+    Savings Account: current balance is € 150.00

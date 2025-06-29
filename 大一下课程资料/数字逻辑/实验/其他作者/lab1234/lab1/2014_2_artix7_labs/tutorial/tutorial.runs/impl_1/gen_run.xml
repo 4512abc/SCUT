@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1683539077">
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="PWROPT-DCP" Name="design_1_wrapper_pwropt.dcp"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
+  <File Type="PLACE-DCP" Name="design_1_wrapper_placed.dcp"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="design_1_wrapper_timing_summary_routed.rpt"/>
+  <File Type="PA-TCL" Name="design_1_wrapper.tcl"/>
+  <File Type="PWROPT-DRC" Name="design_1_wrapper_drc_pwropted.rpt"/>
+  <File Type="OPT-DCP" Name="design_1_wrapper_opt.dcp"/>
+  <File Type="OPT-DRC" Name="design_1_wrapper_drc_opted.rpt"/>
+  <File Type="PLACE-IO" Name="design_1_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="design_1_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="design_1_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="design_1_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="design_1_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="design_1_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="design_1_wrapper_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="design_1_wrapper_drc_physopted.rpt"/>
+  <File Type="ROUTE-DCP" Name="design_1_wrapper_routed.dcp"/>
+  <File Type="ROUTE-DRC" Name="design_1_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="design_1_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="design_1_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="design_1_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="design_1_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="design_1_wrapper_route_status.pb"/>
+  <File Type="ROUTE-TIMING-PB" Name="design_1_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="design_1_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="design_1_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="design_1_wrapper_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="design_1_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="RDI-RDI" Name="design_1_wrapper.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="design_1_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="design_1_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="design_1_wrapper.bit"/>
+  <File Type="BG-BIN" Name="design_1_wrapper.bin"/>
+  <File Type="BITSTR-MSK" Name="design_1_wrapper.msk"/>
+  <File Type="BITSTR-RBT" Name="design_1_wrapper.rbt"/>
+  <File Type="BITSTR-NKY" Name="design_1_wrapper.nky"/>
+  <File Type="BITSTR-BMM" Name="design_1_wrapper_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="design_1_wrapper.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="design_1_wrapper.sysdef"/>
+  <File Type="BG-BGN" Name="design_1_wrapper.bgn"/>
+  <File Type="BG-DRC" Name="design_1_wrapper.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/design_1/hdl/design_1_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="design_1_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../2014_2_artix7_sources/tutorial/tutorial_basys3.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PPRDIR/../../2014_2_artix7_sources/tutorial/tutorial_basys3.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2014"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

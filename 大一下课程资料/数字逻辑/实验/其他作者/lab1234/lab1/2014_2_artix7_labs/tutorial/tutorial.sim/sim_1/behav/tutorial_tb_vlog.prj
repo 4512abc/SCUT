@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/ipshared/xilinx.com/xup_inv_v1_0/c7c39646/xup_inv.srcs/sources_1/new/xup_inv.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/ip/design_1_xup_inv_0_1/sim/design_1_xup_inv_0_1.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/ipshared/xilinx.com/xup_and2_v1_0/06e46591/xup_and2.srcs/sources_1/new/xup_and2.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/ip/design_1_xup_and2_0_1/sim/design_1_xup_and2_0_1.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/ip/design_1_xup_and2_0_2/sim/design_1_xup_and2_0_2.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/ip/design_1_xup_inv_0_2/sim/design_1_xup_inv_0_2.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/ipshared/xilinx.com/xup_or2_v1_0/2f899ac2/xup_or2.srcs/sources_1/new/xup_or2.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/ip/design_1_xup_or2_0_1/sim/design_1_xup_or2_0_1.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/hdl/design_1.v"
+verilog xil_defaultlib  "../../../tutorial.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v"
+verilog xil_defaultlib  "../../../../../2014_2_artix7_sources/tutorial/tutorial_tb.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"

@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Webtalk v2014.4 (64-bit)
+# SW Build 1071353 on Tue Nov 18 18:24:04 MST 2014
+# IP Build 1070531 on Tue Nov 18 01:10:18 MST 2014
+# Start of session at: Sun May 07 23:29:24 2023
+# Process ID: 18984
+# Log file: C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/impl/timing/webtalk.log
+# Journal file: C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/impl/timing\webtalk.jou
+#-----------------------------------------------------------
+source C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/impl/timing/xsim.dir/tutorial_tb_time_impl/webtalk/xsim_webtalk.tcl -notrace
+
+    while executing
+"webtalk_transmit -clientid 1254588567 -regid "212733907_0_0_301" -xml C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/impl/timing/xs..."
+    (file "C:/XILINX/homework/2014_2_artix7_labs/tutorial/tutorial.sim/sim_1/impl/timing/xsim.dir/tutorial_tb_time_impl/webtalk/xsim_webtalk.tcl" line 41)
+INFO: [Common 17-206] Exiting Webtalk at Sun May 07 23:29:26 2023...

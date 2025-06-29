@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri May 12 00:11:11 2023" VIVADOVERSION="2014.4">
+
+  <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="system_imp" PACKAGE="cpg236" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_and2_0_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_0" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_a">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_0" PORT="a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="External_Ports_b">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and2_0" PORT="b"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="2" NAME="y_1" RIGHT="0" SIGIS="undef" SIGNAME="xup_and_vector_0_y">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and_vector_0" PORT="y"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="a_1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_a_1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and_vector_0" PORT="a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="b_1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_b_1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xup_and_vector_0" PORT="b"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <MODULES>
+    <MODULE FULLNAME="/xup_and2_0" HWVERSION="1.0" INSTANCE="xup_and2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_and2" VLNV="xilinx.com:XUP:xup_and2:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DELAY" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_xup_and2_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="External_Ports_a">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="External_Ports_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="xup_and2_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xup_and_vector_0" HWVERSION="1.0" INSTANCE="xup_and_vector_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xup_and_vector" VLNV="xilinx.com:XUP:xup_and_vector:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="SIZE" VALUE="3"/>
+        <PARAMETER NAME="DELAY" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_xup_and_vector_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_a_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="a_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_b_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="b_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="xup_and_vector_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="y_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+  <REPOSITORIES/>
+
+</EDKSYSTEM>

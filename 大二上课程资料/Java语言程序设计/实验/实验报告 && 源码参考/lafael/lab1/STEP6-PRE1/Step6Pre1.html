@@ -1,0 +1,103 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Step6Pre1: Use a Heterogeneous Collection of Customer Accounts</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>Step6Pre1: Use a Heterogeneous Collection of Customer Accounts</H2>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this exercise you will create an heterogeneous array to represent
+the aggregation of customers to accounts. That is, a given customer may
+have several accounts of different types.
+</P>
+
+
+<H3>Directions</H3>
+
+<P>
+Start by changing your working directory to <TT>/step6-pre1</TT> on your computer.
+</P>
+
+
+<H4>Modify the <TT>Customer</TT> Class</H4>
+
+<CENTER> <IMG SRC="UML.gif" BORDER=0> </CENTER>
+
+<P>
+
+<OL><TT></TT>
+
+  <LI>Create the <TT>banking</TT> directory.  Copy the previous Banking project
+      files in this package directory.
+      <P>
+
+  <LI>Modify the <TT>Customer</TT> class to handle the accounts association
+      with generic multiplicity ; create unlimited array with 
+	  <I>ArrayList</I> class.  It must include the public methods: <TT>addAccount(Account)</TT>,
+      <TT>getAccount(int)</TT>, and <TT>getNumOfAccounts()</TT>.
+      <P>
+
+</OL>
+
+
+<H4>Complete the <TT>TestBanking</TT> Program</H4>
+
+<P>
+This program creates a set of customers and accounts and generates a report
+of customers and their account balances.
+</P>
+
+<P>
+In the <TT>TestBanking.java</TT> file you will find comment blocks
+that start and end with <TT>/*** ... ***/</TT>.  These comments indicate
+the location in the code that you must supply.
+</P>
+
+<OL><TT></TT>
+
+  <LI>Use the <TT>instanceof</TT> operator to test what type of <TT>account</TT>
+      we have and set <TT>account_type</TT> to an appropriate value, such
+      as "Savings Account" or "Checking Account".
+      <P>
+
+  <LI>Print out the type of account and the balance.
+      Feel free to use the <TT>currency_format</TT> formatter
+      to generate a "currency string" for the balance.
+      <P>
+
+  <LI>Compile and run this program.  You should see the following output.
+<PRE>
+			CUSTOMERS REPORT
+			================
+
+Customer: Simms, Jane
+    Savings Account: current balance is ?500.00
+    Checking Account: current balance is ?200.00
+
+Customer: Bryant, Owen
+    Checking Account: current balance is ?200.00
+
+Customer: Soley, Tim
+    Savings Account: current balance is ?1,500.00
+    Checking Account: current balance is ?200.00
+
+Customer: Soley, Maria
+    Checking Account: current balance is ?200.00
+    Savings Account: current balance is ?150.00
+</PRE>
+
+
+</P>
+
+</BODY>
+
+</HTML>
