@@ -1,0 +1,77 @@
+# 注释由Dionysus完成编写
+server:
+  address: 0.0.0.0     # 0.0.0.0，让局域网设备可以访问
+  port: 8888           # 这个是你想要启动的端口号
+  tomcat:
+    protocol: HTTP/1.1 # 使用的传输协议
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        http-only: true
+spring:                 # springboot相关配置
+  main:
+    allow-circular-references: true
+  datasource:           # 数据库相关配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://serverIP:port/databaseName?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai # 注意这里要填数据库服务器的IP、数据库启动在的端口号、具体的数据库名
+    username: xxx       # 填连接进数据库的账号
+    password: xxx   # 密码
+    hikari:
+      max-lifetime: 1000000
+  thymeleaf:
+    cache: false # 关闭缓存
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:                  # springbootMail服务配置，以网易为例
+    host: smtp.163.com   # 配置的网易邮箱，那么格式是这样
+    username: xxx@163.com   # 你所用的邮箱账号
+    password: xxx        # 邮箱密码
+    default-encoding: UTF-8 # 编码格式
+    protocol: smtp # SMTP邮件协议
+    properties:
+        mail.smtp.auth: true # 是否需要身份验证
+        mail.smtp.starttls.enable: true # 是否启用TLS
+        mail.smtp.starttls.required: true
+        mail.smtp.ssl.enable: true
+        mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory # SSL套接字工厂类
+        mail.smtp.socketFactory.fallback: false # 是否回退到默认的套接字工厂
+        mail.smtp.socketFactory.port: 465 # SSL端口号
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  # 修改了拼写
+  type-aliases-package: org.example.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:   # 一个分页工具
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+authority:
+  info: []  # 去除引号
+
+logging:       # 日志的输出
+  file:
+    path: log
+    name: wonderingNote/src/main/java/org/example/aop/my.log
+  level:
+    com:
+      javaclimb:
+        dao: debug
+
+
+# JWT配置
+jwt:
+  header: "Authorization" # token返回头部
+  tokenPrefix: "Bearer " #  token前缀
+  secret: "xxx" #  密钥
+  expireTime: 3600000 #token有效时间 3600000毫秒 ==> 60分钟
+
+# 微信小程序配置码
+
+APPID: "xxx"
+APPSECRET: "xxx"
