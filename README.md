@@ -61,7 +61,7 @@ git clone https://github.com/4512abc/SCUT.git
 
 ## 📬 仓库作者
 
-#### Dionysus
+### Dionysus
 
 比起成为什么样子，更希望大家有自己的兴趣爱好、认识值得信赖的伙伴、有梦想追求，如果还有余力，做一些贡献。矛盾性寓于同一性，越是随流，越是焦虑与止步不前。
 
@@ -82,7 +82,7 @@ git clone https://github.com/4512abc/SCUT.git
 
 - GitHub：https://github.com/dionysusge
 
-#### BomLook
+### BomLook
 
 - email：yangrenbing7@gmail.com
 - GitHub：https://github.com/BomLook
@@ -91,7 +91,7 @@ git clone https://github.com/4512abc/SCUT.git
 
 大家或多或少会被周围人的优秀而陷入焦虑之中，但越是焦虑，越是一无所获：大家本身就不是在同一起跑线上，更希望大家专注于自身，不要陷入盲目内卷中。少点问”这有什么用“，而是想”为什么是这样的？居然这么有意思“，很多知识也许用不到，但是人生不是强化学习，很多东西总是会穿越时空，在未来的某一时刻帮助到你，所以，少一点怀疑，多一点好奇心，去探索，去追寻😎
 
-#### lafael
+### lafael
 
 *第一次看到包打听时*
 
@@ -105,7 +105,7 @@ git clone https://github.com/4512abc/SCUT.git
 - GitHub：https://github.com/lafaeier
 - blog：[Hephaestus](https://www.lafael.top/)
 
-#### Totoro
+### Totoro
 
 能和值得信赖伙伴一起完成这样一件事情，实乃大学一大快意事！
 
@@ -128,7 +128,7 @@ git clone https://github.com/4512abc/SCUT.git
 
 
 
-#### 仓库作者们的一些课业成果（让我们装一下）
+### 仓库作者们的一些课业成果（让我们装一下）
 
 **工科数学分析（一 ）（100/100 ） Top1**
 
