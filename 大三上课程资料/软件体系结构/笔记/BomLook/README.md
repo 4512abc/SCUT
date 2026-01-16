@@ -1,4 +1,4 @@
-# 说明
+# Written By BomLook
 
 主要整理了一些内容：
 
