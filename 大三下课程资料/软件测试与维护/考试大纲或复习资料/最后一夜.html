@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>软件测试期末复习背诵版</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --green: #059669;
+      --green-soft: #d1fae5;
+      --orange: #d97706;
+      --orange-soft: #ffedd5;
+      --red: #dc2626;
+      --red-soft: #fee2e2;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+      --gray-soft: #f3f4f6;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 22px 18px;
+      background: #111827;
+      color: #f9fafb;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    aside h1 {
+      font-size: 20px;
+      line-height: 1.25;
+      margin: 0 0 8px;
+    }
+
+    aside .sub {
+      color: #cbd5e1;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    nav a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin: 3px 0;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    main {
+      padding: 28px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+      color: white;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p { margin: 0; color: #e0e7ff; max-width: 760px; }
+
+    .chapter {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 28px;
+      margin: 26px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .chapter-title {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+    }
+
+    .chapter-num {
+      flex: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .chapter-title h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .chapter-title .tagline {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin: 24px 0 10px;
+      color: #111827;
+    }
+
+    .summary {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--blue);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+
+    .summary h3 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      color: #111827;
+      font-size: 16px;
+    }
+
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px 4px 2px 0;
+      background: var(--gray-soft);
+      color: #374151;
+    }
+    .b-blue { background: var(--blue-soft); color: var(--blue); }
+    .b-green { background: var(--green-soft); color: var(--green); }
+    .b-orange { background: var(--orange-soft); color: var(--orange); }
+    .b-red { background: var(--red-soft); color: var(--red); }
+    .b-purple { background: var(--purple-soft); color: var(--purple); }
+
+    ul, ol { padding-left: 1.25em; }
+    li { margin: 4px 0; }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+    }
+
+    .arrow {
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .quote {
+      border-left: 5px solid var(--purple);
+      padding: 12px 16px;
+      background: var(--purple-soft);
+      border-radius: 12px;
+      margin: 12px 0;
+      font-weight: 650;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 11px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-weight: 800;
+    }
+
+    .compare th:first-child, .compare td:first-child {
+      font-weight: 800;
+      background: #f8fafc;
+      width: 160px;
+    }
+
+    .diagram {
+      background: linear-gradient(180deg, #f8fafc, #fff);
+      border: 1px dashed #cbd5e1;
+      border-radius: 18px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+
+    .mini-title {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .matrix .item {
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .item strong { display: block; margin-bottom: 5px; color: #111827; }
+
+    .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .pill {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .two-col-text { columns: 2; column-gap: 34px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      main { padding: 18px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero h2 { font-size: 28px; }
+      .two-col-text { columns: 1; }
+    }
+
+    @media print {
+      aside { display: none; }
+      .layout { display: block; }
+      body { background: white; }
+      main { max-width: none; padding: 0; }
+      .chapter, .hero { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h1>软件测试期末复习</h1>
+      <div class="sub">中文背诵版 · 视觉化整理</div>
+      <nav>
+        <a href="#ch1">Ch1 基础概念</a>
+        <a href="#ch2">Ch2 公理与目标</a>
+        <a href="#ch3">Ch3 静态/动态 & 黑/白盒</a>
+        <a href="#ch4">Ch4 软件过程模型</a>
+        <a href="#ch5">Ch5 单元测试</a>
+        <a href="#ch6">Ch6 集成测试</a>
+        <a href="#ch7">Ch7 系统测试</a>
+        <a href="#ch8">Ch8 性能测试</a>
+        <a href="#ch9">Ch9 验收测试</a>
+        <a href="#ch10">Ch10 自动化测试</a>
+        <a href="#ch11">Ch11 软件维护</a>
+        <a href="#ch12">Ch12 静态测试与评审</a>
+        <a href="#ch13">Ch13 测试文档</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <h2>软件测试复习背诵 HTML</h2>
+        <p>按章节整理核心背诵点，保留必要英文术语，并用流程图、对比表和记忆卡片增强辨识度。</p>
+      </section>
+
+      <section id="ch1" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">1</div><div><h2>软件测试基础概念</h2><div class="tagline">Software / Bug / Fault-Error-Failure / PIE / V&V / Specification</div></div></div>
+
+        <div class="grid-2">
+          <div class="card"><h4>Software 组成</h4><div class="pill-list"><span class="pill">指令</span><span class="pill">数据结构</span><span class="pill">配置文件</span><span class="pill">系统文档</span><span class="pill">用户文档</span></div><p class="muted">软件不只是代码。系统文档描述系统结构，用户文档解释系统如何使用。</p></div>
+          <div class="card"><h4>Bug</h4><p>Bug 是非正式术语，不是精确定义。精确术语中应区分 <b>Fault</b>、<b>Error</b> 和 <b>Failure</b>。</p></div>
+        </div>
+
+        <h3>Fault / Error / Failure</h3>
+        <div class="flow"><span class="step">Fault<br><small>静态缺陷</small></span><span class="arrow">→</span><span class="step">Error<br><small>内部错误状态</small></span><span class="arrow">→</span><span class="step">Failure<br><small>外部错误行为</small></span></div>
+        <p>代码中有 Fault 不一定会立刻产生 Failure。只有 Fault 被执行、造成错误状态，并且错误状态传播到外部输出时，才会观察到 Failure。</p>
+
+        <h3>PIE Model</h3>
+        <div class="diagram"><div class="mini-title">Fault 变成 Failure 的三个条件</div><div class="flow"><span class="step">Execution / Reachability<br><small>执行到 Fault 所在代码</small></span><span class="arrow">→</span><span class="step">Infection<br><small>内部状态变错</small></span><span class="arrow">→</span><span class="step">Propagation<br><small>传播到输出</small></span></div></div>
+
+        <h3>Verification vs Validation</h3>
+        <table class="compare"><tr><th>概念</th><th>关注点</th><th>经典问题</th></tr><tr><td>Verification</td><td>某阶段产品是否满足上一阶段需求</td><td>是否正确地构建产品？</td></tr><tr><td>Validation</td><td>最终软件是否符合预期用途</td><td>是否构建了正确的产品？</td></tr></table>
+
+        <h3>Specification 与 Software Testing</h3>
+        <p><b>Specification</b> 提供软件的正确行为，是判断 expected output 的依据，必须描述正常行为和错误行为。</p>
+        <p><b>Software Testing</b> 是开发高质量软件系统的关键元素，是判断质量和发现 Bug 的系统化方法，不只是运行程序找 Bug。</p>
+
+        <div class="summary"><h3>本章中文背诵版</h3><p>软件不只是代码。一个软件系统通常包括指令、数据结构、配置文件、系统文档和用户文档。</p><p>Bug 是非正式术语。在精确的软件测试术语中，应区分 Fault、Error 和 Failure。Fault 是软件中的静态缺陷，Error 是由 Fault 引起的内部错误状态，Failure 是相对于需求或预期行为而言的外部错误行为。三者关系是 Fault → Error → Failure。</p><p>PIE 模型说明 Failure 出现的条件：必须执行到 Fault 所在代码，Fault 必须导致内部状态出错，错误状态还必须传播到输出。只有这三个条件都满足，Fault 才会表现为 Failure。</p><p>Verification 关注某阶段产品是否满足上一阶段建立的要求，问的是“是否正确地构建产品”。Validation 关注最终软件是否符合预期用途，问的是“是否构建了正确的产品”。</p><p>Specification 在测试中起关键作用，因为它提供软件的正确行为，必须描述正常行为和错误行为。软件测试是判断质量和发现 Bug 的系统化方法，不只是运行程序找 Bug。</p></div>
+      </section>
+
+      <section id="ch2" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">2</div><div><h2>软件测试公理与测试目标</h2><div class="tagline">Nine Axioms / Risk-based / Tester Goals</div></div></div>
+        <h3>九条公理</h3>
+        <ol>
+          <li>不可能完全测试一个程序。</li><li>软件测试是一种基于风险的活动。</li><li>测试不能证明 Bug 不存在。</li><li>发现的 Bug 越多，说明可能还有更多 Bug。</li><li>并非所有发现的 Bug 都会被修复。</li><li>很难判断什么时候一个 Bug 真的是 Bug。</li><li>规格说明永远不是最终版。</li><li>软件测试人员不是项目中最受欢迎的成员。</li><li>软件测试是一门有纪律性和技术性的职业。</li>
+        </ol>
+        <div class="grid-3">
+          <div class="card"><h4>无法完全测试</h4><p>输入、输出和程序路径数量都很大，并且规格说明存在解释空间。</p></div>
+          <div class="card"><h4>基于风险</h4><p>不能测试所有输入，只能跳过一些输入；跳过输入意味着承担风险。</p></div>
+          <div class="card"><h4>不能证明无 Bug</h4><p>测试通过只能说明在给定条件下没有发现 Bug 或没有观察到 Failure。</p></div>
+        </div>
+        <h3>测试人员目标</h3><div class="flow"><span class="step">发现 Bug</span><span class="arrow">→</span><span class="step">尽早发现 Bug</span><span class="arrow">→</span><span class="step">确保 Bug 被修复</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>软件测试有九条公理：不可能完全测试一个程序；软件测试是基于风险的活动；测试不能证明 Bug 不存在；发现的 Bug 越多，说明可能还有更多 Bug；并非所有 Bug 都会被修复；很难判断什么时候一个 Bug 真的是 Bug；规格说明永远不是最终版；测试人员不是项目中最受欢迎的成员；软件测试是一门有纪律性和技术性的职业。</p><p>不可能完全测试程序，是因为输入、输出和程序路径数量都很大，并且规格说明存在解释空间。由于不能测试所有输入，测试人员必须跳过一些输入，这就意味着承担风险。</p><p>测试可以证明 Bug 存在，但不能证明 Bug 不存在。测试通过只能说明在给定测试条件下没有发现 Bug 或没有观察到 Failure。测试的实际价值是降低风险，而不是证明软件没有 Bug。</p><p>软件测试人员的目标是发现 Bug、尽早发现 Bug，并确保 Bug 被修复。</p></div>
+      </section>
+
+      <section id="ch3" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">3</div><div><h2>静态 / 动态验证与黑盒 / 白盒测试</h2><div class="tagline">Static / Dynamic Verification · Black-box / White-box</div></div></div>
+        <table class="compare"><tr><th>类型</th><th>是否执行代码</th><th>说明</th></tr><tr><td>Static Verification</td><td>不执行</td><td>阅读代码、静态分析、符号执行、形式化验证</td></tr><tr><td>Dynamic Verification</td><td>执行</td><td>通过执行程序确认运行行为，也就是软件测试</td></tr></table>
+        <h3>Dynamic Verification 流程</h3><div class="flow"><span class="step">测试用例</span><span class="arrow">→</span><span class="step">测试数据</span><span class="arrow">→</span><span class="step">输入值</span><span class="arrow">→</span><span class="step">实际输出</span><span class="arrow">→</span><span class="step">预期输出</span><span class="arrow">→</span><span class="step">比较</span></div>
+        <table class="compare"><tr><th>测试方法</th><th>依据</th><th>关注点</th><th>覆盖</th></tr><tr><td>Black-box Testing</td><td>Specification</td><td>外部行为、输入输出、需求满足</td><td>覆盖 Specification，但不完整覆盖 Implementation</td></tr><tr><td>White-box Testing</td><td>Implementation / Code Structure</td><td>代码结构、路径、分支、条件、内部逻辑</td><td>覆盖 Implementation，但不覆盖 Specification</td></tr></table>
+        <h3>Omission / Commission</h3><div class="grid-2"><div class="card"><h4>Omission</h4><p>该有的没有。Specification 要求有，但 Implementation 没实现。白盒测试容易漏掉。</p></div><div class="card"><h4>Commission</h4><p>多做了不该做的。Implementation 实现了 Specification 没要求的额外行为。黑盒测试容易漏掉。</p></div></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>静态验证不需要执行代码，动态验证需要执行代码。动态验证就是软件测试，通过执行程序来确认程序运行行为。动态验证过程中，测试用例指导选择测试数据，测试数据包括输入值和预期输出值，输入值被提供给程序，程序产生实际输出，再与预期输出进行比较。</p><p>黑盒测试完全基于 Specification，关注外部行为和需求是否满足，不需要了解内部代码结构。白盒测试基于 Implementation 和代码结构，关注路径、分支、条件和内部逻辑。</p><p>黑盒测试覆盖 Specification，但不完整覆盖 Implementation；白盒测试覆盖 Implementation，但不覆盖 Specification。黑盒可能漏掉额外实现的不该有功能，即 Commission errors；白盒可能漏掉根本没有实现的应有功能，即 Omission errors。</p></div>
+      </section>
+
+      <section id="ch4" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">4</div><div><h2>软件过程模型</h2><div class="tagline">Waterfall / Spiral / V / W / Agile / TDD</div></div></div>
+        <div class="matrix">
+          <div class="item"><strong>Waterfall</strong>顺序式开发；开始时完成所有计划；阶段不重叠；测试通常靠后。</div>
+          <div class="item"><strong>Spiral</strong>风险驱动；结合瀑布与快速原型；从设计目标开始，以客户评审结束。</div>
+          <div class="item"><strong>V Model</strong>Waterfall 扩展；强调 V&V；开发阶段和测试活动对应。</div>
+          <div class="item"><strong>W Model</strong>测试与开发并行；测试不是等代码实现后才开始。</div>
+          <div class="item"><strong>Agile</strong>测试人员参与迭代需求协商，并立即转成测试用例。</div>
+          <div class="item"><strong>TDD</strong>测试优先；先写单元测试，再写代码让测试通过，最后重构。</div>
+        </div>
+        <h3>Spiral 流程</h3><div class="flow"><span class="step">确定目标</span><span class="arrow">→</span><span class="step">识别风险</span><span class="arrow">→</span><span class="step">开发和测试</span><span class="arrow">→</span><span class="step">计划下一轮迭代</span></div>
+        <h3>V Model 文档对应</h3><table><tr><th>文档</th><th>对应测试</th></tr><tr><td>用户需求规格说明</td><td>验收测试</td></tr><tr><td>系统需求规格说明</td><td>系统测试</td></tr><tr><td>系统设计规格说明</td><td>集成测试</td></tr><tr><td>详细设计规格说明</td><td>单元测试</td></tr></table>
+        <h3>TDD 流程</h3><div class="flow"><span class="step">开始</span><span class="arrow">→</span><span class="step">为新功能写测试</span><span class="arrow">→</span><span class="step">编译</span><span class="arrow">→</span><span class="step">修复编译错误</span><span class="arrow">→</span><span class="step">运行测试并失败</span><span class="arrow">→</span><span class="step">写代码</span><span class="arrow">→</span><span class="step">运行测试并通过</span><span class="arrow">→</span><span class="step">按需重构</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>Waterfall 是顺序式开发模型，所有计划在开始时完成，各阶段没有重叠，测试通常在后期进行。它的优点是早期需求和设计如果正确，可以节省后期成本，并且文档集中；缺点是对变更不灵活，测试靠后，文档耗时，项目后期才有明显进展，整体测试可能不完整。</p><p>Spiral 是风险驱动的开发过程，结合瀑布模型和快速原型迭代模型。它从设计目标开始，以客户评审进展结束。流程是确定目标、识别风险、开发和测试、计划下一轮迭代。</p><p>V Model 是 Waterfall 的扩展，强调 Verification 和 Validation，把开发阶段和测试活动对应起来。实现完成后，从单元测试开始，逐级到集成测试、系统测试和验收测试。文档对应关系是：用户需求对应验收测试，系统需求对应系统测试，系统设计对应集成测试，详细设计对应单元测试。</p><p>W Model 强调测试不是在代码实现后才开始，而是和开发过程并行进行，并强调开发与测试协作。Agile 中测试人员从每次迭代的需求协商阶段就参与，并立即把确认的需求转成测试用例。TDD 是测试优先开发，先写单元测试，再写代码让测试通过，最后按需重构。</p></div>
+      </section>
+
+      <section id="ch5" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">5</div><div><h2>单元测试与 Scaffolding</h2><div class="tagline">Unit Testing / Driver / Stub</div></div></div>
+        <div class="grid-2"><div class="card"><h4>Unit Testing 特点</h4><ul><li>主要是白盒测试</li><li>由开发者编写</li><li>验证小单元程序功能</li><li>需要完整了解实现细节</li><li>隔离测试一个软件片段</li><li>确保“正确地构建软件”</li></ul></div><div class="card"><h4>Unit Testing 作用</h4><ul><li>定位错误</li><li>尽早发现错误</li><li>避免不必要功能</li><li>提高代码质量</li><li>集成前确保单元最低质量</li></ul></div></div>
+        <h3>Unit Testing 流程</h3><div class="flow"><span class="step">计划</span><span class="arrow">→</span><span class="step">编写测试用例</span><span class="arrow">→</span><span class="step">执行测试</span><span class="arrow">→</span><span class="step">分析结果</span><span class="arrow">→</span><span class="step">修复并回归</span><span class="arrow">→</span><span class="step">自动化与 CI/CD</span><span class="arrow">→</span><span class="step">维护用例</span></div>
+        <h3>Scaffolding 结构</h3><div class="diagram"><div class="flow"><span class="step">Driver<br><small>模拟上层调用者</small></span><span class="arrow">→</span><span class="step">Unit<br><small>被测对象</small></span><span class="arrow">→</span><span class="step">Stub<br><small>模拟下层依赖</small></span></div></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>单元测试主要是开发者编写的白盒测试，用于验证程序功能的小单元。它需要完整了解实现细节，并且通常与实现同步进行。单元测试的目标是确保开发者正确地构建软件。</p><p>单元测试的作用包括定位错误、尽早发现错误、避免不必要功能、提高代码质量，并在集成前确保单元最低质量。单元测试主要关注独立路径、数据结构、接口、边界值、错误处理和内存。</p><p>Scaffolding 是测试支持代码，用来模拟外部代码，使单元可以被隔离测试。Driver 模拟上层调用者，调用被测软件并传入测试数据；Stub 模拟下层依赖服务，提供固定或有限的一组值。调用关系是 Driver → Unit → Stub。</p></div>
+      </section>
+
+      <section id="ch6" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">6</div><div><h2>集成测试</h2><div class="tagline">Integration Testing Strategies</div></div></div>
+        <p>集成测试用于验证系统中的组件或子系统是否能够正确协同工作，关注接口和交互。</p>
+        <table class="compare"><tr><th>级别</th><th>关注点</th></tr><tr><td>Unit Testing</td><td>单个小单元，隔离，白盒为主</td></tr><tr><td>Integration Testing</td><td>组件或子系统之间的接口和交互</td></tr><tr><td>System Testing</td><td>整个系统是否满足需求和场景</td></tr></table>
+        <h3>四种集成策略</h3><div class="grid-4"><div class="card"><h4>Big Bang</h4><p>一次性集成所有模块，简单但故障定位困难。</p></div><div class="card"><h4>Top-Down</h4><p>从主程序向下集成，主要使用 Stubs，可以较早形成系统原型。</p></div><div class="card"><h4>Bottom-Up</h4><p>从低层模块向上集成，主要使用 Drivers，主程序最后测试。</p></div><div class="card"><h4>Sandwich</h4><p>结合 Top-Down 和 Bottom-Up，上下并行，向中间收敛。</p></div></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>集成测试用于验证系统中的组件或子系统是否能够正确协同工作。它关注组件之间的接口和交互，并确认交互后产生正确结果。单元测试通过不代表集成测试一定通过，因为单个单元独立正确，组合后仍可能出现参数、接口、数据格式、调用顺序或单位不一致等集成故障。</p><p>Big Bang 一次性集成所有模块，简单但故障定位困难。Top-Down 从主程序向下集成，主要使用 Stubs，可以较早形成系统原型。Bottom-Up 从低层模块向上集成，主要使用 Drivers，主程序最后测试。Sandwich 结合 Top-Down 和 Bottom-Up，上下并行并向中间收敛，同时使用 Stubs 和 Drivers。</p></div>
+      </section>
+
+      <section id="ch7" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">7</div><div><h2>系统测试</h2><div class="tagline">System / Functional / Non-functional / Regression</div></div></div>
+        <div class="grid-3"><div class="card"><h4>System Testing</h4><p>测试系统作为整体在场景和需求方面的行为；假设组件已正常工作；使用黑盒测试技术。</p></div><div class="card"><h4>Functional Testing</h4><p>验证软件行为是否符合预期，也测试坏输入以检查隐含假设。</p></div><div class="card"><h4>Regression Testing</h4><p>代码变更后重新运行测试，确保已有行为没有被破坏。</p></div></div>
+        <h3>功能测试策略</h3><div class="pill-list"><span class="pill">场景测试</span><span class="pill">等价类划分</span><span class="pill">边界值分析</span><span class="pill">错误猜测</span><span class="pill">决策表测试</span><span class="pill">随机测试</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>系统测试测试系统作为整体在场景和需求方面的行为。它通常在集成测试之后进行，假设所有组件已经正常工作，使用黑盒测试技术，并将软件与顶层需求进行核对。</p><p>功能测试验证软件行为是否符合预期，也测试坏输入，以检查系统的隐含假设。系统功能测试通过系统接口输入数据并收集结果，而不是像单元测试那样直接调用方法。</p><p>非功能测试测试软件质量而不是具体功能，也叫各种 “-ilities”，如易用性、可靠性、可维护性、安全性和性能。回归测试是在代码变更后重新运行测试，确保已有功能、性能、安全性等没有被破坏。</p></div>
+      </section>
+
+      <section id="ch8" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">8</div><div><h2>性能测试</h2><div class="tagline">Performance / Load / Stress / Endurance / Spike / Volume</div></div></div>
+        <div class="grid-2"><div class="card"><h4>常见性能问题</h4><div class="pill-list"><span class="pill">加载时间长</span><span class="pill">响应时间差</span><span class="pill">可扩展性差</span><span class="pill">瓶颈</span></div></div><div class="card"><h4>常见瓶颈</h4><div class="pill-list"><span class="pill">CPU</span><span class="pill">内存</span><span class="pill">网络</span><span class="pill">磁盘</span></div></div></div>
+        <h3>五类性能测试</h3><table><tr><th>类型</th><th>含义</th></tr><tr><td>Load Testing</td><td>测预期用户负载下的执行能力。</td></tr><tr><td>Stress Testing</td><td>测极端负载下的表现和恢复能力，找崩溃点。</td></tr><tr><td>Endurance Testing</td><td>测长时间预期负载。</td></tr><tr><td>Spike Testing</td><td>测突然大负载峰值。</td></tr><tr><td>Volume Testing</td><td>测大量数据下系统行为。</td></tr></table>
+        <h3>性能测试流程</h3><div class="flow"><span class="step">识别测试环境</span><span class="arrow">→</span><span class="step">确定接受标准</span><span class="arrow">→</span><span class="step">计划设计</span><span class="arrow">→</span><span class="step">配置环境</span><span class="arrow">→</span><span class="step">实现设计</span><span class="arrow">→</span><span class="step">运行测试</span><span class="arrow">→</span><span class="step">分析调优重测</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>性能测试用于检查软件在工作负载下的响应性和稳定性，目标是识别并移除性能瓶颈，并验证软件是否满足速度、可扩展性和稳定性要求。</p><p>常见性能问题包括加载时间长、响应时间差、可扩展性差和瓶颈。常见瓶颈包括 CPU、内存、网络和磁盘。常见指标包括响应时间、吞吐量、每秒请求数、错误率、CPU 使用率、内存使用率、磁盘使用情况、网络延迟和带宽使用率。</p><p>Load Testing 测预期用户负载下的执行能力；Stress Testing 测极端负载下的系统表现和恢复能力；Endurance Testing 测长时间预期负载；Spike Testing 测突然大负载峰值；Volume Testing 测大量数据下系统行为。</p><p>Performance Testing 是 Load 和 Stress 的超集，用于建立系统性能基准。Load 在预期负载或崩溃阈值以下，Stress 在超过崩溃阈值的极端负载下。性能测试流程是识别测试环境、确定性能接受标准、计划和设计性能测试、配置测试环境、实现测试设计、运行测试、分析调优并重测。</p></div>
+      </section>
+
+      <section id="ch9" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">9</div><div><h2>验收测试</h2><div class="tagline">Acceptance / Alpha / Beta / Four Levels</div></div></div>
+        <p>验收测试是软件测试的最终阶段，在系统测试之后、最终交付客户之前进行，由客户或最终用户执行，采用黑盒测试方法。</p>
+        <div class="grid-2"><div class="card"><h4>Software Configuration Review</h4><p>检查交付的软件配置项和文档是否完整、规范、一致。</p></div><div class="card"><h4>Software Validity Testing</h4><p>检查软件在业务和运行环境下是否有效，包括接口、易用性、功能、性能、安全性等。</p></div></div>
+        <h3>Alpha vs Beta</h3><table><tr><th>维度</th><th>Alpha Testing</th><th>Beta Testing</th></tr><tr><td>地点</td><td>开发者场地</td><td>客户或最终用户场地</td></tr><tr><td>环境</td><td>受控环境</td><td>真实环境</td></tr><tr><td>控制</td><td>受开发者控制</td><td>不受开发者控制</td></tr><tr><td>开放</td><td>不对外开放</td><td>向客户或公众开放</td></tr><tr><td>目的</td><td>发布前发现 Bug</td><td>收集真实反馈并改进产品</td></tr></table>
+        <h3>四大测试总结</h3><table><tr><th>测试</th><th>测试对象</th><th>测试依据</th><th>测试人员</th><th>测试方法</th><th>测试数据</th></tr><tr><td>单元测试</td><td>软件单元</td><td>详细设计</td><td>开发者</td><td>白盒为主</td><td>一般不用真实数据</td></tr><tr><td>集成测试</td><td>模块接口和交互</td><td>架构设计</td><td>开发者和测试人员</td><td>黑盒为主，白盒为辅</td><td>一般不用真实数据</td></tr><tr><td>系统测试</td><td>整个软硬件系统</td><td>需求规格说明</td><td>专业测试人员</td><td>完全黑盒</td><td>尽量使用或模拟真实数据</td></tr><tr><td>验收测试</td><td>整个软硬件系统</td><td>需求、合同、验收标准</td><td>用户主导，开发者和测试人员协作</td><td>完全黑盒</td><td>尽量使用或模拟真实数据</td></tr></table>
+        <div class="summary"><h3>本章中文背诵版</h3><p>验收测试是软件测试的最终阶段，在系统测试之后、最终交付客户之前进行。它由客户或最终用户执行，用于检验系统是否符合业务需求、是否适合交付，并采用黑盒测试方法。</p><p>验收测试包括 Software Configuration Review 和 Software Validity Testing。前者检查交付物和文档是否完整、规范、一致；后者验证软件在业务和运行环境下是否有效，包括接口、易用性、功能、性能、环境、可靠性、兼容性、备份和安全性等。</p><p>Alpha Testing 在开发者场地、受控环境中进行，不对外开放，主要用于产品发布给外部用户前发现 Bug。Beta Testing 在 Alpha 之后进行，在客户或最终用户真实环境中进行，没有开发者控制，通常向客户或公众开放，依赖真实用户反馈改进产品。</p><p>四大测试中，Unit 测软件单元，开发者负责，白盒为主；Integration 测模块接口和交互，开发者和测试人员协作，黑盒为主白盒为辅；System 测整个系统，专业测试人员负责，完全黑盒；Acceptance 测整个系统，用户主导，完全黑盒。</p></div>
+      </section>
+
+      <section id="ch10" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">10</div><div><h2>自动化测试</h2><div class="tagline">Automation Testing</div></div></div>
+        <div class="grid-2"><div class="card"><h4>为什么需要自动化</h4><p>手工测试慢、容易出错、难以准确重复；软件测试需要快速、准确和可重复，尤其适合回归测试。</p></div><div class="card"><h4>自动化测试是什么</h4><p>借助专门工具比较测试用例的预期结果和实际结果，可以自动执行、收集、评估、报告和测量覆盖率。</p></div></div>
+        <h3>自动化测试流程</h3><div class="flow"><span class="step">定义目标和策略</span><span class="arrow">→</span><span class="step">选择工具</span><span class="arrow">→</span><span class="step">搭建环境</span><span class="arrow">→</span><span class="step">开发脚本</span><span class="arrow">→</span><span class="step">执行并分析</span></div>
+        <div class="grid-2"><div class="card"><h4>优点</h4><ul><li>高投资回报率</li><li>更快上市</li><li>重复测试用例</li><li>大型测试矩阵</li><li>并行执行</li><li>无人值守</li><li>减少人为错误</li><li>节省时间和金钱</li></ul></div><div class="card"><h4>缺点</h4><ul><li>工具通常昂贵</li><li>不适合测试用户体验</li><li>需要编码知识和经验</li></ul></div></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>自动化测试是借助专门的自动化测试工具，比较测试用例的预期结果和实际结果的软件测试方法。它可以自动执行测试或测试集合，自动收集和评估结果，自动生成报告，并自动测量测试覆盖率。</p><p>我们需要自动化测试，因为手工测试慢、容易出错、难以准确重复，而软件测试需要快速、准确和可重复，尤其适合回归测试。</p><p>自动化测试的优点包括高投资回报率、更快上市、支持重复测试用例、支持大型测试矩阵、支持并行执行、无人值守执行、提高准确性、减少人为错误，并节省时间和金钱。</p><p>自动化测试的缺点包括工具成本高、不适合测试用户体验，并且需要编码知识和经验。手工测试适合短期低预算项目、探索性测试、临时测试和用户体验测试；自动化测试适合回归测试、负载测试、压力测试、大型项目和性能测试。</p></div>
+      </section>
+
+      <section id="ch11" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">11</div><div><h2>软件维护</h2><div class="tagline">Software Maintenance / CAPP / Maintainability</div></div></div>
+        <p>软件维护是在软件交付或投入使用后对软件进行修改的过程，通常不涉及系统架构重大变化，需要程序理解。</p>
+        <h3>CAPP 四类维护</h3><div class="grid-4"><div class="card"><h4>Corrective</h4><p>纠错性维护，修复潜在错误。</p></div><div class="card"><h4>Adaptive</h4><p>适应性维护，适应外部环境变化。</p></div><div class="card"><h4>Perfective</h4><p>完善性维护，改进已交付软件。</p></div><div class="card"><h4>Preventative</h4><p>预防性维护，提高未来可维护性。</p></div></div>
+        <h3>主要维护活动</h3><div class="flow"><span class="step">识别变更</span><span class="arrow">→</span><span class="step">管理过程</span><span class="arrow">→</span><span class="step">理解程序</span><span class="arrow">→</span><span class="step">做出修改</span><span class="arrow">→</span><span class="step">测试修改</span><span class="arrow">→</span><span class="step">文档化并记录</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>软件维护是在软件交付或投入使用后对软件进行修改的过程。它通常不涉及系统架构的重大变化，而是通过修改已有组件或添加新组件实现，并且需要程序理解。</p><p>软件变化不可避免，因为使用中会出现新需求，业务环境会变化，故障必须修复，新硬件和设备会加入系统，性能或可靠性可能需要改进，并且软件与运行环境紧密耦合。</p><p>Corrective 是纠错性维护，用于修复潜在错误；Adaptive 是适应性维护，用于适应外部环境变化；Perfective 是完善性维护，用于改进已交付软件；Preventative 是预防性维护，用于提高未来可维护性。</p><p>Maintainability 是软件被修改的容易程度。Ripple Effect 是一个位置的变更可能影响其他组件。Impact Analysis 是识别某个变更会如何影响系统其他部分的过程。主要维护活动包括识别变更、管理过程、理解程序、做出修改、测试修改、文档化并记录修改。</p><p>提高可维护性的方法包括清晰写文档、记录假设、使用版本控制、清晰命名、保持代码整洁、遵守代码风格、保持代码简单，并避免过长方法和不必要复杂性。</p></div>
+      </section>
+
+      <section id="ch12" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">12</div><div><h2>静态测试与代码评审</h2><div class="tagline">Static Testing / Code Review</div></div></div>
+        <div class="grid-2"><div class="card"><h4>Static Testing</h4><p>不执行软件，仔细且有条不紊地审查和分析软件以发现 Bug，包括 Code Review 和 Static Program Analysis。</p></div><div class="card"><h4>价值</h4><p>许多 Fault 可以不执行软件就被发现，更早修复，减少执行型测试时间，降低成本并提高生产率。</p></div></div>
+        <h3>Code Review 四大元素</h3><div class="flow"><span class="step">发现问题</span><span class="arrow">→</span><span class="step">遵守规则</span><span class="arrow">→</span><span class="step">提前准备</span><span class="arrow">→</span><span class="step">撰写报告</span></div>
+        <table class="compare"><tr><th>类型</th><th>特点</th></tr><tr><td>Peer Review</td><td>非正式小组评审，由程序员和 / 或测试人员作为 reviewers。</td></tr><tr><td>Walkthrough</td><td>更正式，由代码作者逐行解释代码，reviewers 听并提问。</td></tr><tr><td>Formal Code Inspection</td><td>更全面，有 inspectors 和 moderator，检查后形成报告，必要时重新检查。</td></tr></table>
+        <h3>Formal Code Inspection 流程</h3><div class="flow"><span class="step">概览</span><span class="arrow">→</span><span class="step">准备</span><span class="arrow">→</span><span class="step">检查</span><span class="arrow">→</span><span class="step">修改</span><span class="arrow">→</span><span class="step">跟进</span></div>
+        <div class="summary"><h3>本章中文背诵版</h3><p>静态测试是在不执行软件的情况下，仔细且有条不紊地审查和分析软件以发现 Bug 的过程，包括 Code Review 和 Static Program Analysis。它的价值在于许多 Fault 可以不执行软件就被发现，并且可以更早修复，从而减少执行型测试时间、降低成本并提高生产率。</p><p>Code Review 的四大元素是发现问题、遵守规则、提前准备和撰写报告。Peer Review 是非正式小组评审，由程序员和 / 或测试人员作为 reviewers；Walkthrough 更正式，由代码作者逐行解释代码，reviewers 听并提问。</p><p>Formal Code Inspection 比 Walkthrough 更全面，有 inspectors 和 moderator，检查后形成报告，程序员修改，必要时重新检查。它的流程是概览、准备、检查、修改和跟进。Static Program Analysis 使用工具在不执行程序的情况下分析源代码，可以发现缓冲区溢出、空指针、未初始化数据、资源泄漏、API 协议问题和数据竞争等问题。</p></div>
+      </section>
+
+      <section id="ch13" class="chapter">
+        <div class="chapter-title"><div class="chapter-num">13</div><div><h2>测试文档</h2><div class="tagline">Test Plan / Test Case / Bug Report / Summary Report</div></div></div>
+        <div class="grid-2"><div class="card"><h4>Test Plan</h4><p>描述软件测试范围和活动的文档，是正式测试软件或产品的基础，说明范围、方法、资源和进度安排。</p></div><div class="card"><h4>Test Case</h4><p>测试的最小单位，包括前置条件、输入、操作步骤、预期输出和后置条件。</p></div></div>
+        <h3>Test Planning Process</h3><div class="flow"><span class="step">定义测试策略</span><span class="arrow">→</span><span class="step">定义测试系统</span><span class="arrow">→</span><span class="step">估算测试工作量</span><span class="arrow">→</span><span class="step">准备并评审测试计划</span></div>
+        <table><tr><th>文档</th><th>作用</th></tr><tr><td>Bug Report</td><td>说明软件具体出了什么问题，目标是让 Bug 被理解、复现并修复。</td></tr><tr><td>Test Summary Report</td><td>测试结束后的重要交付成果，总结测试活动、结果、缺陷、风险和结论。</td></tr></table>
+        <div class="summary"><h3>本章中文背诵版</h3><p>Test Plan 是描述软件测试范围和活动的文档，是正式测试软件或产品的基础。它说明测试活动的范围、方法、资源和进度安排。Test Plan 可分为 Master Test Plan、Testing Level Specific Test Plans 和 Testing Type Specific Test Plans。</p><p>Test Planning Process 包括定义测试策略、定义测试系统、估算测试工作量、准备并评审测试计划。Test Strategy 要考虑方法、入口和出口标准、自动化、范围和优先级。</p><p>Test Case 是测试的最小单位，通常包括前置条件、输入、操作步骤、预期输出和后置条件。一个 Test Case 可以对应至少一个 Test Script，一组相关的 Test Cases 组成 Test Suite。</p><p>Bug Report 是说明软件具体出了什么问题的信息文档，目标是让 Bug 被理解、复现并修复。好的 Bug Report 应该清晰、可执行、容易完成。Test Summary Report 是测试结束后的重要交付成果，用于向项目干系人总结测试活动、结果、缺陷、风险和结论。</p></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
