@@ -199,4 +199,4 @@ git clone https://github.com/4512abc/SCUT.git
 
 #### **0宝**
 
-#### **Jaax**
+#### **Jaxx**
