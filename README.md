@@ -174,6 +174,8 @@ git clone https://github.com/4512abc/SCUT.git
 
 **IT项目管理（94/100）Top4**
 
+**软件测试（94/100） Top1**
+
 ## 📬 联系与反馈 
 
 ##### 资料问题/侵权删除/合作请求： 
